@@ -1,10 +1,15 @@
+- gravel -> stone-bricks
+- recycle ammo, armors
+- copper production
+- more difficult machinery
+
 - Filter custom entity
 - Technology to enable Pulverizer, Crusher, Filter
-- Recycler works for all items (post-data-fix)
 
 --------------
 --- DONE: ----
 --------------
+- Recycler works for all items (data-final-fixes), guns, templates
 - custom recipes for intermediates processing (iron)
 - icons for intermediates (iron)
 - Ore patch recipes iron
