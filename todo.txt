@@ -1,0 +1,11 @@
+- Filter custom entity
+- Technology to enable Pulverizer, Crusher, Filter
+- Recycler works for all items (post-data-fix)
+
+--------------
+--- DONE: ----
+--------------
+- custom recipes for intermediates processing (iron)
+- icons for intermediates (iron)
+- Ore patch recipes iron
+- Recycler
