@@ -1,14 +1,14 @@
-- gravel -> stone-bricks
-- recycle ammo, armors
-- copper production
+- copper production Tier3
 - more difficult machinery
-
-- Filter custom entity
-- Technology to enable Pulverizer, Crusher, Filter
+- Technology to enable Pulverizer, Crusher, Electrolyzer
+- Different symbol&image for Recycler
 
 --------------
 --- DONE: ----
 --------------
+- copper production Tier1&2
+- recycle ammo, armors
+- gravel -> stone-bricks
 - Recycler works for all items (data-final-fixes), guns, templates
 - custom recipes for intermediates processing (iron)
 - icons for intermediates (iron)

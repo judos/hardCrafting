@@ -12,7 +12,7 @@ data:extend({
 			}
 		})
 
-local types = {"item", "gun", "blueprint", "deconstruction-item"}
+local types = {"item", "gun", "armor", "ammo", "blueprint", "deconstruction-item"}
 for _,typ in pairs(types) do
 	for name,itemTable in pairs(data.raw[typ]) do
 		data:extend({
