@@ -1,3 +1,10 @@
+-- Requirement: --
+require("prototypes.bigger-furnaces")
+require("prototypes.dirt")
+require("prototypes.gravel")
+require("prototypes.crusher")
+require("prototypes.pulverizer")
+
 -- Minable ressources: --
 data.raw["resource"]["iron-ore"].minable.result = nil
 data.raw["resource"]["iron-ore"].minable.results = {
@@ -6,9 +13,6 @@ data.raw["resource"]["iron-ore"].minable.results = {
 	ressourceItemMinMaxProb("gravel",     1, 4, 0.3),
 	ressourceItemMinMaxProb("dirt",       1, 1, 1)
 }
-
--- Requirement: --
-require("prototypes.bigger-furnaces")
 
 -- Item groups: --
 data:extend({
@@ -24,9 +28,7 @@ data:extend({
 addItem("crushed-iron","raw-resource","e2[iron-ore]",50)
 addItem("pulverized-iron","raw-resource","e3[iron-ore]",50)
 addItem("iron-nugget","raw-resource","e4[iron-ore]",50)
-
 addItem("iron-slag","raw-resource","e9[iron-ore]",50)
-addItem("gravel","raw-resource","g[other]",50)
 
 -- Recipes: --
 data.raw["recipe"]["iron-plate"] = nil

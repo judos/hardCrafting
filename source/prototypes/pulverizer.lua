@@ -2,7 +2,7 @@ data:extend({
   {
     type = "item",
     name = "pulverizer",
-    icon = "__base__/graphics/icons/electric-furnace.png",
+    icon = "__hardCrafting__/graphics/icons/pulverizer.png",
     flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
     order = "g",
@@ -26,7 +26,9 @@ data:extend({
 -- Entity
 local pulverizer = deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
 pulverizer.name = "pulverizer"
+pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
 pulverizer.animation = data.raw["furnace"]["electric-furnace"].animation
+pulverizer.animation.filename="__hardCrafting__/graphics/entity/crusher/crusher-base.png"
 pulverizer.icon = data.raw["furnace"]["electric-furnace"].icon
 pulverizer.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
 pulverizer.open_sound  = data.raw["furnace"]["electric-furnace"].open_sound
