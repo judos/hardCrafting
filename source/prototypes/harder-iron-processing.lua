@@ -1,8 +1,16 @@
-data.raw["furnace"]["stone-furnace"].result_inventory_size = 2
-data.raw["furnace"]["steel-furnace"].result_inventory_size = 2
-data.raw["furnace"]["electric-furnace"].result_inventory_size = 2
+-- Minable ressources: --
+data.raw["resource"]["iron-ore"].minable.result = nil
+data.raw["resource"]["iron-ore"].minable.results = {
+	ressourceItemMinMaxProb("iron-ore",   1, 5, 0.3), -- 1 item at percentage 0.9 --
+	ressourceItemMinMaxProb("iron-nugget",1, 1, 0.1),
+	ressourceItemMinMaxProb("gravel",     1, 4, 0.3),
+	ressourceItemMinMaxProb("dirt",       1, 1, 1)
+}
 
+-- Requirement: --
+require("prototypes.bigger-furnaces")
 
+-- Item groups: --
 data:extend({
   {
     type = "item-subgroup",
@@ -10,10 +18,17 @@ data:extend({
     group = "intermediate-products",
     order = "b2"
   }
-	})
+})
 
+-- Items: --
+addItem("crushed-iron","raw-resource","e2[iron-ore]",50)
+addItem("pulverized-iron","raw-resource","e3[iron-ore]",50)
+addItem("iron-nugget","raw-resource","e4[iron-ore]",50)
 
+addItem("iron-slag","raw-resource","e9[iron-ore]",50)
+addItem("gravel","raw-resource","g[other]",50)
 
+-- Recipes: --
 data.raw["recipe"]["iron-plate"] = nil
 --       item Name     category   subgroup     time    ingredients     		products
 -- Tier1

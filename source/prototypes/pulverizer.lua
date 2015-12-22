@@ -23,7 +23,7 @@ data:extend({
   },
 })
 
--- Recycler Entity
+-- Entity
 local pulverizer = deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
 pulverizer.name = "pulverizer"
 pulverizer.animation = data.raw["furnace"]["electric-furnace"].animation

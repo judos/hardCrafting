@@ -23,7 +23,7 @@ data:extend({
   },
 })
 
--- Recycler Entity
+-- Entity
 local crusher = deepcopy(data.raw["furnace"]["electric-furnace"])
 crusher.name = "crusher"
 crusher.crafting_categories = {"crusher"}
