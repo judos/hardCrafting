@@ -38,7 +38,14 @@ addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"coppe
 addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",1}},"c")
 
 -- Tier2
-addRecipe("copper-dust","pulverizer","copper",10,{{"copper-ore",4},{"gravel",1}},{{"copper-dust",4},{"sulfur-dust",2}},"d")
+addRecipe("copper-dust","pulverizer","copper",6,{{"copper-ore",4},{"gravel",3}},{{"copper-dust",4},{"sulfur-dust",2}},"d")
+addRecipe("sulfur|dust","crafting","copper",2,{{"sulfur-dust",25}},{{"sulfur",1}},"e")
+
+-- Tier3
+addRecipe("copper-sulfat","crafting","copper",2,{{"copper-dust",9},{"sulfur-dust",5}},{{"copper-sulfat",10}},"f")
+addRecipe("copper-plate|sulfat","chemistry","copper",2,
+	{{type="item",name="copper-sulfat",amount=6},{type="fluid",name="water",amount=1}},
+	{{"copper-plate",7},{"sulfuric-acid",0.5},{"gravel",1}},"g")
 
 --[[
 addRecipe("iron-plate","smelting","iron",3.5,{{"iron-ore",2}},						{{"iron-plate",1},{"iron-slag",1}},"b")

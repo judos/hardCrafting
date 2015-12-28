@@ -29,7 +29,11 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 		print("No results found for recipe with name: "..name)
 	end
 	for _,s in pairs(results) do
-		table.insert(resultsDetailled, {type="item", name=s[1], amount=s[2]})
+		local typ = "item"
+		if s[1] == "sulfuric-acid" then
+			typ = "fluid"
+		end
+		table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
 	end
 	imageName = removeAfterSign(name,"|")
 	data:extend({
@@ -55,6 +59,9 @@ end
 
 -- adds a recipe which is unlocked when the given technology is researched
 function addTechnologyUnlocksRecipe(technologyName, recipeName)
+	if data.raw["technology"][technologyName].effects == nil then
+		data.raw["technology"][technologyName].effects = {}
+	end
 	table.insert(data.raw["technology"][technologyName].effects,
 		{ type = "unlock-recipe", recipe = recipeName })
 end

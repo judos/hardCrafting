@@ -27,7 +27,7 @@ data:extend({
 local pulverizer = deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
 pulverizer.name = "pulverizer"
 pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
-pulverizer.animation = data.raw["furnace"]["electric-furnace"].animation
+pulverizer.animation = deepcopy(data.raw["furnace"]["electric-furnace"].animation)
 pulverizer.animation.filename="__hardCrafting__/graphics/entity/crusher/crusher-base.png"
 pulverizer.icon = data.raw["furnace"]["electric-furnace"].icon
 pulverizer.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
