@@ -1,3 +1,5 @@
+require("prototypes.item-group-production")
+
 data:extend({
   {
     type = "item",
