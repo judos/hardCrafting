@@ -13,6 +13,7 @@ data.raw["recipe"]["engine-unit"].ingredients = {
 
 -- Electric engine unit
 data.raw["recipe"]["electric-engine-unit"].energy_required = 10
+data.raw["recipe"]["electric-engine-unit"].category = "crafting"
 data.raw["recipe"]["electric-engine-unit"].ingredients = {
 	{"electro-magnet",2},
 	{"electronic-circuit",1},

@@ -11,7 +11,7 @@ data:extend({
 	{
 		type="recipe",
 		name="rotor",
-		category = "crafting-with-fluid",
+		category = "crafting",
 		ingredients={
 			{"plastic-bar",2},{"iron-plate",1}
 		},

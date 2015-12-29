@@ -1,11 +1,14 @@
-- copper production Tier3
 - more difficult machinery
 - Technology to enable Pulverizer, Crusher, Electrolyzer
 - Different symbol&image for Recycler
+- Mixed ore fields (e.g. gravel, dirt)
 
 --------------
 --- DONE: ----
 --------------
+- different robot/ engine recipes
+- landfill integration
+- copper production Tier3
 - copper production Tier1&2
 - recycle ammo, armors
 - gravel -> stone-bricks

@@ -11,7 +11,7 @@ data:extend({
 	{
 		type="recipe",
 		name="electro-magnet",
-		category = "crafting-with-fluid",
+		category = "crafting",
 		ingredients={
 			{"copper-cable",4},{"iron-plate",1}
 		},

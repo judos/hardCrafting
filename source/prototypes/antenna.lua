@@ -11,7 +11,7 @@ data:extend({
 	{
 		type="recipe",
 		name="antenna",
-		category = "crafting-with-fluid",
+		category = "crafting",
 		ingredients={
 			{"copper-cable",5}
 		},
