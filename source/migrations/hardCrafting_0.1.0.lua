@@ -18,4 +18,8 @@ for i, force in pairs(game.forces) do
 	if force.technologies["robotics"].researched then
 		force.recipes["antenna"].enabled = true
 	end
+	
+	if force.technologies["circuit-network"].researched then
+		force.recipes["signal-receiver"].enabled = true
+	end
 end

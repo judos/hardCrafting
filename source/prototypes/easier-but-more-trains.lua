@@ -1,5 +1,3 @@
-print("recipe for rails: "..serpent.block(data.raw["recipe"]["straight-rail"]))
-
 -- Straight rails cost a bit less steel but much more stone
 data.raw["recipe"]["straight-rail"].result_count = 3
 data.raw["recipe"]["straight-rail"].ingredients = {
