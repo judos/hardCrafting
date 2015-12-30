@@ -1,9 +1,10 @@
--- Recycling hidden Recipes
+-- Incinerator hidden Recipes
+-- This file must be included only in data-final-fixes, otherwise not all items can be inserted in the incinerator
 
 data:extend({
 			{
 				type = "item",
-				name = "recycle_item",
+				name = "fire_item",
 				hidden = true,
 				enabled = false,
 				icon = "__hardCrafting__/graphics/icons/fire.png",
@@ -18,11 +19,11 @@ for _,typ in pairs(types) do
 		data:extend({
 			{
 				type = "recipe",
-				name = "recycle_"..name,
-				category = "recycling",
+				name = "incinerate_"..name,
+				category = "incinerator",
 				hidden = true,
 				ingredients = {{name, 1}},
-				result = "recycle_item",
+				result = "fire_item",
 				energy_required = 5,
 				result_count = 0
 			}

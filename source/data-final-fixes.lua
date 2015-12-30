@@ -1,4 +1,6 @@
 require("basic-lua-extensions")
 
-require("prototypes.recycler-recipes")
+require("prototypes.incinerator-recipes")
+
+-- integration with landfill mod
 require("prototypes.landfill")

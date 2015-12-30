@@ -3,9 +3,8 @@ if data.raw["item"]["landfill2by2"] ~= nil then
 		{
 			type = "recipe",
 			name = "landfill2by2_withDirt",
-			enabled = "true",
-			ingredients =
-			{
+			enabled = true,
+			ingredients = {
 				{"dirt", 20}
 			},
 			result = "landfill2by2"

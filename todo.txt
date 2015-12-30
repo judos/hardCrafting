@@ -1,11 +1,13 @@
 - more difficult machinery
 - Technology to enable Pulverizer, Crusher, Electrolyzer
-- Different symbol&image for Recycler
 - Mixed ore fields (e.g. gravel, dirt)
 
 --------------
 --- DONE: ----
 --------------
+- Different symbol&image for incinerator
+- Technology for incinerator
+- Renamed recycler to incinerator
 - different robot/ engine recipes
 - landfill integration
 - copper production Tier3
