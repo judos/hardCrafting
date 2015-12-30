@@ -17,4 +17,7 @@ for i, force in pairs(game.forces) do
 	
 	check(force, "incinerator", "incinerator")
 	check(force, "electric-incinerator", "electric-incinerator")
+	
+	check(force, "crusher", "crusher")
+	check(force, "pulverizer", "pulverizer")
 end

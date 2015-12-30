@@ -35,25 +35,14 @@ data.raw["recipe"]["copper-plate"] = nil
 -- Tier1
 addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper-plate",1},{"copper-sludge",2}},"a")
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
-addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",1}},"c")
+addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",1}},"f2[sulfur]")
 
 -- Tier2
 addRecipe("copper-dust","pulverizer","copper",6,{{"copper-ore",4},{"gravel",3}},{{"copper-dust",4},{"sulfur-dust",2}},"d")
-addRecipe("sulfur|dust","crafting","copper",2,{{"sulfur-dust",25}},{{"sulfur",1}},"e")
+addRecipe("sulfur|dust","crafting","",2,{{"sulfur-dust",10}},{{"sulfur",1}},"c")
 
 -- Tier3
 addRecipe("copper-sulfat","crafting","copper",2,{{"copper-dust",9},{"sulfur-dust",5}},{{"copper-sulfat",10}},"f")
 addRecipe("copper-plate|sulfat","chemistry","copper",2,
 	{{type="item",name="copper-sulfat",amount=6},{type="fluid",name="water",amount=1}},
 	{{"copper-plate",7},{"sulfuric-acid",0.5},{"gravel",1}},"g")
-
---[[
-addRecipe("iron-plate","smelting","iron",3.5,{{"iron-ore",2}},						{{"iron-plate",1},{"iron-slag",1}},"b")
-addRecipe("iron-slag","crusher","iron",8,{{"iron-slag",5}},								{{"crushed-iron",2},{"gravel",3}},"c")
-addRecipe("crushed-iron","crusher","iron",16.5,{{"iron-ore",10}},					{{"crushed-iron",6},{"iron-nugget",3},{"stone",5}},"d")
-addRecipe("iron-plate|1","smelting","iron",		3.5,{{"crushed-iron",2}},		{{"iron-plate",2},{"iron-slag",1}},"e")
--- Tier3
-addRecipe("pulverized-iron","pulverizer","iron",5.5,{{"crushed-iron",3},{"gravel",4}},	{{"pulverized-iron",3},{"iron-nugget",2},{"iron-slag",2}},"f")
-addRecipe("iron-plate|2","smelting","iron",	1.75,{{"pulverized-iron",1}},	{{"iron-plate",1}},"g")
-addRecipe("gravel","pulverizer",	"iron",			4,{{"stone",2},{"dirt",4}},	{{"gravel",3}})
-]]--

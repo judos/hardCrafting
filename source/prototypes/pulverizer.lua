@@ -9,6 +9,7 @@ data:extend({
     subgroup = "advanced-processing-machine",
     order = "g",
     place_result = "pulverizer",
+		enabled = false,
     stack_size = 50
   },
 	{
@@ -42,3 +43,29 @@ pulverizer.result_inventory_size = 3
 pulverizer.crafting_speed = 1
 pulverizer.minable.result = "pulverizer"
 data:extend({ pulverizer })
+
+
+-- technology
+data:extend({
+  {
+    type = "technology",
+    name = "pulverizer",
+    icon = "__hardCrafting__/graphics/icons/pulverizer.png",
+    prerequisites = {"crusher", "steel-processing", "advanced-material-processing", },
+    effects = {
+      {
+        type = "unlock-recipe",
+        recipe = "pulverizer"
+      }
+    },
+    unit = {
+      count = 50,
+      ingredients = {
+        {"science-pack-1", 2},
+				{"science-pack-2", 1}
+      },
+      time = 30
+    },
+    order = "pulverizer"
+  }
+})

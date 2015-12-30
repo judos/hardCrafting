@@ -43,4 +43,3 @@ addRecipe("iron-plate|1","smelting","iron",		3.5,{{"crushed-iron",2}},		{{"iron-
 -- Tier3
 addRecipe("pulverized-iron","pulverizer","iron",5.5,{{"crushed-iron",3},{"gravel",4}},	{{"pulverized-iron",3},{"iron-nugget",2},{"iron-slag",2}},"f")
 addRecipe("iron-plate|2","smelting","iron",	1.75,{{"pulverized-iron",1}},	{{"iron-plate",1}},"g")
-addRecipe("gravel","pulverizer",	"iron",			4,{{"stone",2},{"dirt",4}},	{{"gravel",3}})

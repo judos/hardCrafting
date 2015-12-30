@@ -9,6 +9,7 @@ data:extend({
     subgroup = "advanced-processing-machine",
     order = "f",
     place_result = "crusher",
+		enabled = false,
     stack_size = 50
   },
 	{
@@ -50,3 +51,27 @@ crusher.working_visualisations[1] = {
 	light = {intensity = 0.4, size = 6, shift = {0.0, 1.0}}
 }
 data:extend({ crusher })
+
+-- technology
+data:extend({
+  {
+    type = "technology",
+    name = "crusher",
+    icon = "__hardCrafting__/graphics/icons/crusher.png",
+    prerequisites = {},
+    effects = {
+      {
+        type = "unlock-recipe",
+        recipe = "crusher"
+      }
+    },
+    unit = {
+      count = 42,
+      ingredients = {
+        {"science-pack-1", 1}
+      },
+      time = 20
+    },
+    order = "crusher"
+  }
+})

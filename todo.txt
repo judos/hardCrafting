@@ -1,12 +1,12 @@
 - more difficult machinery
-- Integration with fluid-barrel
-- Technology to enable Pulverizer, Crusher
 - Mixed ore fields (e.g. gravel, dirt)
-- clean up recipes position
 
 --------------
 --- DONE: ----
 --------------
+- Integration with fluid-barrel
+- Technology to enable Pulverizer, Crusher
+- clean up recipes position
 - Easier, cheaper train setup, but wagons carry only half the items (more trains yeah!)
 - Different symbol&image for incinerator
 - Technology for incinerator
