@@ -59,6 +59,7 @@ end
 
 -- adds a recipe which is unlocked when the given technology is researched
 function addTechnologyUnlocksRecipe(technologyName, recipeName)
+	data.raw["recipe"][recipeName].enabled = false
 	if data.raw["technology"][technologyName].effects == nil then
 		data.raw["technology"][technologyName].effects = {}
 	end
@@ -71,5 +72,5 @@ function ChangeRecipe(Name, Ingredient1, Ingredient2, Amount)
 	for k, v in pairs(data.raw["recipe"][Name].ingredients) do
 		if v[1] == Ingredient1 then table.remove(data.raw["recipe"][Name].ingredients, k) end
 	end
-table.insert(data.raw["recipe"][Name].ingredients,{Ingredient2, Amount})
+	table.insert(data.raw["recipe"][Name].ingredients,{Ingredient2, Amount})
 end

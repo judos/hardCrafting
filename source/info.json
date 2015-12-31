@@ -1,9 +1,9 @@
 {
   "name": "hardCrafting",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "title": "Hard crafting",
   "author": "judos",
   "description": "Modifies vanilla crafting and smelting to be much trickier, you will need better planning and more clever setup",
-	"dependencies": ["base >= 0.12.11", "? Landfill >= 2.1.7"],
+	"dependencies": ["base >= 0.12.11", "? Landfill >= 2.1.7", "? fluid-barrel >= 1.0.0"],
 	"homepage": "https://github.com/judos/hardCrafting"
 }

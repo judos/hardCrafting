@@ -32,7 +32,7 @@ pulverizer.name = "pulverizer"
 pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
 pulverizer.animation = deepcopy(data.raw["furnace"]["electric-furnace"].animation)
 pulverizer.animation.filename="__hardCrafting__/graphics/entity/crusher/crusher-base.png"
-pulverizer.icon = data.raw["furnace"]["electric-furnace"].icon
+pulverizer.icon = "__hardCrafting__/graphics/icons/pulverizer.png"
 pulverizer.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
 pulverizer.open_sound  = data.raw["furnace"]["electric-furnace"].open_sound
 pulverizer.close_sound  = data.raw["furnace"]["electric-furnace"].close_sound 
@@ -43,7 +43,6 @@ pulverizer.result_inventory_size = 3
 pulverizer.crafting_speed = 1
 pulverizer.minable.result = "pulverizer"
 data:extend({ pulverizer })
-
 
 -- technology
 data:extend({
