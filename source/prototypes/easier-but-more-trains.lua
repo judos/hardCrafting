@@ -15,12 +15,12 @@ data.raw["recipe"]["curved-rail"].ingredients = {
 
 -- Half the cost of diesel-locomotive
 for _,materialCost in pairs(data.raw["recipe"]["diesel-locomotive"].ingredients) do
-	materialCost[2] = materialCost[2]/2
+	materialCost[2] = math.ceil(materialCost[2]/2)
 end
 
 -- Half the cost of cargo wagons
 for _,materialCost in pairs(data.raw["recipe"]["cargo-wagon"].ingredients) do
-	materialCost[2] = materialCost[2]/2
+	materialCost[2] = math.ceil(materialCost[2]/2)
 end
 
 data.raw["cargo-wagon"]["cargo-wagon"].inventory_size = 15
