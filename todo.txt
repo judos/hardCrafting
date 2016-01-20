@@ -1,3 +1,5 @@
+- fix unbalancing with 5dims mods
+- change 5dim recipe for solar panels
 - more difficult machinery
 - Mixed ore fields (e.g. gravel, dirt)
 
