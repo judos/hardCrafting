@@ -7,7 +7,7 @@ require("prototypes.incinerator")
 require("prototypes.electric-incinerator")
 require("prototypes.harder-iron-processing")
 require("prototypes.harder-copper-processing")
-require("prototypes.engines-and-robots")
+
 require("prototypes.easier-but-more-trains")
-require("prototypes.logistics-to-circuit-converter")
-require("prototypes.circuit-signal-requester")
+
+--require("prototypes.engines-and-robots")
