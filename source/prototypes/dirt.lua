@@ -8,7 +8,7 @@ data:extend({
     icon = "__hardCrafting__/graphics/icons/dirt.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
-    order = "g3[dirt]",
+    order = "g3[other]",
     stack_size = 50,
     place_as_tile =
     {
