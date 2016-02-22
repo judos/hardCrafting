@@ -1,4 +1,5 @@
 local dirt_vehicle_speed_modifier = 100
+local dirt_walking_speed_modifier = 0.9
 
 data:extend({
 	{
@@ -6,8 +7,8 @@ data:extend({
     name = "dirt",
     icon = "__hardCrafting__/graphics/icons/dirt.png",
     flags = {"goes-to-main-inventory"},
-    subgroup = "terrain",
-    order = "0[dirt]",
+    subgroup = "raw-resource",
+    order = "g3[dirt]",
     stack_size = 50,
     place_as_tile =
     {
@@ -24,7 +25,7 @@ data:extend({
 		minable = {hardness = 0.2, mining_time = 0.1, result = "dirt"},
 		mined_sound = { filename = "__base__/sound/walking/dirt-02.ogg" },
 		collision_mask = {"ground-tile"},
-		walking_speed_modifier = 0.9,
+		walking_speed_modifier = dirt_walking_speed_modifier,
 		layer = 59,
 		decorative_removal_probability = 0.6,
 		variants =
