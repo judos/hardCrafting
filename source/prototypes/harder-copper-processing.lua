@@ -29,16 +29,34 @@ addItem("copper-sludge","raw-resource","f4[copper-ore]",50)
 
 addItem("sulfur-dust","raw-resource","f5[copper-ore]",50)
 
+-- Calculate ore->plate factor for Recipes
+local c = data.raw["recipe"]["copper-plate"]
+
+local function searchOreAmount(tableOfIngredients,nameToSearch)
+	for _,t in pairs(tableOfIngredients) do
+		if t[1] == nameToSearch then return t[2] end
+	end
+	return 0
+end
+
+local copperOreToPlateFactor = c.result_count / searchOreAmount(c.ingredients,"copper-ore")
+print("Copper ore factor: "..tostring(copperOreToPlateFactor))
+
+local function c(amount)
+	print("original: "..tostring(amount).." new: "..tostring(math.ceil(amount*copperOreToPlateFactor)))
+	return math.ceil(amount*copperOreToPlateFactor)
+end
+
 -- Recipes: --
 data.raw["recipe"]["copper-plate"] = nil
 --       item Name     category   subgroup     time    ingredients     			products		order
 -- Tier1
-addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper-plate",1},{"copper-sludge",2}},"a")
+addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper-plate",c(1)},{"copper-sludge",2}},"a")
 
 -- Tier2
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
 addTechnologyUnlocksRecipe("crusher","copper-sludge")
-addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",1}},"c")
+addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
 
 -- Tier3
@@ -52,5 +70,5 @@ addRecipe("copper-sulfat","crafting","copper",2,{{"copper-dust",9},{"sulfur-dust
 addTechnologyUnlocksRecipe("oil-processing","copper-sulfat")
 addRecipe("copper-plate|sulfat","chemistry","copper",2,
 	{{type="item",name="copper-sulfat",amount=6},{type="fluid",name="water",amount=1}},
-	{{"copper-plate",7},{"sulfuric-acid",0.5},{"gravel",1}},"g")
+	{{"copper-plate",c(7)},{"sulfuric-acid",0.5},{"gravel",1}},"g")
 addTechnologyUnlocksRecipe("oil-processing","copper-plate|sulfat")
