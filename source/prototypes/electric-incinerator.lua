@@ -28,7 +28,9 @@ data:extend({
 local incinerator = deepcopy(data.raw["furnace"]["electric-furnace"])
 incinerator.name = "electric-incinerator"
 incinerator.crafting_categories = {"incinerator"}
-incinerator.energy_usage = "600kW"
+incinerator.energy_usage = "450kW"
+incinerator.source_inventory_size = 1
+incinerator.result_inventory_size = 1
 incinerator.minable.result = "electric-incinerator"
 incinerator.module_specification.module_slots = 1
 data:extend({ incinerator })
@@ -52,13 +54,13 @@ data:extend({
       }
     },
     unit = {
-      count = 80,
+      count = 60,
       ingredients = {
         {"science-pack-1", 3},
 				{"science-pack-2", 1}
       },
       time = 30
     },
-    order = "incinerator-2"
+    order = "_incinerator-2"
   }
 })

@@ -1,18 +1,6 @@
 -- Incinerator hidden Recipes
 -- This file must be included only in data-final-fixes, otherwise not all items can be inserted in the incinerator
 
-data:extend({
-			{
-				type = "item",
-				name = "fire_item",
-				hidden = true,
-				enabled = false,
-				icon = "__hardCrafting__/graphics/icons/fire.png",
-				flags = {"goes-to-quickbar"},
-				stack_size = 50
-			}
-		})
-
 local types = {"item", "gun", "armor", "ammo", "blueprint", "deconstruction-item"}
 for _,typ in pairs(types) do
 	for name,itemTable in pairs(data.raw[typ]) do
@@ -21,11 +9,14 @@ for _,typ in pairs(types) do
 				type = "recipe",
 				name = "incinerate_"..name,
 				category = "incinerator",
+				icon = "__hardCrafting__/graphics/icons/fire.png",
 				hidden = true,
 				ingredients = {{name, 1}},
-				result = "fire_item",
-				energy_required = 5,
-				result_count = 0
+				energy_required = 4,
+				results =
+				{
+					{type="item", name="coal", probability=0.1, amount_min=1, amount_max=1},
+				}
 			}
 		})
 	end
