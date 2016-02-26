@@ -1,8 +1,7 @@
 
 + pulverizer: coal -> coal dust, sulfur -> sulfur-dust
 + coal field -> coal dust, coal
-+ improving Inscinerator
-+ balancing gravel/dirt output
++ balancing gravel/dirt output -> minable_results not consistent by factorio??
 + buildings use iron-walls, metal-parts
 
 - more difficult machinery
@@ -16,6 +15,7 @@
 --- DONE v0.3 ----
 ------------------
 
++ improving Inscinerator
 - all furnaces support hardCrafting smelting recipes (2 output slots)
 
 ------------------
