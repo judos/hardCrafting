@@ -1,10 +1,13 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 import ch.judos.generic.files.config.Config;
 import ch.judos.generic.files.config.ConfigSettingsBase;
 import ch.judos.generic.files.config.Property;
-import ch.judos.generic.files.zip.ZipUtils;
+import ch.judos.generic.files.zip.ZipFile;
 
 public class BuildRelease {
 
@@ -16,18 +19,54 @@ public class BuildRelease {
 
 	public BuildRelease() throws IOException {
 		this.config = new Config(new Properties());
-		Property version = this.config.getPropertyByName("version");
-		System.out.println("building release " + version.getString());
 
-		Property releaseFileName = this.config.getPropertyByName("destinationName");
-		String zipName = releaseFileName + "_" + version + ".zip";
-		System.out.println("creating zip-file: " + zipName);
+		try {
 
-		String sourceFolder = this.config.getPropertyByName("sourceFolder").getString();
-		ZipUtils.pack(sourceFolder, zipName);
+			String sourceFolder = Properties.sourceFolder.getString();
+			String version = getVersion(sourceFolder);
+			if (version == null) {
+				System.out.println("ERROR: version not found in " + sourceFolder
+					+ "/info.json");
+				return;
+			}
+			Property releaseName = Properties.modName;
+			String releaseFileName = releaseName + "_" + version;
+			String releaseFolder = Properties.releaseFolder.getString();
+			String zipFile = releaseFolder + "/" + releaseFileName + ".zip";
+
+			System.out.println("building release " + version);
+
+			File targetFile = new File(zipFile);
+			if (!targetFile.exists()) {
+				ZipFile zip = new ZipFile();
+				zip.addFolder(new File(sourceFolder), releaseFileName);
+				zip.saveZipAs(zipFile);
+				System.out.println("Done.");
+			}
+			else {
+				System.out.println("ERROR: File " + zipFile + " exists already");
+			}
+		}
+		finally {
+			this.config.save();
+		}
 	}
-
+	private String getVersion(String srcFolder) throws IOException {
+		List<String> lines = Files.readAllLines(Paths.get(srcFolder + "/info.json"));
+		String version = null;
+		for (String line : lines) {
+			if (line.contains("version")) {
+				version = line.split(":")[1].replaceAll("[\", ]", "");
+				break;
+			}
+		}
+		return version;
+	}
 	public static class Properties extends ConfigSettingsBase {
+
+		public static Property sourceFolder = new Property("sourceFolder", false, "source");
+		public static Property releaseFolder = new Property("releaseFolder", false, "release");
+		public static Property modName = new Property("modName", false, "MyMod");
 
 		@Override
 		public Object getConfigSettingsObject() {
