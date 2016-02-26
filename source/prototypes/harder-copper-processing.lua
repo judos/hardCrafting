@@ -39,7 +39,9 @@ local function searchOreAmount(tableOfIngredients,nameToSearch)
 	return 0
 end
 
-local copperOreToPlateFactor = c.result_count / searchOreAmount(c.ingredients,"copper-ore")
+local resultingCount = c.result_count
+if not resultingCount then resultingCount=1 end
+local copperOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"copper-ore")
 print("Copper ore factor: "..tostring(copperOreToPlateFactor))
 
 local function c(amount)
