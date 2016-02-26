@@ -1,11 +1,24 @@
-- fix unbalancing with 5dims mods
-- change 5dim recipe for solar panels
+
++ pulverizer: coal -> coal dust, sulfur -> sulfur-dust
++ coal field -> coal dust, coal
++ improving Inscinerator
++ balancing gravel/dirt output
++ buildings use iron-walls, metal-parts
+
 - more difficult machinery
 - Mixed ore fields (e.g. gravel, dirt)
 
---------------
---- DONE: ----
---------------
+~ Integration 5dims
+	- fix unbalancing with 5dims mods
+	- change 5dim recipe for solar panels
+
+------------------
+--- DONE v0.3 ----
+------------------
+
+------------------
+--- DONE v0.2 ----
+------------------
 - Integration with fluid-barrel
 - Technology to enable Pulverizer, Crusher
 - clean up recipes position
