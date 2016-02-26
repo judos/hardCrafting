@@ -16,6 +16,8 @@
 --- DONE v0.3 ----
 ------------------
 
+- all furnaces support hardCrafting smelting recipes (2 output slots)
+
 ------------------
 --- DONE v0.2 ----
 ------------------

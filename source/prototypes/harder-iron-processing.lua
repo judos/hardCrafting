@@ -45,7 +45,6 @@ local ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iro
 print("Iron ore factor: "..tostring(ironOreToPlateFactor))
 
 local function c(amount)
-	print("original: "..tostring(amount).." new: "..tostring(math.ceil(amount*ironOreToPlateFactor)))
 	return math.ceil(amount*ironOreToPlateFactor)
 end
 

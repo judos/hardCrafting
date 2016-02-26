@@ -1,3 +1,9 @@
+function table.set(t) -- set of list
+  local u = { }
+  for _, v in ipairs(t) do u[v] = true end
+  return u
+end
+
 function round(num, idp)
   local mult = 10^(idp or 0)
   return math.floor(num * mult + 0.5) / mult

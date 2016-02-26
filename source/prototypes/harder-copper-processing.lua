@@ -45,7 +45,6 @@ local copperOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"c
 print("Copper ore factor: "..tostring(copperOreToPlateFactor))
 
 local function c(amount)
-	print("original: "..tostring(amount).." new: "..tostring(math.ceil(amount*copperOreToPlateFactor)))
 	return math.ceil(amount*copperOreToPlateFactor)
 end
 

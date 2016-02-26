@@ -1,6 +1,8 @@
-local furnaces = {"stone-furnace","steel-furnace","electric-furnace"}
+local furnacesExclude = table.set{"incinerator","electric-incinerator"}
 
-for _,name in pairs(furnaces) do
-	local f = data.raw["furnace"][name]
-	f.result_inventory_size = math.max(f.result_inventory_size, 2)
+for name,furnace in pairs(data.raw["furnace"]) do
+	if not furnacesExclude[name] then
+		print(name)
+		furnace.result_inventory_size = math.max(furnace.result_inventory_size, 2)
+	end
 end
