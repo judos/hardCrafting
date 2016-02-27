@@ -1,9 +1,9 @@
 -- Requirement: --
-require("prototypes.bigger-furnaces")
-require("prototypes.dirt")
-require("prototypes.gravel")
-require("prototypes.crusher")
-require("prototypes.pulverizer")
+require "prototypes.bigger-furnaces"
+require "prototypes.dirt"
+require "prototypes.gravel"
+require "prototypes.crusher"
+require "prototypes.pulverizer"
 
 -- Minable ressources: --
 data.raw["resource"]["iron-ore"].minable.result = nil
