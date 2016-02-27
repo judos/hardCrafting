@@ -68,6 +68,9 @@ addTechnologyUnlocksRecipe("pulverizer","copper-dust")
 addRecipe("sulfur|dust","crafting","",2,{{"sulfur-dust",10}},{{"sulfur",1}},"f2[sulfur]")
 addTechnologyUnlocksRecipe("pulverizer","sulfur|dust")
 
+addRecipe("sulfur-dust","crafting","",2,{{"sulfur",1}},{{"sulfur-dust",8}},"f3[sulfur]")
+addTechnologyUnlocksRecipe("pulverizer","sulfur-dust")
+
 -- Tier4
 addRecipe("copper-sulfat","crafting","copper",2,{{"copper-dust",9},{"sulfur-dust",5}},{{"copper-sulfat",10}},"f")
 addTechnologyUnlocksRecipe("oil-processing","copper-sulfat")
