@@ -74,3 +74,13 @@ function ChangeRecipe(Name, Ingredient1, Ingredient2, Amount)
 	end
 	table.insert(data.raw["recipe"][Name].ingredients,{Ingredient2, Amount})
 end
+
+
+function recipeItemAmount(recipe,itemName)
+	for _,tuple in pairs(recipe.ingredients) do
+		if tuple[1] == itemName then 
+			return tuple[2]
+		end
+	end
+	return 0
+end
