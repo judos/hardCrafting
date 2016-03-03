@@ -23,5 +23,8 @@ for _,materialCost in pairs(data.raw["recipe"]["cargo-wagon"].ingredients) do
 	materialCost[2] = math.ceil(materialCost[2]/2)
 end
 
-data.raw["cargo-wagon"]["cargo-wagon"].inventory_size = 15
-data.raw["cargo-wagon"]["cargo-wagon"].weight = 500
+-- enforce Smaller inventory for trains
+for name,table in pairs(data.raw["cargo-wagon"]) do
+	table.inventory_size = table.inventory_size / 2
+	table.weight = table.weight / 2
+end
