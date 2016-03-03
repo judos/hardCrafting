@@ -1,6 +1,8 @@
 
 + balancing gravel/dirt output -> minable_results not consistent by factorio??
-+ buildings use iron-walls, metal-parts
+  -> at least less dirt :)
+
+- buildings use iron-walls, metal-parts (balancing ongoing)
 - Mixed ore fields (e.g. gravel, dirt)
 
 ~ Integration 5dims

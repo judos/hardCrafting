@@ -26,5 +26,3 @@ for recipeName,t in pairs(data.raw["recipe"]) do
 		end
 	end
 end
-
-
