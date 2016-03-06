@@ -58,6 +58,7 @@ addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper
 
 -- Tier2
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
+data.raw["recipe"]["copper-sludge"].icon = "__hardCrafting__/graphics/icons/sludge-processing.png"
 addTechnologyUnlocksRecipe("crusher","copper-sludge")
 addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
