@@ -68,7 +68,18 @@ data:extend({
       {
         picture = "__hardCrafting__/graphics/terrain/dirt/dirt-side.png",
         count = 8
+      },
+      o_transition =
+      {
+        picture = "__hardCrafting__/graphics/terrain/dirt/dirt-o.png",
+        count = 1
+      },
+      u_transition =
+      {
+        picture = "__hardCrafting__/graphics/terrain/dirt/dirt-u.png",
+        count = 8
       }
+      
     },
     walking_sound =
     {
