@@ -3,19 +3,15 @@
   -> at least less dirt :)
 
 - buildings use iron-walls, metal-parts (balancing ongoing)
-- Mixed ore fields (e.g. gravel, dirt)
-
-~ Integration 5dims
-	- fix unbalancing with 5dims mods
-	- change 5dim recipe for solar panels
 
 ------------------
 --- DONE v0.3 ----
 ------------------
 
++ fixed icons for slag/sludge processing
 + pulverizer: coal -> coal dust, sulfur -> sulfur-dust
 + coal field -> coal dust, coal
-+ improving Inscinerator
++ improving Incinerator
 - all furnaces support hardCrafting smelting recipes (2 output slots)
 
 ------------------
