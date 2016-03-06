@@ -60,7 +60,7 @@ addRecipe("iron-slag","crusher","iron",8,{{"iron-slag",5}},								{{"crushed-ir
 data.raw["recipe"]["iron-slag"].icon = "__hardCrafting__/graphics/icons/slag-processing.png"
 
 addTechnologyUnlocksRecipe("crusher","iron-slag")
-addRecipe("crushed-iron","crusher","iron",16.5,{{"iron-ore",10}},					{{"crushed-iron",6},{"iron-nugget",3},{"stone",5}},"d")
+addRecipe("crushed-iron","crusher","iron",16.5,{{"iron-ore",10}},					{{"crushed-iron",6},{"iron-nugget",3},{"stone",1}},"d")
 addTechnologyUnlocksRecipe("crusher","crushed-iron")
 addRecipe("iron-plate|1","smelting","iron",		3.5,{{"crushed-iron",2}},		{{"iron-plate",c(2)},{"iron-slag",1}},"e")
 addTechnologyUnlocksRecipe("crusher","iron-plate|1")
