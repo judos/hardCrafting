@@ -30,7 +30,7 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 	end
 	for _,s in pairs(results) do
 		local typ = "item"
-		if s[1] == "sulfuric-acid" then
+		if s[1] == "sulfuric-acid" or s[1] == "water" then
 			typ = "fluid"
 		end
 		table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
