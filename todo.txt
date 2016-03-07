@@ -1,17 +1,21 @@
 
-+ balancing gravel/dirt output -> minable_results not consistent by factorio??
-  -> at least less dirt :)
-
-- buildings use iron-walls, metal-parts (balancing ongoing)
+! minable_results not consistent by factorio (manual vs automatic mining)
+! Localization for changed recipes is messed up
 
 ------------------
 --- DONE v0.3 ----
 ------------------
 
+- expensive recipes produce metal-scrap as byproduct (only for placeable items)
++ landfill recipes changed
+  -> burning landfill takes a lot more time
++ balancing gravel/dirt output -> 
+  -> dirt can now be dried which creates less amount of dried dirt
 + fixed icons for slag/sludge processing
 + pulverizer: coal -> coal dust, sulfur -> sulfur-dust
 + coal field -> coal dust, coal
 + improving Incinerator
+- dirt texture (fixed o, u transition. U is not perfect aligned yet)
 - all furnaces support hardCrafting smelting recipes (2 output slots)
 
 ------------------
