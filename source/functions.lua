@@ -1,3 +1,5 @@
+require "logging"
+
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
 		{
