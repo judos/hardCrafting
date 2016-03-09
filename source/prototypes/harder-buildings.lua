@@ -1,24 +1,29 @@
 -- Requirement: --
 require "find-raw-ingredients"
 
+local recipeWhiteList = table.set({
+	"gun-turret", "laser-turret", "radar", "rocket-silo", "basic-splitter", "fast-splitter", "express-splitter", "smart-inserter",  
+	"big-electric-pole", "substation", "train-stop", "diesel-locomotive", "tank", "logistic-robot", 
+	"construction-robot", "logistic-chest-active-provider", "logistic-chest-passive-provider", 
+	"logistic-chest-requester", "logistic-chest-storage", "roboport", 
+	"solar-panel", "basic-accumulator", "pumpjack", "electric-furnace", "electric-incinerator", "pulverizer", "assembling-machine-2", 
+	"assembling-machine-3", "oil-refinery", "chemical-plant", "lab", "basic-beacon" })
+
 -- Item: --
---addItem("iron-strut","intermediate-product","b[iron-gear-wheel]",50)
 addItem("scrap-metal","raw-resource","b[iron-gear-wheel]",50)
 
 -- Recipes: --
 --       item Name     category   subgroup     time    ingredients     			products		order
 --addRecipe("iron-strut","crafting",nil,0.5,{{"iron-plate",1}},{{"iron-strut",2}},nil)
 
-
 for recipeName,recipe in pairs(data.raw["recipe"]) do
 	local resultItem = recipe.result
 	local item = data.raw["item"][resultItem]
-	if item and item.place_result then
+	if item and item.place_result and recipeWhiteList[recipeName] then
 		local iron = findRawIngredient(resultItem,"iron-plate")
 		local copper = findRawIngredient(resultItem,"copper-plate")
-		
 		--warn(resultItem..": uses "..iron.." iron + "..copper.." copper")
-		
+
 		if iron >= 10 and copper>= 5 then
 			info(resultItem.." -> scrap")
 			local results = recipe.results

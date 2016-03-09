@@ -86,3 +86,18 @@ function recipeItemAmount(recipe,itemName)
 	end
 	return 0
 end
+
+function recipeResultsItemAmount(recipe,itemName)
+	if recipe.results == nil then
+		if recipe.result == itemName then
+			return recipe.resultCount or 1
+		end
+		return 0
+	end
+	for _,tuple in pairs(recipe.results) do
+		if tuple[1] == itemName then
+			return tuple[2]
+		end
+	end
+	return 0
+end
