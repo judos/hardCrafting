@@ -29,8 +29,8 @@ public class SearchLocalizedLabels {
 	public SearchLocalizedLabels() throws IOException {
 		readMissingLabels();
 		addMissingLabelDescriptions();
-		// readLanguages();
-		readFakeLanguage();
+		readLanguages();
+		// readFakeLanguage();
 		for (File languagePath : languagesPath) {
 			searchMissingLabelsInFolder(languagePath);
 		}
