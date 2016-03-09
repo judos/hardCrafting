@@ -1,3 +1,3 @@
-require("basic-lua-extensions")
+require "basic-lua-extensions"
 
-require("prototypes.incinerator-recipes")
+require"prototypes.incinerator-recipes"
