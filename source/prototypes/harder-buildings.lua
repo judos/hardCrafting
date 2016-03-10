@@ -10,7 +10,7 @@ local recipeWhiteList = table.set({
 	"assembling-machine-3", "oil-refinery", "chemical-plant", "lab", "basic-beacon" })
 
 -- Item: --
-addItem("scrap-metal","raw-resource","b[iron-gear-wheel]",50)
+addItem("scrap-metal","raw-resource","z[scrap-metal]",50)
 
 -- Recipes: --
 --       item Name     category   subgroup     time    ingredients     			products		order

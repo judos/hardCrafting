@@ -1,4 +1,3 @@
-- steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
 - check incinerator (not too good)
 ? crusher should be an assembling machine?
 
@@ -6,6 +5,8 @@
 --- DONE v0.3 ----
 ------------------
 
++ properly ordered recipes + items into correct subgroups
+- steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
 ! fixed minable_results not consistent by factorio (manual vs automatic mining -> storage_slots)
 ! fixed Localization for changed recipes (metal-scrap)
 - expensive recipes produce metal-scrap as byproduct (only for placeable items)

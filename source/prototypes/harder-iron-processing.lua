@@ -25,10 +25,11 @@ data:extend({
 })
 
 -- Items: --
-addItem("crushed-iron","raw-resource","e2[iron-ore]",50)
-addItem("pulverized-iron","raw-resource","e3[iron-ore]",50)
-addItem("iron-nugget","raw-resource","e4[iron-ore]",50)
-addItem("iron-slag","raw-resource","e9[iron-ore]",50)
+data.raw.item["iron-ore"].subgroup = "iron"
+addItem("crushed-iron","iron","e[iron-ore]3",50)
+addItem("pulverized-iron","iron","e[iron-ore]4",50)
+addItem("iron-nugget","iron","e[iron-ore]5",50)
+addItem("iron-slag","iron","e[iron-ore]2",50)
 
 -- Calculate ore->plate factor for Recipes
 local c = data.raw["recipe"]["iron-plate"]
