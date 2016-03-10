@@ -43,7 +43,7 @@ end
 local resultingCount = c.result_count
 if not resultingCount then resultingCount=1 end
 local ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iron-ore")
-print("Iron ore factor: "..tostring(ironOreToPlateFactor))
+info("1x Iron-ore = "..tostring(ironOreToPlateFactor).."x iron-plate")
 
 local function c(amount)
 	return math.ceil(amount*ironOreToPlateFactor)

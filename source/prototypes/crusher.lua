@@ -73,6 +73,6 @@ data:extend({
       },
       time = 20
     },
-    order = "crusher"
+    order = "_crusher"
   }
 })

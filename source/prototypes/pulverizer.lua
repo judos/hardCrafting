@@ -66,6 +66,6 @@ data:extend({
       },
       time = 30
     },
-    order = "pulverizer"
+    order = "_pulverizer"
   }
 })
