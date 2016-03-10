@@ -1,9 +1,13 @@
-- check incinerator (not too good)
-? crusher should be an assembling machine?
+Check for v0.3.1
 
-------------------
---- DONE v0.3 ----
-------------------
+! refine scrap-metal
++ updated translations
+- check incinerator (not too good)
+- crusher should be an assembling machine? (migration?)
+
+--------------------
+--- DONE v0.3.0 ----
+--------------------
 
 + properly ordered recipes + items into correct subgroups
 - steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
@@ -21,9 +25,9 @@
 - dirt texture (fixed o, u transition. U is not perfect aligned yet)
 - all furnaces support hardCrafting smelting recipes (2 output slots)
 
-------------------
---- DONE v0.2 ----
-------------------
+--------------------
+--- DONE v0.2.x ----
+--------------------
 - Integration with fluid-barrel
 - Technology to enable Pulverizer, Crusher
 - clean up recipes position
