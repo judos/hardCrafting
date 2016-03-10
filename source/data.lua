@@ -7,7 +7,8 @@ require "prototypes.electric-incinerator"
 require "prototypes.harder-iron-processing"
 require "prototypes.harder-copper-processing"
 require "prototypes.harder-coal"
+require "prototypes.steel-dust"
 
-require("prototypes.easier-but-more-trains")
+require "prototypes.easier-but-more-trains"
 
 --require("prototypes.engines-and-robots")

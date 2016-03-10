@@ -25,7 +25,7 @@ for recipeName,recipe in pairs(data.raw["recipe"]) do
 		--warn(resultItem..": uses "..iron.." iron + "..copper.." copper")
 
 		if iron >= 10 and copper>= 5 then
-			info(resultItem.." -> scrap")
+			--info(resultItem.." -> scrap")
 			local results = recipe.results
 			if not results then
 				local resultAmount = recipe.result_count or 1
