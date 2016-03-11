@@ -8,10 +8,6 @@ import java.util.Iterator;
 import ch.judos.generic.data.StringUtils;
 import ch.judos.generic.files.FileUtils;
 
-/**
- * @since 11.03.2016
- * @author Julian Schelker
- */
 public class LabelReader implements Iterable<Label> {
 
 	private ArrayList<Label> labels;

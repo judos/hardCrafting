@@ -7,10 +7,6 @@ import java.util.HashSet;
 
 import ch.judos.generic.data.ArraysJS;
 
-/**
- * @since 11.03.2016
- * @author Julian Schelker
- */
 public class SearchMissingLabelsInLanguages {
 
 	public static void main(String[] args) throws IOException {
