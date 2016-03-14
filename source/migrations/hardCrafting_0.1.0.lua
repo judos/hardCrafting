@@ -13,7 +13,6 @@ for i, force in pairs(game.forces) do
 	check(force, "electric-engine", "electro-magnet")
 	check(force, "flying", "rotor")
 	check(force, "robotics", "antenna")
-	check(force, "circuit-network", "signal-receiver")
 	
 	check(force, "incinerator", "incinerator")
 	check(force, "electric-incinerator", "electric-incinerator")

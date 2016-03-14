@@ -8,10 +8,10 @@ require "prototypes.pulverizer"
 -- Minable ressources: --
 data.raw["resource"]["copper-ore"].minable.result = nil
 data.raw["resource"]["copper-ore"].minable.results = {
-	ressourceItemMinMaxProb("copper-ore",   1, 3, 0.375), -- 1 item at percentage 0.75 --
-	ressourceItemMinMaxProb("gravel",       1, 3, 0.4),
+	ressourceItemMinMaxProb("copper-ore",   1, 1, 0.75), -- 1 item at percentage 0.75 --
+	ressourceItemMinMaxProb("gravel",       1, 1, 0.5),
 	ressourceItemMinMaxProb("copper-sludge",1, 1, 0.4),
-	ressourceItemMinMaxProb("dirt",         1, 1, 1)
+	ressourceItemMinMaxProb("dirt",         1, 1, 0.2)
 }
 
 -- Item groups: --
