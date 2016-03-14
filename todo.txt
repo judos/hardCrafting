@@ -1,9 +1,15 @@
 Check for v0.3.1
 
-! refine scrap-metal
+
 + updated translations
 - check incinerator (not too good)
 - crusher should be an assembling machine? (migration?)
+
+--------------------
+--- DONE v0.3.2 ----
+--------------------
+
+! refine scrap-metal
 
 --------------------
 --- DONE v0.3.0 ----
