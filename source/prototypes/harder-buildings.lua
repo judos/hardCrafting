@@ -1,5 +1,8 @@
 -- Requirement: --
 require "find-raw-ingredients"
+require "prototypes.pulverizer"
+require "prototypes.harder-iron-processing"
+require "prototypes.harder-copper-processing"
 
 local recipeWhiteList = table.set({
 	"gun-turret", "laser-turret", "radar", "rocket-silo", "basic-splitter", "fast-splitter", "express-splitter", "smart-inserter",  
@@ -14,7 +17,7 @@ addItem("scrap-metal","raw-resource","z[scrap-metal]",50)
 
 -- Recipes: --
 --       item Name     category   subgroup     time    ingredients     			products		order
---addRecipe("iron-strut","crafting",nil,0.5,{{"iron-plate",1}},{{"iron-strut",2}},nil)
+addRecipe("scrap-metal-processing","pulverizer","raw-resource",8,{{"scrap-metal",5}},{{"pulverized-iron",3},{"copper-dust",2}},"z[scrap-metal]")
 
 for recipeName,recipe in pairs(data.raw["recipe"]) do
 	local resultItem = recipe.result
