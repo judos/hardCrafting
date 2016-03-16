@@ -42,7 +42,7 @@ local function searchOreAmount(tableOfIngredients,nameToSearch)
 end
 local resultingCount = c.result_count
 if not resultingCount then resultingCount=1 end
-local ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iron-ore")
+ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iron-ore")
 info("1x Iron-ore = "..tostring(ironOreToPlateFactor).."x iron-plate")
 
 local function c(amount)
