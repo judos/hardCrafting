@@ -13,7 +13,7 @@ local cost = math.floor(ironPlateUsed * (1-0.2))
 -- Recipes: --
 --       item Name     category   subgroup     time    ingredients     		products
 addRecipe("steel-dust","crafting","raw-material",3,{{"iron-plate",cost},{"coal-dust",1}},		{{"steel-dust",1}},"d2[steel-plate]")
-addRecipe("steel-plate|dust","smelting","raw-material",3,{{"steel-dust",1}},		{{"steel-plate",1}},"d3[steel-plate]")
+addRecipe("steel-plate|dust","smelting","raw-material",10,{{"steel-dust",1}},		{{"steel-plate",1}},"d3[steel-plate]")
 
 -- technology
 data:extend({

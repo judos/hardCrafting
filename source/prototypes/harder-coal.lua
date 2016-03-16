@@ -9,9 +9,8 @@ data.raw["resource"]["coal"].minable.results = {
 	ressourceItemMinMaxProb("coal-dust", 1, 2, 0.2)
 }
 
-
 -- Item: --
-local timeToPulverizeCoal = 5
+local timeToPulverizeCoal = 2
 local powerPulverizer = 0.140 --MW
 
 addItem("coal-dust","raw-material","b2[coal]",100)
@@ -24,6 +23,6 @@ fuelValueCoalDust = round(fuelValueCoalDust,1)
 data.raw["item"]["coal-dust"].fuel_value = tostring(fuelValueCoalDust).."MJ"
 
 -- Recipes: --
---       item Name     category   subgroup     time    ingredients     			products		order
-addRecipe("coal-dust","pulverizer","raw-material",5,{{"coal",1}},{{"coal-dust",5}},"b[coal]2")
+--       item Name     category   subgroup     time   							 ingredients     products		order
+addRecipe("coal-dust","pulverizer","raw-material",timeToPulverizeCoal,{{"coal",1}},{{"coal-dust",5}},"b[coal]2")
 addTechnologyUnlocksRecipe("pulverizer","coal-dust")
