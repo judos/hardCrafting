@@ -6,7 +6,7 @@ local burnTime = {
 	landfill4by4 = 250
 }
 
-local types = {"item", "gun", "armor", "ammo", "blueprint", "deconstruction-item"}
+local types = {"item", "gun", "armor", "ammo", "blueprint", "deconstruction-item","mining-tool"}
 for _,typ in pairs(types) do
 	for name,itemTable in pairs(data.raw[typ]) do
 		
