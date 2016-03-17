@@ -3,6 +3,7 @@ require "defines"
 require "controlFunctions"
 require "find-raw-ingredients"
 require "logging"
+require "control.belt-sorter"
 
 -- Init --
 script.on_init(function()
@@ -19,10 +20,11 @@ function init()
 	if not hc.version then hc.version = "0.3.0" end
 	if not hc.incinerators then hc.incinerators = {} end
 	if not hc.eincinerators then hc.eincinerators = {} end
-	
+	beltSorterInit()
 end
 
 script.on_event(defines.events.on_tick, function(event)
+	updateBeltSorter(event)
 	updateIncinerators()
 	printOldMigrationNote()
 	--printMissingRecipeLocalization()
@@ -40,6 +42,7 @@ end)
 
 function entityBuilt(event)
 	local entity = event.created_entity
+	beltSorterBuiltEntity(entity)
 	local knownEntities = table.set({"incinerator","electric-incinerator"})
 	if not knownEntities[entity.name] then
 		return
