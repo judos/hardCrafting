@@ -14,4 +14,4 @@ require "prototypes.easier-but-more-trains"
 require "prototypes.belt-sorter"
 
 -- Optional features:
-require "prototypes.engines-and-robots"
+--require "prototypes.engines-and-robots"
