@@ -11,7 +11,8 @@ function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 	end
 
 	function self.remove_item(itemStack)
-		if self.line1.remove_item(itemStack) then return true end
+		local result = self.line1.remove_item(itemStack)
+		if result>0 then return result end
 		return self.line2.remove_item(itemStack)
 	end
 
@@ -26,8 +27,6 @@ function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 
 	-- returns the direction on which side the belt is located relative to x,y, assuming they are neighbors
 	function self.getSide()
-		warn("target is: "..serpent.block(accessTarget))
-		warn("source is: "..serpent.block(accessFrom))
 		local dx = accessTarget.x - accessFrom.x
 		local dy = accessTarget.y - accessFrom.y
 		if dx==-1 then

@@ -31,7 +31,7 @@ function updateBeltSorter(event)
 			local input = {} -- BeltAccess / SplitterAccess objects
 			local output = {} -- BeltAccess / SplitterAccess objects
 			--info("searching for belts...")
-			local searchTypes = {"transport-belt","splitter"}
+			local searchTypes = BeltFactory.getSupportedTypes()
 			for _,searchPos in pairs(searchPriority) do
 				local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
 				for _,searchType in pairs(searchTypes) do
@@ -67,7 +67,6 @@ function updateBeltSorter(event)
 			-- Distribute items on output belts
 			for _,outputAccess in pairs(output) do
 				local beltSide = outputAccess.getSide()
-				--info("for output belt: "..serpent.block(belt.position))
 				if outputAccess.can_insert_at_back() and filter[beltSide] then
 					local canInsert = true
 					for _,itemName in pairs(filter[beltSide]) do
@@ -76,7 +75,8 @@ function updateBeltSorter(event)
 		
 							if inputAccess.contains_item(itemName) then
 								local itemStack = {name=itemName,count=1}
-								if inputAccess.remove_item(itemStack) then
+								local result = inputAccess.remove_item(itemStack)
+								if result>0 then
 									outputAccess.insert_at_back(itemStack)
 									canInsert = outputAccess.can_insert_at_back()
 								end
