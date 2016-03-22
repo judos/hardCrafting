@@ -1,5 +1,4 @@
-require "control.BeltAccess"
-
+require "control.AccessFactory"
 
 function beltSorterInit()
 	if not global.hardCrafting.beltSorter then	
@@ -17,7 +16,6 @@ end
 
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
-
 function updateBeltSorter(event)
 	-- update every 10 ticks
 	if game.tick % 10 ~= 0 then return end
@@ -33,18 +31,21 @@ function updateBeltSorter(event)
 			local input = {} -- BeltAccess / SplitterAccess objects
 			local output = {} -- BeltAccess / SplitterAccess objects
 			--info("searching for belts...")
+			local searchTypes = {"transport-belt","splitter"}
 			for _,searchPos in pairs(searchPriority) do
-				local searchPoint = { x + searchPos[1], y + searchPos[2] }
-				local beltCandidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= "transport-belt"}
-				for _,belt in pairs(beltCandidates) do
-					local beltAccess = newBeltAccess(belt,beltSorter.position)
-					--info("found belt at: "..(belt.position.x-x) .." "..(belt.position.y-y))
-					if beltAccess:isInputBelt() then
-						table.insert(input,beltAccess)
-					else
-						table.insert(output,beltAccess)
+				local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
+				for _,searchType in pairs(searchTypes) do
+					local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
+					for _,entity in pairs(candidates) do
+						local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
+						if access.isInput() then
+							table.insert(input,access)
+						else
+							table.insert(output,access)
+						end
 					end
 				end
+				
 			end
 			
 			--debug("input belts: "..#input)
@@ -63,15 +64,13 @@ function updateBeltSorter(event)
 				end
 			end
 			
-			
 			-- Distribute items on output belts
 			for _,outputAccess in pairs(output) do
-				local beltSide = outputAccess:beltSide()
+				local beltSide = outputAccess.getSide()
 				--info("for output belt: "..serpent.block(belt.position))
 				if outputAccess.can_insert_at_back() and filter[beltSide] then
 					local canInsert = true
 					for _,itemName in pairs(filter[beltSide]) do
-						info("checking item: "..itemName)
 						for _,inputAccess in pairs(input) do
 							if not inputAccess then warn(input) end
 		
