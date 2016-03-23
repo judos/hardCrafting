@@ -25,6 +25,7 @@ end
 
 -- enforce Smaller inventory for trains
 for name,table in pairs(data.raw["cargo-wagon"]) do
-	table.inventory_size = table.inventory_size / 2
-	table.weight = table.weight / 2
+	table.inventory_size = math.ceil(table.inventory_size / 2)
+	table.weight = math.ceil(table.weight / 2)
 end
+
