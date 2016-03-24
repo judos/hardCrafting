@@ -10,7 +10,6 @@ require "prototypes.harder-copper-processing"
 require "prototypes.harder-coal"
 require "prototypes.steel-dust"
 require "prototypes.harder-buildings"
-require "prototypes.easier-but-more-trains"
 require "prototypes.belt-sorter"
 
 -- Optional features:
