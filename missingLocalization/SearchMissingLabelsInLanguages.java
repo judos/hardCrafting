@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import ch.judos.generic.data.ArraysJS;
+import ch.judos.generic.files.FileUtils;
 
 public class SearchMissingLabelsInLanguages {
 
@@ -14,9 +15,10 @@ public class SearchMissingLabelsInLanguages {
 	}
 
 	public static String sourceLanguage = "en";
-	public static String[] searchLang = {"ru", "zh-CN"};
+	public static String[] searchLang = {"ru", "zh-CN", "fr"};
 	public static String baseLocalePath = "D:/modding/factorio/hardCrafting/source/locale/";
 	public static String[] excludedFiles = {"generated.cfg", "generated-2.cfg"};
+	public static String outDir = "D:/modding/factorio/hardCrafting/missingLocalization/missingLabelsInLanguages/";
 
 	private ArrayList<Label> existingLabels;
 	public SearchMissingLabelsInLanguages() throws IOException {
@@ -36,12 +38,18 @@ public class SearchMissingLabelsInLanguages {
 				missingLabel.remove(label);
 			}
 		};
+		File file = new File(outDir + lang + ".txt");
 		if (missingLabel.size() > 0) {
-			System.out.println("Found missing labels in language: " + lang);
+			System.out.println(lang + ": Found " + missingLabel.size()
+				+ " missing labels. See " + lang + ".txt");
+			StringBuffer output = new StringBuffer();
 			for (Label l : missingLabel) {
-				System.out.println(l);
+				output.append(l + "\n");
 			}
-			System.out.println();
+			FileUtils.writeToFile(file, output.toString());
+		}
+		else if (file.exists()) {
+			file.delete();
 		}
 	}
 
