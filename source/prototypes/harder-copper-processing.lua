@@ -8,10 +8,10 @@ require "prototypes.pulverizer"
 -- Minable ressources: --
 data.raw["resource"]["copper-ore"].minable.result = nil
 data.raw["resource"]["copper-ore"].minable.results = {
-	ressourceItemMinMaxProb("copper-ore",   1, 3, 0.375), -- 1 item at percentage 0.75 --
-	ressourceItemMinMaxProb("gravel",       1, 3, 0.4),
+	ressourceItemMinMaxProb("copper-ore",   1, 1, 0.75), -- 1 item at percentage 0.75 --
+	ressourceItemMinMaxProb("gravel",       1, 1, 0.5),
 	ressourceItemMinMaxProb("copper-sludge",1, 1, 0.4),
-	ressourceItemMinMaxProb("dirt",         1, 1, 1)
+	ressourceItemMinMaxProb("dirt",         1, 1, 0.2)
 }
 
 -- Item groups: --
@@ -25,11 +25,12 @@ data:extend({
 })
 
 -- Items: --
-addItem("copper-sulfat","raw-resource","f2[copper-ore]",50)
-addItem("copper-dust","raw-resource","f3[copper-ore]",50)
-addItem("copper-sludge","raw-resource","f4[copper-ore]",50)
+data.raw.item["copper-ore"].subgroup = "copper"
+addItem("copper-sulfat","copper","f[copper-ore]4",50)
+addItem("copper-dust","copper","f[copper-ore]3",50)
+addItem("copper-sludge","copper","f[copper-ore]2",50)
 
-addItem("sulfur-dust","raw-resource","f5[copper-ore]",50)
+addItem("sulfur-dust","raw-material","f2[sulfur]",50)
 
 -- Calculate ore->plate factor for Recipes
 local c = data.raw["recipe"]["copper-plate"]
@@ -44,7 +45,7 @@ end
 local resultingCount = c.result_count
 if not resultingCount then resultingCount=1 end
 local copperOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"copper-ore")
-print("Copper ore factor: "..tostring(copperOreToPlateFactor))
+info("1x Copper-ore = "..tostring(copperOreToPlateFactor).."x copper-plate")
 
 local function c(amount)
 	return math.ceil(amount*copperOreToPlateFactor)
@@ -58,6 +59,7 @@ addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper
 
 -- Tier2
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
+data.raw["recipe"]["copper-sludge"].icon = "__hardCrafting__/graphics/icons/sludge-processing.png"
 addTechnologyUnlocksRecipe("crusher","copper-sludge")
 addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
@@ -65,10 +67,10 @@ addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
 -- Tier3
 addRecipe("copper-dust","pulverizer","copper",6,{{"copper-ore",4},{"gravel",3}},{{"copper-dust",4},{"sulfur-dust",2}},"d")
 addTechnologyUnlocksRecipe("pulverizer","copper-dust")
-addRecipe("sulfur|dust","crafting","",2,{{"sulfur-dust",10}},{{"sulfur",1}},"f2[sulfur]")
+addRecipe("sulfur|dust","crafting","raw-material",2,{{"sulfur-dust",10}},{{"sulfur",1}},"f3[sulfur]")
 addTechnologyUnlocksRecipe("pulverizer","sulfur|dust")
 
-addRecipe("sulfur-dust","crafting","",2,{{"sulfur",1}},{{"sulfur-dust",8}},"f3[sulfur]")
+addRecipe("sulfur-dust","pulverizer","raw-material",2,{{"sulfur",1}},{{"sulfur-dust",8}},"f2[sulfur]")
 addTechnologyUnlocksRecipe("pulverizer","sulfur-dust")
 
 -- Tier4

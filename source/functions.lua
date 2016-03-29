@@ -1,3 +1,5 @@
+require "logging"
+
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
 		{
@@ -30,7 +32,7 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 	end
 	for _,s in pairs(results) do
 		local typ = "item"
-		if s[1] == "sulfuric-acid" then
+		if s[1] == "sulfuric-acid" or s[1] == "water" then
 			typ = "fluid"
 		end
 		table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
@@ -79,6 +81,21 @@ end
 function recipeItemAmount(recipe,itemName)
 	for _,tuple in pairs(recipe.ingredients) do
 		if tuple[1] == itemName then 
+			return tuple[2]
+		end
+	end
+	return 0
+end
+
+function recipeResultsItemAmount(recipe,itemName)
+	if recipe.results == nil then
+		if recipe.result == itemName then
+			return recipe.resultCount or 1
+		end
+		return 0
+	end
+	for _,tuple in pairs(recipe.results) do
+		if tuple[1] == itemName then
 			return tuple[2]
 		end
 	end

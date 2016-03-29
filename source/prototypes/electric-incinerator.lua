@@ -46,6 +46,7 @@ data:extend({
     type = "technology",
     name = "electric-incinerator",
     icon = "__hardCrafting__/graphics/technology/electric-incinerator.png",
+    icon_size = 128,
     prerequisites = prerequisites,
     effects = {
       {

@@ -1,0 +1,55 @@
+Check for next release
+
+
++ updated translations
+- check incinerator (not too good)
+- crusher should be an assembling machine? (migration?)
+
+--------------------
+--- DONE v0.3.2 ----
+--------------------
+
++ added belt sorter
+! refine scrap-metal
+
+--------------------
+--- DONE v0.3.0 ----
+--------------------
+
+! fixed minable_results not consistent by factorio (manual vs automatic mining -> storage_slots)
+! fixed Localization for changed recipes (metal-scrap)
++ properly ordered recipes + items into correct subgroups
++ landfill recipes changed
+  -> burning landfill takes a lot more time
++ balancing gravel/dirt output -> 
+  -> dirt can now be dried which creates less amount of dried dirt
++ fixed icons for slag/sludge processing
++ pulverizer: coal -> coal dust, sulfur -> sulfur-dust
++ coal field -> coal dust, coal
++ improving Incinerator
+- steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
+- expensive recipes produce metal-scrap as byproduct (only for placeable items)
+- dirt texture (fixed o, u transition. U is not perfect aligned yet)
+- all furnaces support hardCrafting smelting recipes (2 output slots)
+
+--------------------
+--- DONE v0.2.x ----
+--------------------
+- Integration with fluid-barrel
+- Technology to enable Pulverizer, Crusher
+- clean up recipes position
+- Easier, cheaper train setup, but wagons carry only half the items (more trains yeah!)
+- Different symbol&image for incinerator
+- Technology for incinerator
+- Renamed recycler to incinerator
+- different robot/ engine recipes
+- landfill integration
+- copper production Tier3
+- copper production Tier1&2
+- recycle ammo, armors
+- gravel -> stone-bricks
+- Recycler works for all items (data-final-fixes), guns, templates
+- custom recipes for intermediates processing (iron)
+- icons for intermediates (iron)
+- Ore patch recipes iron
+- Recycler
