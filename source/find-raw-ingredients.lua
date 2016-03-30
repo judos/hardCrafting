@@ -44,7 +44,7 @@ function findRawIngredient(itemName,rawResourceName)
 	if firstRecipe.results then
 		for _,itemStack in pairs(firstRecipe.results) do
 			if itemStack["name"] == itemName then
-				output = itemStack["amount"] -- output may be nil !
+				output = itemStack["amount"] or 1 --if amount is not set it is interpreted as 1
 				break
 			end
 		end
@@ -61,9 +61,6 @@ function findRawIngredient(itemName,rawResourceName)
 	end
 
 	-- calculate for all sub ingredients
-	if not output then
-		output = 1
-	end
 	for name,amount in pairs(ingredients) do
 		if not rawIngredients[name] or not rawIngredients[name][rawResourceName] then
 			findRawIngredient(name,rawResourceName)
