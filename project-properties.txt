@@ -1,3 +1,2 @@
 sourceFolder = source
 releaseFolder = release
-modName = hardCrafting

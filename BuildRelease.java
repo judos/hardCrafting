@@ -23,14 +23,14 @@ public class BuildRelease {
 		try {
 
 			String sourceFolder = Properties.sourceFolder.getString();
-			String version = getVersion(sourceFolder);
+			String version = getInformation("version", sourceFolder);
 			if (version == null) {
 				System.out.println("ERROR: version not found in " + sourceFolder
 					+ "/info.json");
 				return;
 			}
-			Property releaseName = Properties.modName;
-			String releaseFileName = releaseName + "_" + version;
+			String modName = getInformation("name", sourceFolder);
+			String releaseFileName = modName + "_" + version;
 			String releaseFolder = Properties.releaseFolder.getString();
 			String zipFile = releaseFolder + "/" + releaseFileName + ".zip";
 
@@ -51,11 +51,11 @@ public class BuildRelease {
 			this.config.save();
 		}
 	}
-	private String getVersion(String srcFolder) throws IOException {
+	private String getInformation(String propertyName, String srcFolder) throws IOException {
 		List<String> lines = Files.readAllLines(Paths.get(srcFolder + "/info.json"));
 		String version = null;
 		for (String line : lines) {
-			if (line.contains("version")) {
+			if (line.contains(propertyName)) {
 				version = line.split(":")[1].replaceAll("[\", ]", "");
 				break;
 			}
