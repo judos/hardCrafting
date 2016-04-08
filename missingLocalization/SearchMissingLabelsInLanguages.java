@@ -15,7 +15,7 @@ public class SearchMissingLabelsInLanguages {
 	}
 
 	public static String sourceLanguage = "en";
-	public static String[] searchLang = {"ru", "zh-CN", "fr"};
+	public static String[] searchLang = {"ru", "zh-CN", "fr", "hu"};
 	public static String baseLocalePath = "D:/modding/factorio/hardCrafting/source/locale/";
 	public static String[] excludedFiles = {"generated.cfg", "generated-2.cfg"};
 	public static String outDir = "D:/modding/factorio/hardCrafting/missingLocalization/missingLabelsInLanguages/";
@@ -48,8 +48,10 @@ public class SearchMissingLabelsInLanguages {
 			}
 			FileUtils.writeToFile(file, output.toString());
 		}
-		else if (file.exists()) {
-			file.delete();
+		else {
+			System.out.println(lang + ": OK");
+			if (file.exists())
+				file.delete();
 		}
 	}
 
