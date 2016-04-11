@@ -44,7 +44,7 @@ end
 
 local resultingCount = c.result_count
 if not resultingCount then resultingCount=1 end
-local copperOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"copper-ore")
+copperOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"copper-ore")
 info("1x Copper-ore = "..tostring(copperOreToPlateFactor).."x copper-plate")
 
 local function c(amount)
@@ -61,7 +61,7 @@ addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
 data.raw["recipe"]["copper-sludge"].icon = "__hardCrafting__/graphics/icons/sludge-processing.png"
 addTechnologyUnlocksRecipe("crusher","copper-sludge")
-addRecipe("copper-plate|dust","smelting","copper",1.75,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
+addRecipe("copper-plate|dust","smelting","copper",2,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
 
 -- Tier3

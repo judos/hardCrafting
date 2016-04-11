@@ -12,6 +12,8 @@ require "prototypes.steel-dust"
 require "prototypes.harder-buildings"
 require "prototypes.belt-sorter"
 require "prototypes.rich-copper-ore"
+require "prototypes.rich-copper-processing"
+
 
 -- Optional features:
 --require "prototypes.engines-and-robots"

@@ -43,10 +43,16 @@ data:extend({
 			size_control_multiplier = 0.1,
 			peaks = {
 				{
-					influence = 1.1, -- the bigger the more likely an ore field will generate (also with higher richness)
+					influence = 0.6, -- the bigger the more likely an ore field will generate (also with higher richness)
 					noise_layer = "rich-copper-ore", -- uses a randomly generated noise layer
-					noise_octaves_difference = -2.5, -- smaller = fine grained ore patches
+					noise_octaves_difference = -2, -- smaller = fine grained ore patches
 					noise_persistence = 0.2,
+					starting_area_weight_optimal = 1,
+					starting_area_weight_range = 0,
+					starting_area_weight_max_range = 2,
+				},
+				{ -- influence near spawn
+					influence = 0.4,
 					starting_area_weight_optimal = 1,
 					starting_area_weight_range = 0,
 					starting_area_weight_max_range = 2,
@@ -80,12 +86,12 @@ data:extend({
 					noise_persistence = 0.45,
 				}
 				--[[
-        { -- influence near spawn
-          influence = 0.5,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
+				{ -- influence near spawn
+					influence = 0.5,
+					starting_area_weight_optimal = 1,
+					starting_area_weight_range = 0,
+					starting_area_weight_max_range = 2,
+				},
 				{ -- increased influence the further away from spawn
 					influence = 0.5,
 					starting_area_weight_optimal = 0,
@@ -114,7 +120,7 @@ data:extend({
 
 
 data.raw["resource"]["rich-copper-ore"].minable.results = {
-	ressourceItemMinMaxProb("rich-copper-ore",   1, 1, 0.8), -- 1 item at percentage 0.8 --
-	ressourceItemMinMaxProb("gravel",       1, 1, 0.1),
+	ressourceItemMinMaxProb("rich-copper-ore",	 1, 1, 0.8), -- 1 item at percentage 0.8 --
+	ressourceItemMinMaxProb("gravel",				1, 1, 0.1),
 	ressourceItemMinMaxProb("copper-sludge",1, 1, 0.06),
 }
