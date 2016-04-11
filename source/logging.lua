@@ -1,5 +1,5 @@
 
-debug_master = false -- Master switch for debugging, shows most things!
+debug_master = true -- Master switch for debugging, shows most things!
 debug_level = 1 -- 1=info 2=warning 3=error
 
 function info(message)
