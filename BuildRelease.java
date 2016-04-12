@@ -66,7 +66,6 @@ public class BuildRelease {
 
 		public static Property sourceFolder = new Property("sourceFolder", false, "source");
 		public static Property releaseFolder = new Property("releaseFolder", false, "release");
-		public static Property modName = new Property("modName", false, "MyMod");
 
 		@Override
 		public Object getConfigSettingsObject() {

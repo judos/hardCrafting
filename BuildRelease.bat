@@ -1,2 +1,2 @@
-java -jar BuildRelease1.1.jar
+java -jar BuildRelease1.2.jar
 pause
