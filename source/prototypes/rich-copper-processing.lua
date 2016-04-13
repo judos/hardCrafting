@@ -1,5 +1,4 @@
 -- Requirement: --
-require "prototypes.bigger-furnaces"
 require "prototypes.crusher"
 require "prototypes.harder-copper-processing"
 require "prototypes.rich-copper-ore"

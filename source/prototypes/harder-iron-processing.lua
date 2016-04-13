@@ -1,5 +1,4 @@
 -- Requirement: --
-require "prototypes.bigger-furnaces"
 require "prototypes.dirt"
 require "prototypes.gravel"
 require "prototypes.crusher"
