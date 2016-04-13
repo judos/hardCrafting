@@ -1,4 +1,4 @@
-require "functions"
+require "libs.functions"
 
 -- Required:
 require "prototypes.bigger-mining-drills"

@@ -1,5 +1,4 @@
-require "basic-lua-extensions"
-require "functions"
+require "libs.functions"
 
 -- Features:
 require "prototypes.fast-long-inserter"

@@ -1,8 +1,6 @@
-require "basic-lua-extensions"
 require "defines"
-require "controlFunctions"
-require "find-raw-ingredients"
-require "logging"
+require "libs.functions"
+require "libs.controlFunctions"
 require "control.belt-sorter"
 
 -- Init --

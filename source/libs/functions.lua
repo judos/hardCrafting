@@ -1,4 +1,5 @@
-require "logging"
+require "libs.logging"
+require "libs.basic-lua-extensions"
 
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
