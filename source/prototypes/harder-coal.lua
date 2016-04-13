@@ -1,6 +1,5 @@
 -- Requirement: --
 require "prototypes.pulverizer"
-require "basic-lua-extensions"
 
 -- Minable ressources: --
 data.raw["resource"]["coal"].minable.result = nil

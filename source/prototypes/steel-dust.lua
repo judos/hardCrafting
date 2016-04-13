@@ -1,8 +1,5 @@
-require "find-raw-ingredients"
-
 -- Item: --
 addItem("steel-dust","raw-material","d1[steel-plate]",50)
-
 
 -- Calculate ore->plate factor for Recipes
 local ironPlateUsed = findRawIngredient("steel-plate","iron-plate")

@@ -1,5 +1,4 @@
 -- Requirement: --
-require "find-raw-ingredients"
 require "prototypes.pulverizer"
 require "prototypes.harder-iron-processing"
 require "prototypes.harder-copper-processing"
