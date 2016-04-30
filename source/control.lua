@@ -13,6 +13,7 @@ require "control.incinerators"
  hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
  hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
  hardCrafting.beltSorter = { $beltSorter:LuaEntity, ... }
+ hardCrafting.fbeltSorter = { $fastBeltSorter:LuaEntity, ... }
 ]]--
 
 -- Init --
@@ -55,6 +56,8 @@ function entityBuilt(event)
 	if not knownEntities[entity.name] then return end
 	if entity.name == "belt-sorter" then
 		beltSorterBuiltEntity(entity)
+	elseif entity.name == "fast-belt-sorter" then
+		fastBeltSorterBuilt(entity)
 	elseif entity.name == "incinerator" then
 		table.insert(global.hardCrafting.incinerators,entity)
 	elseif entity.name == "electric-incinerator" then
