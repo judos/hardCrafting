@@ -1,7 +1,19 @@
 require "defines"
 require "libs.functions"
 require "libs.controlFunctions"
+
+local knownEntities = {}
+
 require "control.belt-sorter"
+require "control.incinerators"
+
+--[[
+ Data:
+ hardCrafting.version = $version
+ hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
+ hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
+ hardCrafting.beltSorter = { $beltSorter:LuaEntity, ... }
+]]--
 
 -- Init --
 script.on_init(function()
@@ -40,12 +52,10 @@ end)
 
 function entityBuilt(event)
 	local entity = event.created_entity
-	beltSorterBuiltEntity(entity)
-	local knownEntities = table.set({"incinerator","electric-incinerator"})
-	if not knownEntities[entity.name] then
-		return
-	end
-	if entity.name == "incinerator" then
+	if not knownEntities[entity.name] then return end
+	if entity.name == "belt-sorter" then
+		beltSorterBuiltEntity(entity)
+	elseif entity.name == "incinerator" then
 		table.insert(global.hardCrafting.incinerators,entity)
 	elseif entity.name == "electric-incinerator" then
 		table.insert(global.hardCrafting.eincinerators,entity)
@@ -53,46 +63,8 @@ function entityBuilt(event)
 end
 
 ---------------------------------------------------
--- Tick Incinerators
----------------------------------------------------
-
-function updateIncinerators()
-	if game.tick % 120 ~= 0 then return end
-	for key,entity in pairs(global.hardCrafting.incinerators) do
-		if entity.valid then
-			reactivateIncineratorsInserters(entity,2)
-		else
-			global.hardCrafting.incinerators[key] = nil
-		end
-	end
-	for key,entity in pairs(global.hardCrafting.eincinerators) do
-		if entity.valid then
-			reactivateIncineratorsInserters(entity,3)
-		else
-			global.hardCrafting.eincinerators[key] = nil
-		end
-	end
-end
-
-function reactivateIncineratorsInserters(entity,r)
-	if not entity.is_crafting() then
-		local pos = entity.position
-		local search = {{pos.x-r,pos.y-r}, {pos.x+r,pos.y+r}}
-		local inserters = entity.surface.find_entities_filtered{area = search, type= "inserter"}
-		for _,inserter in pairs(inserters) do
-			if inserter.active then
-				--quickly toggle inserter active state, will recheck whether item can be inserted
-				inserter.active = false
-				inserter.active = true
-			end
-		end
-	end
-end
-
----------------------------------------------------
 -- various
 ---------------------------------------------------
-
 function printMissingRecipeLocalization()
 	if not global.hardCrafting.localizationNotice then
 		local newLocale = {}

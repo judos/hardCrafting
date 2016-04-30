@@ -1,5 +1,12 @@
 require "control.AccessFactory"
 
+knownEntities["belt-sorter"] = true
+
+
+---------------------------------------------------
+-- init
+---------------------------------------------------
+
 function beltSorterInit()
 	if not global.hardCrafting.beltSorter then	
 		global.hardCrafting.beltSorter = {}
@@ -12,8 +19,9 @@ function beltSorterBuiltEntity(entity)
 	end
 end
 
-------------------------------------------------------------
-
+---------------------------------------------------
+-- update tick
+---------------------------------------------------
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
 function updateBeltSorter(event)
