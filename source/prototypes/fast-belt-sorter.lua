@@ -4,6 +4,7 @@ overwriteContent(fastBeltSorter,{
   name = "fast-belt-sorter",
   place_result = "fast-belt-sorter"
 })
+data:extend({fastBeltSorter})
 
 -- Recipe
 data:extend({
@@ -24,6 +25,7 @@ data:extend({
 local fastBeltSorter = deepcopy(data.raw.container["belt-sorter"])
 fastBeltSorter.name = "fast-belt-sorter"
 fastBeltSorter.minable.result = "fast-belt-sorter"
+data:extend({fastBeltSorter})
 
 -- Technology
 data:extend({
@@ -47,4 +49,4 @@ data:extend({
   }
 })
 
-addTechnologyUnlocksRecipe("fast-belt-sorter","fast-belt-sorter")
+addTechnologyUnlocksRecipe("advanced-belt-sorter","fast-belt-sorter")

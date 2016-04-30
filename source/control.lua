@@ -2,7 +2,7 @@ require "defines"
 require "libs.functions"
 require "libs.controlFunctions"
 
-local knownEntities = {}
+knownEntities = {}
 
 require "control.belt-sorter"
 require "control.incinerators"

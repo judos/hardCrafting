@@ -63,6 +63,9 @@ end
 
 -- adds a recipe which is unlocked when the given technology is researched
 function addTechnologyUnlocksRecipe(technologyName, recipeName)
+	if not data.raw["technology"][technologyName] then
+		error("technology is nil when adding recipe "..recipeName.." to "..technologyName)
+	end
 	data.raw["recipe"][recipeName].enabled = false
 	if data.raw["technology"][technologyName].effects == nil then
 		data.raw["technology"][technologyName].effects = {}
