@@ -1,10 +1,6 @@
 Check for next release
 
 
-+ updated translations
-- check incinerator (not too good)
-- crusher should be an assembling machine? (migration?)
-
 --------------------
 --- DONE v0.3.2 ----
 --------------------

@@ -28,29 +28,23 @@ data:extend({
 })
 
 -- Entity
-local crusher = deepcopy(data.raw["furnace"]["electric-furnace"])
+local crusher = deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
 crusher.name = "crusher"
-crusher.icon =  "__hardCrafting__/graphics/icons/crusher.png"
 crusher.crafting_categories = {"crusher"}
 crusher.energy_usage = "80kW"
-crusher.minable.result = "crusher"
 crusher.source_inventory_size = 1
 crusher.result_inventory_size = 3
 crusher.crafting_speed = 1
+crusher.minable.result = "crusher"
+
+crusher.icon =  "__hardCrafting__/graphics/icons/crusher.png"
+crusher.animation = deepcopy(data.raw["furnace"]["electric-furnace"].animation)
 crusher.animation.filename="__hardCrafting__/graphics/entity/crusher/crusher-base.png"
-crusher.working_visualisations[1] = {
-	animation =
-	{
-		filename = "__hardCrafting__/graphics/entity/crusher/crusher-gears.png",
-		priority = "high",
-		width = 25,
-		height = 15,
-		frame_count = 4,
-		animation_speed = 0.2,
-		shift = {0.015625, 0.890625}
-	},
-	light = {intensity = 0.4, size = 6, shift = {0.0, 1.0}}
-}
+
+crusher.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
+crusher.open_sound  = data.raw["furnace"]["electric-furnace"].open_sound
+crusher.close_sound  = data.raw["furnace"]["electric-furnace"].close_sound 
+
 data:extend({ crusher })
 
 -- technology

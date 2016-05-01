@@ -29,22 +29,23 @@ end
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
 function updateBeltSorter(event)
-	-- update every 10 ticks
-	if game.tick % 5 ~= 0 then return end
-	for k,beltSorter in pairs(global.hardCrafting.fbeltSorter) do
-		if not beltSorter.valid then
-			global.hardCrafting.fbeltSorter[k] = nil
-		else
-			updateNormalBeltSorter(beltSorter)
+	if game.tick % 4 == 0 then 
+		for k,beltSorter in pairs(global.hardCrafting.fbeltSorter) do
+			if not beltSorter.valid then
+				global.hardCrafting.fbeltSorter[k] = nil
+			else
+				updateNormalBeltSorter(beltSorter)
+			end
 		end
 	end
 
-	if game.tick % 10 ~= 0 then return end
-	for k,beltSorter in pairs(global.hardCrafting.beltSorter) do
-		if not beltSorter.valid then
-			global.hardCrafting.beltSorter[k] = nil
-		else
-			updateNormalBeltSorter(beltSorter)
+	if game.tick % 5 == 0 then
+		for k,beltSorter in pairs(global.hardCrafting.beltSorter) do
+			if not beltSorter.valid then
+				global.hardCrafting.beltSorter[k] = nil
+			else
+				updateNormalBeltSorter(beltSorter)
+			end
 		end
 	end
 end

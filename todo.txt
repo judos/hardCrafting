@@ -1,7 +1,12 @@
+VERIFY:
 + crusher choose recipe
-+ fast-belt-sorter for express belts? big-belt-sorter 2x2 ?
++ fast-belt-sorter for express belts? 
+
+TODO:
 + long smart inserter
+
 + remove stone as product from pulverizer, replace?
 - different resource fields with various products
 - advanced crusher/pulverizer (can both?)
 - implement process for DyTech / bobs ore?
+? big-belt-sorter 2x2 ?
