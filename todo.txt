@@ -1,9 +1,11 @@
 VERIFY:
 + crusher choose recipe
-+ fast-belt-sorter for express belts? 
++ fast-belt-sorter for express belts?
 
 TODO:
+! improve performence of belt-sorter
 + long smart inserter
+
 
 + remove stone as product from pulverizer, replace?
 - different resource fields with various products
