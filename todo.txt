@@ -5,10 +5,10 @@ VERIFY:
 TODO:
 ! improve performence of belt-sorter
 + long smart inserter
-
-
 + remove stone as product from pulverizer, replace?
+
+? big-belt-sorter 2x2 ?
+
 - different resource fields with various products
 - advanced crusher/pulverizer (can both?)
 - implement process for DyTech / bobs ore?
-? big-belt-sorter 2x2 ?
