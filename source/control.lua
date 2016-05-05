@@ -1,25 +1,30 @@
+
+modVersion = "0.3.11"
+
+-- Tables used for registering common events of entities
+-- [$entityName] = { build = $function(entity), tick = $function(entity,data), remove = $function(data) }
+entities = {}
+-- each known gui defines these functions:
+gui = {} -- [$entityName] = { open = $function, close = $function }
+
 require "defines"
 require "libs.functions"
 require "libs.controlFunctions"
 
-knownEntities = {}
+
 require "control.belt-sorter"
 require "control.incinerators"
 require "control.migration_0_3_11"
 
-modVersion = "0.3.11"
 
---[[
- global data used:
- hardCrafting.version = $version
- hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
- hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
- hardCrafting.beltSorter = { $beltSorter:LuaEntity, ... }
- 
- Currently only belt-sorters use generic setup:
- hardCrafting.schedule[tick][idEntity] = $entity
- hardCrafting.entityData[idEntity] = { name=$name, ... }
-]]--
+-- global data used:
+-- hardCrafting.version = $version
+-- hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
+-- hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
+
+-- Currently only belt-sorters use generic setup:
+-- hardCrafting.schedule[tick][idEntity] = $entity
+-- hardCrafting.entityData[idEntity] = { name=$name, ... }
 
 -- Constants:
 TICK_ASAP = 0 --game.tick used in migration when game variable is not available yet
@@ -37,13 +42,13 @@ function init()
 	if not global.hardCrafting then global.hardCrafting = {} end
 	local hc = global.hardCrafting
 	if not hc.version then hc.version = modVersion end
-	
-	if not hc.incinerators then hc.incinerators = {} end
-	if not hc.eincinerators then hc.eincinerators = {} end
 
-	if not hc.schedule then hc.schedule = {} end
-	if not hc.entityData then hc.entityData = {} end
-	
+	if hc.incinerators == nil then hc.incinerators = {} end
+	if hc.eincinerators == nil then hc.eincinerators = {} end
+	if hc.schedule == nil then hc.schedule = {} end
+	if hc.entityData == nil then hc.entityData = {} end
+	if hc.playerData == nil then hc.playerData = {} end
+
 	if hc.version < "0.3.11" then migration_0_3_11() end
 end
 
@@ -54,15 +59,15 @@ script.on_event(defines.events.on_tick, function(event)
 	updateIncinerators()
 
 	-- schedule events from migration
-  if hc.schedule[TICK_ASAP] ~= nil then
-  	for id,entity in pairs(hc.schedule[TICK_ASAP]) do
-  		scheduleAdd(entity, game.tick )-- TODO: use randomized distribution math.random(8))
-  	end
-  	hc.schedule[TICK_ASAP] = nil
-  end
-  
+	if hc.schedule[TICK_ASAP] ~= nil then
+		for id,entity in pairs(hc.schedule[TICK_ASAP]) do
+			scheduleAdd(entity, game.tick )-- TODO: use randomized distribution math.random(8))
+		end
+		hc.schedule[TICK_ASAP] = nil
+	end
+
 	-- if no updates are scheduled return
-  if hc.schedule[game.tick] == nil then
+	if hc.schedule[game.tick] == nil then
 		return
 	end
 	--dummyUpdate()
@@ -73,8 +78,10 @@ script.on_event(defines.events.on_tick, function(event)
 			local data = hc.entityData[idOfEntity(entity)]
 			local name = entity.name
 			local nextUpdateInXTicks, reasonMessage
-			if name == "belt-sorter" then
-				nextUpdateInXTicks, reasonMessage = beltSorterDidTick(entity,data)
+			if entities[name] ~= nil then
+				if entities[name].tick ~= nil then
+					nextUpdateInXTicks, reasonMessage = entities[name].tick(entity,data)
+				end
 			else
 				warn("updating entity with unknown name: "..name)
 			end
@@ -92,7 +99,13 @@ script.on_event(defines.events.on_tick, function(event)
 			-- if entity was removed, remove it from memory
 			local data = hc.entityData[entityId]
 			local name = data.name
-			info("removing "..name.." at: "..entityId)
+			if entities[name] ~= nil then
+				if entities[name].remove ~= nil then
+					entities[name].remove(data)
+				end
+			else
+				info("removing "..name.." at: "..entityId)
+			end
 			hc.entityData[entityId] = nil
 		end
 	end
@@ -101,13 +114,23 @@ script.on_event(defines.events.on_tick, function(event)
 end)
 
 function updatePlayerGui()
+	local hc = global.hardCrafting
 	for _,player in pairs(game.players) do
-		local entity = player.opened
-		if entity ~= nil then
-			warn("Belt-sorter opened")
-			if entity.name == "belt-sorter" then
+		if player.connected then
+			local entity = player.opened
+			local playerData = hc.playerData[player.name] or {}
+			if entity == nil then
+				if playerData.gui ~= nil then
+					playerData.gui = nil
+					warn("Belt-sorter closed")
+				end
+			elseif playerData.gui == nil then
+				if hc.playerData[player.name] == nil then hc.playerData[player.name] = {} end
 				
-				--player.opened = nil
+				if entity.name == "belt-sorter" then
+					hc.playerData[player.name].gui = "belt-sorter"
+					warn("Belt-sorter opened")
+				end
 			end
 		end
 	end
@@ -155,21 +178,10 @@ end)
 function entityBuilt(event)
 	local entity = event.created_entity
 	local name = entity.name
-	if not knownEntities[entity.name] then return end
-	if name == "incinerator" then
-		table.insert(global.hardCrafting.incinerators,entity)
-		return
-	elseif name == "electric-incinerator" then
-		table.insert(global.hardCrafting.eincinerators,entity)
-		return
-	end
-	
-	local data=nil
-	if name == "belt-sorter" then
-		data = beltSorterWasBuilt(entity)
-	end
+	if entities[name] == nil then return end
 	global.hardCrafting.entityData[idOfEntity(entity)] = { ["name"] = name }
-	if data then
+	if entities[name].build then
+		local data = entities[name].build(entity)
 		table.addTable(global.hardCrafting.entityData[idOfEntity(entity)],data)
 	end
 end

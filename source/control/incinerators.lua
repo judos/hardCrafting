@@ -1,5 +1,11 @@
-knownEntities["incinerator"]=true
-knownEntities["electric-incinerator"]=true
+entities["incinerator"]={}
+entities["incinerator"].build = function(entity)
+	table.insert(global.hardCrafting.incinerators,entity)
+end
+entities["electric-incinerator"]={}
+entities["electric-incinerator"].build = function(entity)
+	table.insert(global.hardCrafting.eincinerators,entity)
+end
 
 ---------------------------------------------------
 -- Tick Incinerators

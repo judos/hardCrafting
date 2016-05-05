@@ -1,25 +1,43 @@
 require "libs.classes.BeltFactory"
 
-knownEntities["belt-sorter"] = true
-knownEntities["fast-belt-sorter"] = true
+local beltSorter = {}
+entities["belt-sorter"] = beltSorter
 
 ---------------------------------------------------
--- init
+-- build and remove
 ---------------------------------------------------
 
-function beltSorterWasBuilt(entity)
+beltSorter.build = function(entity)
 	scheduleAdd(entity, (game or {tick=TICK_ASAP}).tick)
+	
+	local pos = {x = entity.position.x-.5, y=entity.position.y}
+	local lamp = entity.surface.create_entity({name="belt-sorter-lamp",position=pos,force=entity.force})
+	lamp.operable = false
+	lamp.minable = false
+	lamp.destructible = false
+	
+	entity.connect_neighbour{wire=defines.circuitconnector.green,target_entity=lamp}
+	
+	return {
+		lamp = lamp
+	}
 end
+
+beltSorter.remove = function(data)
+	warn(data)
+	data.lamp.destroy()
+end
+
 
 ---------------------------------------------------
 -- update tick
 ---------------------------------------------------
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
-function beltSorterDidTick(beltSorter,data)
-	beltSorterSearchInputOutput(beltSorter,data)
-	beltSorterBuiltFilter(beltSorter,data)
-	beltSorterDistributeItems(beltSorter,data)
+beltSorter.tick = function(beltSorter,data)
+	--beltSorterSearchInputOutput(beltSorter,data)
+	--beltSorterBuiltFilter(beltSorter,data)
+	--beltSorterDistributeItems(beltSorter,data)
 	return 8,nil
 end
 
