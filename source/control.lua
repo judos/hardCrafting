@@ -65,8 +65,8 @@ script.on_event(defines.events.on_tick, function(event)
   if hc.schedule[game.tick] == nil then
 		return
 	end
-	local x = log("starting update")
-	
+	dummyUpdate()
+	--[[
 	-- Execute all scheduled events
 	for entityId,entity in pairs(hc.schedule[game.tick]) do
 		if entity and entity.valid then
@@ -98,9 +98,33 @@ script.on_event(defines.events.on_tick, function(event)
 			end
 		end
 	end
-	log("update done")
+	]]--
 	global.hardCrafting.schedule[game.tick] = nil
 end)
+
+function dummyUpdate()
+	log("starting update")
+	local hc = global.hardCrafting
+	for entityId,entity in pairs(hc.schedule[game.tick]) do
+		local data = hc.entityData[entityId]
+		beltSorterSearchInputOutput(entity,data)
+	end
+	log("input/output search done")
+	for entityId,entity in pairs(hc.schedule[game.tick]) do
+		local data = hc.entityData[entityId]
+		beltSorterBuiltFilter(entity,data)
+	end
+	log("filter build done")
+	for entityId,entity in pairs(hc.schedule[game.tick]) do
+		local data = hc.entityData[entityId]
+		beltSorterDistributeItems(entity,data)
+	end
+	log("item distribute done")
+	for _,entity in pairs(hc.schedule[game.tick]) do
+		scheduleAdd(entity, game.tick + 8)
+	end
+	log("scheduling done")
+end
 
 ---------------------------------------------------
 -- Building Entities

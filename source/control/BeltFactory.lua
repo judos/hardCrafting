@@ -2,10 +2,7 @@ require "control.BeltAccess"
 require "control.SplitterAccess"
 
 BeltFactory={}
-function BeltFactory.getSupportedTypes()
-	return {"transport-belt","splitter","transport-belt-to-ground"}
-end
-
+BeltFactory.supportedTypes = {"transport-belt","splitter","transport-belt-to-ground"}
 
 BeltFactory.accessFor = function(entity,accessTarget,accessFrom)
 	if entity.type == "transport-belt" then

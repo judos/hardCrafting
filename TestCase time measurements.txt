@@ -51,3 +51,53 @@ T1 idle:
  26.008 Script belt-sorter.lua:93: finished updating
  26.164 Script belt-sorter.lua:22: start updating
  26.225 Script belt-sorter.lua:93: finished updating
+ 
+ 
+T1 idle taking apart:
+1226.965 Script control.lua:106: starting update
+1226.990 Script control.lua:112: input/output search done
+1227.118 Script control.lua:117: filter build done
+1227.119 Script control.lua:122: item distribute done
+1227.126 Script control.lua:126: scheduling done
+1227.253 Script control.lua:106: starting update
+1227.276 Script control.lua:112: input/output search done
+1227.408 Script control.lua:117: filter build done
+1227.409 Script control.lua:122: item distribute done
+1227.419 Script control.lua:126: scheduling done
+1227.545 Script control.lua:106: starting update
+1227.570 Script control.lua:112: input/output search done
+1227.702 Script control.lua:117: filter build done
+1227.703 Script control.lua:122: item distribute done
+1227.705 Script control.lua:126: scheduling done
+1227.831 Script control.lua:106: starting update
+1227.853 Script control.lua:112: input/output search done
+1227.987 Script control.lua:117: filter build done
+1227.987 Script control.lua:122: item distribute done
+1227.990 Script control.lua:126: scheduling done
+
+T2 working taken apart:
+1305.076 Script control.lua:106: starting update
+1305.110 Script control.lua:112: input/output search done
+1305.160 Script control.lua:117: filter build done
+1305.163 Script control.lua:122: item distribute done
+1305.164 Script control.lua:126: scheduling done
+1305.288 Script control.lua:106: starting update
+1305.330 Script control.lua:112: input/output search done
+1305.379 Script control.lua:117: filter build done
+1305.381 Script control.lua:122: item distribute done
+1305.382 Script control.lua:126: scheduling done
+1305.506 Script control.lua:106: starting update
+1305.540 Script control.lua:112: input/output search done
+1305.588 Script control.lua:117: filter build done
+1305.590 Script control.lua:122: item distribute done
+1305.591 Script control.lua:126: scheduling done
+1305.715 Script control.lua:106: starting update
+1305.750 Script control.lua:112: input/output search done
+1305.805 Script control.lua:117: filter build done
+1305.807 Script control.lua:122: item distribute done
+1305.808 Script control.lua:126: scheduling done
+1305.932 Script control.lua:106: starting update
+1305.967 Script control.lua:112: input/output search done
+1306.017 Script control.lua:117: filter build done
+1306.019 Script control.lua:122: item distribute done
+1306.021 Script control.lua:126: scheduling done
