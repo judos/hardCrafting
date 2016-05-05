@@ -15,7 +15,6 @@ modVersion = "0.3.11"
  hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
  hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
  hardCrafting.beltSorter = { $beltSorter:LuaEntity, ... }
- hardCrafting.fbeltSorter = { $fastBeltSorter:LuaEntity, ... }
  
  Currently only belt-sorters use generic setup:
  hardCrafting.schedule[tick][idEntity] = $entity
