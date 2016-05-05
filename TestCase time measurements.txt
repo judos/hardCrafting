@@ -1,4 +1,20 @@
-T1 idle:
+Description
+
+2 test cases for performence measurements:
+- T1: 473 belt-sorters (11 doing some item distribution with connected belts and filter)
+      belt-sorters are not connected
+      belt-sorter have no filter
+      30 UPS (old state)
+
+- T2: 176 belt-sorters (all of them distributing items north 1 lane)
+      belt-sorters have 3 connected belts, 1 input, 1 output, 1 idle
+      belt-sorters have 1 item filter to put items north
+      40 UPS (old state)
+
+-------------------------------------------------------
+OLD VERSION 0.3.10
+-------------------------------------------------------
+T1: ~140ms update time -> ~0.3ms / belt-sorter
 
  953.740 Script belt-sorter.lua:22: start updating
  953.875 Script belt-sorter.lua:93: finished updating
@@ -25,8 +41,9 @@ T1 idle:
  959.020 Script belt-sorter.lua:22: start updating
  959.165 Script belt-sorter.lua:93: finished updating
  
- 
- T2 working:
+
+T2: ~65ms update time -> ~0.37ms / belt-sorter
+
  23.758 Script belt-sorter.lua:22: start updating
  23.827 Script belt-sorter.lua:93: finished updating
  23.983 Script belt-sorter.lua:22: start updating
@@ -52,8 +69,17 @@ T1 idle:
  26.164 Script belt-sorter.lua:22: start updating
  26.225 Script belt-sorter.lua:93: finished updating
  
+-------------------------------------------------------
+FIRST STEP: measure different times of method:
+-------------------------------------------------------
+
+T1 idle taking apart:		~percentage
+ 25ms input/output search	15%
+135ms filter building		82%
+  0ms item distribution		 0%
+  5ms scheduling			 3%
+165ms total
  
-T1 idle taking apart:
 1226.965 Script control.lua:106: starting update
 1226.990 Script control.lua:112: input/output search done
 1227.118 Script control.lua:117: filter build done
@@ -75,7 +101,13 @@ T1 idle taking apart:
 1227.987 Script control.lua:122: item distribute done
 1227.990 Script control.lua:126: scheduling done
 
-T2 working taken apart:
+T2 working taken apart:		~percentage
+ 35ms input/output search	39%
+ 50ms filter building		56%
+  2ms item distribution		 2%
+  2ms scheduling			 2%
+ 89ms total					
+ 
 1305.076 Script control.lua:106: starting update
 1305.110 Script control.lua:112: input/output search done
 1305.160 Script control.lua:117: filter build done
@@ -101,3 +133,13 @@ T2 working taken apart:
 1306.017 Script control.lua:117: filter build done
 1306.019 Script control.lua:122: item distribute done
 1306.021 Script control.lua:126: scheduling done
+
+-------------------------------------------------------
+SECOND STEP: target improvements
+-------------------------------------------------------
+1. building up the belt-sorter filter takes most time
+   a) improve how it's done
+   b*) calculate filter only every 2-5s ? (Don't measure this since it's just spreading the work)
+2. input/output search takes also 40% time (especially for belt sorters connected with several belts
+   a) improve how it's done
+   b*) only recalculate every 5s or when a belt is invalid (don't measure)

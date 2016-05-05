@@ -124,6 +124,11 @@ function dummyUpdate()
 		scheduleAdd(entity, game.tick + 8)
 	end
 	log("scheduling done")
+	local count = 0
+	for _,_ in pairs(hc.schedule[game.tick]) do
+		count = count +1
+	end
+	log("done with "..tostring(count).." belt-sorter")
 end
 
 ---------------------------------------------------
