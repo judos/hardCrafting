@@ -24,10 +24,23 @@ beltSorter.build = function(entity)
 end
 
 beltSorter.remove = function(data)
-	warn(data)
 	data.lamp.destroy()
 end
 
+---------------------------------------------------
+-- update tick
+---------------------------------------------------
+
+gui["belt-sorter"]={}
+gui["belt-sorter"].open = function(player,entity)
+	local frame = player.gui.left.add{type="frame",name="beltSorterGui",direction="vertical",caption={"belt-sorter-title"}}
+	frame.add{type="label",name="title",caption="Belt sorter filter"}
+	frame.add{type="item",name="item"}
+	warn(frame)
+end
+gui["belt-sorter"].close=function(player)
+	player.gui.left.beltSorterGui.destroy()
+end
 
 ---------------------------------------------------
 -- update tick

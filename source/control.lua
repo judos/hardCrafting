@@ -4,13 +4,12 @@ modVersion = "0.3.11"
 -- Tables used for registering common events of entities
 -- [$entityName] = { build = $function(entity), tick = $function(entity,data), remove = $function(data) }
 entities = {}
--- each known gui defines these functions:
-gui = {} -- [$entityName] = { open = $function, close = $function }
+
 
 require "defines"
 require "libs.functions"
 require "libs.controlFunctions"
-
+require "libs.gui"
 
 require "control.belt-sorter"
 require "control.incinerators"
@@ -50,11 +49,11 @@ function init()
 	if hc.playerData == nil then hc.playerData = {} end
 
 	if hc.version < "0.3.11" then migration_0_3_11() end
+	initGui()
 end
 
-
 script.on_event(defines.events.on_tick, function(event)
-	updatePlayerGui()
+	tickGui()
 	local hc = global.hardCrafting
 	updateIncinerators()
 
@@ -113,28 +112,6 @@ script.on_event(defines.events.on_tick, function(event)
 	global.hardCrafting.schedule[game.tick] = nil
 end)
 
-function updatePlayerGui()
-	local hc = global.hardCrafting
-	for _,player in pairs(game.players) do
-		if player.connected then
-			local entity = player.opened
-			local playerData = hc.playerData[player.name] or {}
-			if entity == nil then
-				if playerData.gui ~= nil then
-					playerData.gui = nil
-					warn("Belt-sorter closed")
-				end
-			elseif playerData.gui == nil then
-				if hc.playerData[player.name] == nil then hc.playerData[player.name] = {} end
-				
-				if entity.name == "belt-sorter" then
-					hc.playerData[player.name].gui = "belt-sorter"
-					warn("Belt-sorter opened")
-				end
-			end
-		end
-	end
-end
 
 function dummyUpdate()
 	log("starting update")
