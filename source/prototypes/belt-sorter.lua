@@ -24,14 +24,42 @@ data:extend({
 })
 
 -- Entity
-local beltSorter = deepcopy(data.raw["container"]["wooden-chest"])
+local beltSorter = deepcopy(data.raw["lamp"]["small-lamp"])
 beltSorter.name = "belt-sorter"
 beltSorter.minable.result = "belt-sorter"
 beltSorter.inventory_size = 40
 beltSorter.icon = "__hardCrafting__/graphics/icons/belt-sorter.png"
-beltSorter.picture.filename="__hardCrafting__/graphics/entity/belt-sorter.png"
-beltSorter.fuel_value = nil
+overwriteContent(beltSorter.picture_off, {
+	filename="__hardCrafting__/graphics/entity/belt-sorter.png",
+	width = 46,
+  height = 33,
+  shift = {0.3, 0}
+})
+overwriteContent(beltSorter.picture_on, {
+	filename="__hardCrafting__/graphics/entity/belt-sorter.png",
+	width = 46,
+  height = 33,
+  shift = {0.3, 0}
+})
 data:extend({	beltSorter })
+
+-- fake lamp for wire connection
+local beltSorterLamp = deepcopy(data.raw["lamp"]["small-lamp"])
+overwriteContent(beltSorterLamp, {
+	name = "belt-sorter-lamp",
+	order = "zzz",
+	collision_box = {{0, 0}, {0, 0}},
+	selection_box = {{0, 0}, {0, 0}}
+})
+local picture = {
+	filename="__hardCrafting__/graphics/entity/empty.png",
+	width = 0,
+  height = 0,
+  shift = {0, 0}
+}
+overwriteContent(beltSorterLamp.picture_off, picture)
+overwriteContent(beltSorterLamp.picture_on, picture)
+data:extend({	beltSorterLamp })
 
 -- Technology
 data:extend({
