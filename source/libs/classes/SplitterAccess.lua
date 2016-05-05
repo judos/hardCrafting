@@ -1,4 +1,4 @@
-require "control.TransportLinesAccess"
+require "libs.classes.TransportLinesAccess"
 
 function newSplitterAccess (splitterEntity,accessTarget,accessFrom)
 	local self = newTransportLinesAccess(
@@ -10,7 +10,7 @@ function newSplitterAccess (splitterEntity,accessTarget,accessFrom)
 	function self.isInput()
 		local direction = splitterEntity.direction
 		local side = self.getSide()
-		return side == (direction + 4)%8 -- must be 180°
+		return side == (direction + 4)%8 -- must be 180ï¿½
 	end
 	
 	function isLeftConnected() -- access is going into left part seen from accessFrom perspective

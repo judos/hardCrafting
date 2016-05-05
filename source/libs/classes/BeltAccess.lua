@@ -1,4 +1,4 @@
-require "control.TransportLinesAccess"
+require "libs.classes.TransportLinesAccess"
 
 function newBeltAccess (beltEntity,accessFromPosition)
 	local self = newTransportLinesAccess(
@@ -10,7 +10,7 @@ function newBeltAccess (beltEntity,accessFromPosition)
 	function self.isInput()
 		local direction = beltEntity.direction
 		local side = self.getSide()
-		return side == (direction + 4)%8 -- must be 180°
+		return side == (direction + 4)%8 -- must be 180ï¿½
 	end
 
 	return self

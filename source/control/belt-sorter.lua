@@ -1,4 +1,4 @@
-require "control.BeltFactory"
+require "libs.classes.BeltFactory"
 
 knownEntities["belt-sorter"] = true
 knownEntities["fast-belt-sorter"] = true
