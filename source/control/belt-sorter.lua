@@ -7,20 +7,8 @@ knownEntities["fast-belt-sorter"] = true
 -- init
 ---------------------------------------------------
 
-function beltSorterInit()
-	if not global.hardCrafting.beltSorter then	
-		global.hardCrafting.beltSorter = {}
-	end
-	if not global.hardCrafting.fbeltSorter then
-		global.hardCrafting.fbeltSorter = {}
-	end
-end
-
-function beltSorterBuiltEntity(entity)
-	table.insert(global.hardCrafting.beltSorter, entity)
-end
-function fastBeltSorterBuilt(entity)
-	table.insert(global.hardCrafting.fbeltSorter, entity)
+function beltSorterWasBuilt(entity)
+	scheduleAdd(entity, (game or {tick=TICK_ASAP}).tick)
 end
 
 ---------------------------------------------------
@@ -28,29 +16,7 @@ end
 ---------------------------------------------------
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
-function updateBeltSorter(event)
-	if game.tick % 4 == 0 then 
-		for k,beltSorter in pairs(global.hardCrafting.fbeltSorter) do
-			if not beltSorter.valid then
-				global.hardCrafting.fbeltSorter[k] = nil
-			else
-				updateNormalBeltSorter(beltSorter)
-			end
-		end
-	end
-
-	if game.tick % 5 == 0 then
-		for k,beltSorter in pairs(global.hardCrafting.beltSorter) do
-			if not beltSorter.valid then
-				global.hardCrafting.beltSorter[k] = nil
-			else
-				updateNormalBeltSorter(beltSorter)
-			end
-		end
-	end
-end
-
-function updateNormalBeltSorter(beltSorter)
+function beltSorterDidTick(beltSorter,data)
 	local surface = beltSorter.surface
 	local x = beltSorter.position.x
 	local y = beltSorter.position.y
@@ -111,4 +77,5 @@ function updateNormalBeltSorter(beltSorter)
 			end
 		end
 	end
+	return 8,nil
 end

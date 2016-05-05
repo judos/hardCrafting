@@ -1,5 +1,7 @@
 function table.addTable(t,toAdd)
-	for k,v in pairs(toAdd) do t[k] = v end
+	if toAdd then
+		for k,v in pairs(toAdd) do t[k] = v end
+	end
 end
 
 function table.set(t) -- set of list

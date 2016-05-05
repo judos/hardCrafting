@@ -1,0 +1,53 @@
+T1 idle:
+
+ 953.740 Script belt-sorter.lua:22: start updating
+ 953.875 Script belt-sorter.lua:93: finished updating
+ 954.034 Script belt-sorter.lua:22: start updating
+ 954.179 Script belt-sorter.lua:93: finished updating
+ 954.340 Script belt-sorter.lua:22: start updating
+ 954.495 Script belt-sorter.lua:93: finished updating
+ 954.657 Script belt-sorter.lua:22: start updating
+ 954.806 Script belt-sorter.lua:93: finished updating
+ 954.966 Script belt-sorter.lua:22: start updating
+ 955.129 Script belt-sorter.lua:93: finished updating
+ 955.291 Script belt-sorter.lua:22: start updating
+ 955.434 Script belt-sorter.lua:93: finished updating
+ 955.595 Script belt-sorter.lua:22: start updating
+ 955.739 Script belt-sorter.lua:93: finished updating
+ 957.815 Script belt-sorter.lua:22: start updating
+ 957.966 Script belt-sorter.lua:93: finished updating
+ 958.127 Script belt-sorter.lua:22: start updating
+ 958.259 Script belt-sorter.lua:93: finished updating
+ 958.419 Script belt-sorter.lua:22: start updating
+ 958.554 Script belt-sorter.lua:93: finished updating
+ 958.714 Script belt-sorter.lua:22: start updating
+ 958.860 Script belt-sorter.lua:93: finished updating
+ 959.020 Script belt-sorter.lua:22: start updating
+ 959.165 Script belt-sorter.lua:93: finished updating
+ 
+ 
+ T2 working:
+ 23.758 Script belt-sorter.lua:22: start updating
+ 23.827 Script belt-sorter.lua:93: finished updating
+ 23.983 Script belt-sorter.lua:22: start updating
+ 24.044 Script belt-sorter.lua:93: finished updating
+ 24.200 Script belt-sorter.lua:22: start updating
+ 24.261 Script belt-sorter.lua:93: finished updating
+ 24.418 Script belt-sorter.lua:22: start updating
+ 24.482 Script belt-sorter.lua:93: finished updating
+ 24.639 Script belt-sorter.lua:22: start updating
+ 24.702 Script belt-sorter.lua:93: finished updating
+ 24.858 Script belt-sorter.lua:22: start updating
+ 24.919 Script belt-sorter.lua:93: finished updating
+ 25.075 Script belt-sorter.lua:22: start updating
+ 25.137 Script belt-sorter.lua:93: finished updating
+ 25.293 Script belt-sorter.lua:22: start updating
+ 25.355 Script belt-sorter.lua:93: finished updating
+ 25.511 Script belt-sorter.lua:22: start updating
+ 25.576 Script belt-sorter.lua:93: finished updating
+ 25.732 Script belt-sorter.lua:22: start updating
+ 25.793 Script belt-sorter.lua:93: finished updating
+ 25.949 Script belt-sorter.lua:22: start updating
+ 26.008 Script belt-sorter.lua:93: finished updating
+ 26.164 Script belt-sorter.lua:22: start updating
+ 26.225 Script belt-sorter.lua:93: finished updating

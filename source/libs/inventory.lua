@@ -32,10 +32,6 @@ end
 function killItemsInInventor(inventory, itemName)
 	inventory.remove({name=itemName,count=1000000})
 end
--- Removes all items of one type from an inventory
-function killItemsInInventory(inventory, itemName)
-	inventory.remove({name=itemName,count=1000000})
-end
 
 -- Spills whole inventory on the surface
 function spillInventory(inventory, surface, position)
