@@ -10,6 +10,11 @@ function table.set(t) -- set of list
   return u
 end
 
+function table.clear(t)
+	local count = #t
+	for i=0, count do t[i]=nil end
+end
+
 function string.starts(str,prefix)
   return string.sub(str,1,string.len(prefix))==prefix
 end

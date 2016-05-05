@@ -66,7 +66,7 @@ script.on_event(defines.events.on_tick, function(event)
 		return
 	end
 	dummyUpdate()
-	--[[
+	 --[[
 	-- Execute all scheduled events
 	for entityId,entity in pairs(hc.schedule[game.tick]) do
 		if entity and entity.valid then
@@ -93,12 +93,10 @@ script.on_event(defines.events.on_tick, function(event)
 			local data = hc.entityData[entityId]
 			local name = data.name
 			info("removing "..name.." at: "..entityId)
-			if name == "belt-sorter" then
-				beltSorterWasRemoved(entityId,data)
-			end
+			hc.entityData[entityId] = nil
 		end
 	end
-	]]--
+	-- ]]--
 	global.hardCrafting.schedule[game.tick] = nil
 end)
 
@@ -157,8 +155,8 @@ function entityBuilt(event)
 	if name == "belt-sorter" then
 		data = beltSorterWasBuilt(entity)
 	end
-	if data then 
-		global.hardCrafting.entityData[idOfEntity(entity)] = { ["name"] = name }
+	global.hardCrafting.entityData[idOfEntity(entity)] = { ["name"] = name }
+	if data then
 		table.addTable(global.hardCrafting.entityData[idOfEntity(entity)],data)
 	end
 end

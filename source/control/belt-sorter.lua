@@ -27,11 +27,10 @@ function beltSorterDistributeItems(beltSorter,data)
 	-- Distribute items on output belts
 	for _,outputAccess in pairs(data.output) do
 		local beltSide = outputAccess.getSide()
-		if outputAccess.can_insert_at_back() and data.filter[beltSide] then
+		if outputAccess.can_insert_at_back() then
 			local canInsert = true
-			for _,itemName in pairs(data.filter[beltSide]) do
+			for itemName,_ in pairs(data.filter[beltSide]) do
 				for _,inputAccess in pairs(data.input) do
-
 					if inputAccess.contains_item(itemName) then
 						local itemStack = {name=itemName,count=1}
 						local result = inputAccess.remove_item(itemStack)
@@ -48,18 +47,30 @@ function beltSorterDistributeItems(beltSorter,data)
 	end
 end
 
+local rowIndexToDirection = {
+	[1]=defines.direction.north,
+	[2]=defines.direction.west,
+	[3]=defines.direction.east,
+	[4]=defines.direction.south
+}
 function beltSorterBuiltFilter(beltSorter,data)
+	if data.filter == nil then data.filter = {} end
 	-- Build filter table from inventory
-	data.filter = {} -- {direction = {itemName, ..}}
-	local slotIndexToDirection = {[0]=defines.direction.north, [1]=defines.direction.west,
-																[2]=defines.direction.east, [3]=defines.direction.south}
+	local itemsPerRow = {[1]={},[2]={},[3]={},[4]={}}
 	local inventory = beltSorter.get_inventory(defines.inventory.chest)
+	local row = 1
+	local itemStack
 	for i = 1,40 do
-		if inventory[i]~=nil and inventory[i].valid_for_read then
-			local slotRow = slotIndexToDirection[math.floor((i-1)/10)]
-			if data.filter[slotRow] == nil then data.filter[slotRow]={} end
-			table.insert(data.filter[slotRow],inventory[i].name)
+		itemStack = inventory[i]
+		if itemStack ~= nil and itemStack.valid_for_read then
+			itemsPerRow[row][itemStack.name]=true
 		end
+		if i%10 == 0 then
+			row=row+1
+		end
+	end
+	for i=1,4 do
+		data.filter[rowIndexToDirection[i]] = itemsPerRow[i]
 	end
 end
 
