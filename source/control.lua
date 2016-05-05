@@ -50,6 +50,7 @@ end
 
 
 script.on_event(defines.events.on_tick, function(event)
+	updatePlayerGui()
 	local hc = global.hardCrafting
 	updateIncinerators()
 
@@ -65,8 +66,8 @@ script.on_event(defines.events.on_tick, function(event)
   if hc.schedule[game.tick] == nil then
 		return
 	end
-	dummyUpdate()
-	 --[[
+	--dummyUpdate()
+	-- --[[
 	-- Execute all scheduled events
 	for entityId,entity in pairs(hc.schedule[game.tick]) do
 		if entity and entity.valid then
@@ -99,6 +100,19 @@ script.on_event(defines.events.on_tick, function(event)
 	-- ]]--
 	global.hardCrafting.schedule[game.tick] = nil
 end)
+
+function updatePlayerGui()
+	for _,player in pairs(game.players) do
+		local entity = player.opened
+		if entity ~= nil then
+			warn("Belt-sorter opened")
+			if entity.name == "belt-sorter" then
+				
+				--player.opened = nil
+			end
+		end
+	end
+end
 
 function dummyUpdate()
 	log("starting update")
