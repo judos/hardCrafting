@@ -14,9 +14,9 @@ function migration_0_3_11()
 	
 	for _,beltSorter in pairs(hc.beltSorter) do
 		if beltSorter.valid then
-			local data = beltSorterWasBuilt(beltSorter)
-			hc.entityData[idOfEntity(beltSorter)] = { ["name"] = "belt-sorter" }
-			table.addTable(hc.entityData[idOfEntity(beltSorter)],data)
+			local data = entities["belt-sorter"].build(beltSorter)
+			global.entityData[idOfEntity(beltSorter)] = { ["name"] = "belt-sorter" }
+			table.addTable(global.entityData[idOfEntity(beltSorter)],data)
 		end
 	end
 	hc.beltSorter = nil

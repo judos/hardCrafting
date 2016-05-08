@@ -6,6 +6,7 @@ require "libs.prototypes"
 require "libs.resources"
 require "libs.recipe"
 require "libs.technology"
+require "libs.entityId"
 
 
 function overwriteContent(originalTable,newContent)
