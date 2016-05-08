@@ -4,8 +4,8 @@ local function addStyle(name,icon,iconSize)
 	data.raw["gui-style"].default[name] = {
 		type = "checkbox_style",
 		parent = "checkbox_style",
-		width = 38,
-		height = 38,
+		width = 34,
+		height = 34,
 		default_background = {
 			filename = "__core__/graphics/gui.png",
 			width = 36,
@@ -54,3 +54,11 @@ for typename, sometype in pairs(data.raw) do
 	end
 end
 addStyle("item-empty","__hardCrafting__/graphics/entity/empty.png",1)
+
+data.raw["gui-style"].default["table-no-border"] = {
+	type = "table_style",
+	parent = "table_style",
+	cell_padding = 0,
+	horizontal_spacing = 0,
+	vertical_spacing = 0,
+}
