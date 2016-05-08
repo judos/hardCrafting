@@ -1,8 +1,18 @@
 require "libs.classes.BeltFactory"
 require "libs.itemSelection.control"
 
+-- Registering entity into system
 local beltSorter = {}
 entities["belt-sorter"] = beltSorter
+
+-- Constants
+local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
+local rowIndexToDirection = {
+	[1]=defines.direction.north,
+	[2]=defines.direction.west,
+	[3]=defines.direction.east,
+	[4]=defines.direction.south
+}
 
 ---------------------------------------------------
 -- build and remove
@@ -41,9 +51,10 @@ gui["belt-sorter"].open = function(player,entity)
 	for i,label in pairs(labels) do
 		frame.table.add{type="label",name="title"..i,caption={"",{label},":"}}
 		for j=1,4 do
-			frame.table.add{type="checkbox",name="hc.belt-sorter."..i.."."..j,state=true,style="item-empty"}
+			frame.table.add{type="checkbox",name="hc."..i.."."..j,state=true,style="item-empty"}
 		end
 	end
+	beltSorterRefreshGui(player,entity)
 end
 
 gui["belt-sorter"].close = function(player)
@@ -51,73 +62,83 @@ gui["belt-sorter"].close = function(player)
 	itemSelection_close(player)
 end
 
-gui["belt-sorter"].click = function(nameArr,player)
-	itemSelection_open(player,function(itemName)
-		player.gui.left.beltSorterGui.table["hc.belt-sorter."..nameArr[1].."."..nameArr[2]].style="item-"..itemName
-	end)
+gui["belt-sorter"].click = function(nameArr,player,entity)
+	local box = player.gui.left.beltSorterGui.table["hc."..nameArr[1].."."..nameArr[2]]
+	if box.style.name == "item-empty" then
+		itemSelection_open(player,function(itemName)
+			box.style="item-"..itemName
+			beltSorterSetSlotFilter(entity,nameArr,itemName)
+		end)
+	else
+		box.style = "item-empty"
+		beltSorterSetSlotFilter(entity,nameArr,nil)
+	end
+end
+
+function beltSorterRefreshGui(player,entity)
+	local data = global.entityData[idOfEntity(entity)]
+	for row = 1,4 do
+		for slot = 1,4 do
+			local itemName = data.guiFilter[row.."."..slot]
+			local element = player.gui.left.beltSorterGui.table["hc."..row.."."..slot]
+			if itemName then
+				element.style = "item-"..itemName
+			else
+				element.style = "item-empty"
+			end
+		end
+	end 
+end
+
+function beltSorterSetSlotFilter(entity,nameArr,itemName)
+	local data = global.entityData[idOfEntity(entity)]
+	if data.guiFilter == nil then data.guiFilter = {} end
+	data.guiFilter[nameArr[1].."."..nameArr[2]] = itemName
+	
+	data.filter = {}
+	for row = 1,4 do
+		for slot = 1,4 do
+			local itemName = data.guiFilter[row.."."..slot]
+			if itemName then
+				data.filter[itemName] = rowIndexToDirection[row]
+			end
+		end
+	end
+	info(data.guiFilter)
+	warn(data.filter)
 end
 
 ---------------------------------------------------
 -- update tick
 ---------------------------------------------------
-local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
 
 beltSorter.tick = function(beltSorter,data)
 	--beltSorterSearchInputOutput(beltSorter,data)
-	--beltSorterBuiltFilter(beltSorter,data)
 	--beltSorterDistributeItems(beltSorter,data)
 	return 8,nil
 end
 
 function beltSorterDistributeItems(beltSorter,data)
-	-- Distribute items on output belts
-	for _,outputAccess in pairs(data.output) do
-		local beltSide = outputAccess.getSide()
-		if outputAccess.can_insert_at_back() then
-			local canInsert = true
-			for itemName,_ in pairs(data.filter[beltSide]) do
-				for _,inputAccess in pairs(data.input) do
-					if inputAccess.contains_item(itemName) then
-						local itemStack = {name=itemName,count=1}
-						local result = inputAccess.remove_item(itemStack)
-						if result>0 then
-							outputAccess.insert_at_back(itemStack)
-							canInsert = outputAccess.can_insert_at_back()
-						end
+	-- Search for input (only loop if items available), mostly only 1 input
+	for _,inputAccess in pairs(data.input) do
+		for itemName,_ in pairs(inputAccess.get_contents()) do
+			local side = data.filter[itemName]
+			if side then
+				local outputAccess = data.output[side]
+				if outputAccess then
+					
+					local itemStack = {name=itemName,count=1}
+					local result = inputAccess.remove_item(itemStack)
+					if result>0 then
+						outputAccess.insert_at_back(itemStack)
+						outputAccess.can_insert_at_back()
 					end
-					if not canInsert then break end
+					
 				end
-				if not canInsert then break end
 			end
 		end
 	end
-end
-
-local rowIndexToDirection = {
-	[1]=defines.direction.north,
-	[2]=defines.direction.west,
-	[3]=defines.direction.east,
-	[4]=defines.direction.south
-}
-function beltSorterBuiltFilter(beltSorter,data)
-	if data.filter == nil then data.filter = {} end
-	-- Build filter table from inventory
-	local itemsPerRow = {[1]={},[2]={},[3]={},[4]={}}
-	local inventory = beltSorter.get_inventory(defines.inventory.chest)
-	local row = 1
-	local itemStack
-	for i = 1,40 do
-		itemStack = inventory[i]
-		if itemStack ~= nil and itemStack.valid_for_read then
-			itemsPerRow[row][itemStack.name]=true
-		end
-		if i%10 == 0 then
-			row=row+1
-		end
-	end
-	for i=1,4 do
-		data.filter[rowIndexToDirection[i]] = itemsPerRow[i]
-	end
+	
 end
 
 function beltSorterSearchInputOutput(beltSorter,data)
@@ -127,7 +148,7 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	--info("updating belt: "..x..","..y)
 	-- search for input / output belts
 	data.input = {} -- BeltAccess / SplitterAccess objects
-	data.output = {} -- BeltAccess / SplitterAccess objects
+	data.output = {} -- [side]=>$entity  BeltAccess / SplitterAccess objects
 	--info("searching for belts...")
 	for _,searchPos in pairs(searchPriority) do
 		local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
@@ -138,7 +159,7 @@ function beltSorterSearchInputOutput(beltSorter,data)
 				if access.isInput() then
 					table.insert(data.input,access)
 				else
-					table.insert(data.output,access)
+					data.output[access.getSide()] = access
 				end
 			end
 		end

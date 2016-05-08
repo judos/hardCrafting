@@ -3,11 +3,10 @@
 
 -- each known gui defines these functions:
 gui = {} -- [$entityName] = { open = $function(player,entity), close = $function(player),
--- click = $function(nameArr, player) }
+-- click = $function(nameArr, player, entity) }
 
 
 script.on_event(defines.events.on_gui_click, function(event)
-	info(event)
 	if event.element.style and event.element.style.name then
 		if event.element.style.name:starts("item-") then
 			event.element.state = true
@@ -19,10 +18,11 @@ script.on_event(defines.events.on_gui_click, function(event)
 	if eventIsForMod == "itemSelection" then
 		itemSelection_gui_click(guiEvent,player)
 	elseif eventIsForMod == modName then
-		local entityName = table.remove(guiEvent,1)
+		local entityName = global.gui.playerData[player.name].openGui
 		if entityName and gui[entityName] then
 			if gui[entityName].click ~= nil then
-				gui[entityName].click(guiEvent,player)
+				local entity = global.gui.playerData[player.name].openEntity
+				gui[entityName].click(guiEvent,player,entity)
 			end
 		end
 	end
@@ -48,10 +48,12 @@ function tickGui()
 						gui[openGui].close(player)
 					end
 					playerData.openGui = nil
+					playerData.openEntity = nil
 				end
 			elseif openGui == nil then
 				openGui = openEntity.name
 				playerData.openGui = openGui
+				playerData.openEntity = openEntity
 				if gui[openGui] ~= nil and gui[openGui].open ~= nil then
 					gui[openGui].open(player,openEntity)
 				end

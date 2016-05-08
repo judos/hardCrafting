@@ -4,6 +4,10 @@ function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 		line2 = line2	
 	}
 	
+	function self.get_contents()
+		return addContentsTables(self.line1.get_contents(),self.line2.get_contents())
+	end
+	
 	function self.contains_item(itemName)
 		if self.line1.get_item_count(itemName) > 0 then return true end
 		if self.line2.get_item_count(itemName) > 0 then return true end
