@@ -1,3 +1,4 @@
+
 -- each known gui defines these functions:
 gui = {} -- [$entityName] = { open = $function(player,entity), close = $function(player) }
 

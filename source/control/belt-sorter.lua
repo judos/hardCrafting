@@ -1,4 +1,5 @@
 require "libs.classes.BeltFactory"
+require "libs.itemSelection.control"
 
 local beltSorter = {}
 entities["belt-sorter"] = beltSorter
@@ -9,15 +10,15 @@ entities["belt-sorter"] = beltSorter
 
 beltSorter.build = function(entity)
 	scheduleAdd(entity, (game or {tick=TICK_ASAP}).tick)
-	
-	local pos = {x = entity.position.x-.5, y=entity.position.y}
+
+	local pos = {x = entity.position.x-0.25, y=entity.position.y}
 	local lamp = entity.surface.create_entity({name="belt-sorter-lamp",position=pos,force=entity.force})
 	lamp.operable = false
 	lamp.minable = false
 	lamp.destructible = false
-	
+
 	entity.connect_neighbour{wire=defines.circuitconnector.green,target_entity=lamp}
-	
+
 	return {
 		lamp = lamp
 	}
@@ -28,18 +29,38 @@ beltSorter.remove = function(data)
 end
 
 ---------------------------------------------------
--- update tick
+-- gui actions
 ---------------------------------------------------
 
 gui["belt-sorter"]={}
 gui["belt-sorter"].open = function(player,entity)
 	local frame = player.gui.left.add{type="frame",name="beltSorterGui",direction="vertical",caption={"belt-sorter-title"}}
-	frame.add{type="label",name="title",caption="Belt sorter filter"}
-	frame.add{type="item",name="item"}
-	warn(frame)
+	frame.add{type="table",name="table",colspan=5}
+		
+	local labels={"north","west","east","south"}
+	for i,label in pairs(labels) do
+		frame.table.add{type="label",name="title"..i,caption={"",{label},":"}}
+		for j=1,4 do
+			frame.table.add{type="checkbox",name="hc:item:"..i..":"..j,state=true,style="item-empty"}
+		end
+	end
+
+	local selection = player.gui.left.add{type="frame",name="itemSelection",direction="vertical",caption={"item-selection"}}
+	selection.add{type="frame",name="row1",direction="horizontal"}
+
+	for i=1,10 do
+		selection.row1.add({
+			type = "checkbox",
+			name = "item"..tostring(i),
+			style = "item-stone",
+			state = true   -- this is important, it makes our graphic, which is the "check mark", display
+		})
+	end
+
 end
 gui["belt-sorter"].close=function(player)
 	player.gui.left.beltSorterGui.destroy()
+	player.gui.left.itemSelection.destroy()
 end
 
 ---------------------------------------------------
