@@ -36,31 +36,25 @@ gui["belt-sorter"]={}
 gui["belt-sorter"].open = function(player,entity)
 	local frame = player.gui.left.add{type="frame",name="beltSorterGui",direction="vertical",caption={"belt-sorter-title"}}
 	frame.add{type="table",name="table",colspan=5}
-		
+
 	local labels={"north","west","east","south"}
 	for i,label in pairs(labels) do
 		frame.table.add{type="label",name="title"..i,caption={"",{label},":"}}
 		for j=1,4 do
-			frame.table.add{type="checkbox",name="hc:item:"..i..":"..j,state=true,style="item-empty"}
+			frame.table.add{type="checkbox",name="hc.belt-sorter."..i.."."..j,state=true,style="item-empty"}
 		end
 	end
-
-	local selection = player.gui.left.add{type="frame",name="itemSelection",direction="vertical",caption={"item-selection"}}
-	selection.add{type="frame",name="row1",direction="horizontal"}
-
-	for i=1,10 do
-		selection.row1.add({
-			type = "checkbox",
-			name = "item"..tostring(i),
-			style = "item-stone",
-			state = true   -- this is important, it makes our graphic, which is the "check mark", display
-		})
-	end
-
 end
-gui["belt-sorter"].close=function(player)
+
+gui["belt-sorter"].close = function(player)
 	player.gui.left.beltSorterGui.destroy()
-	player.gui.left.itemSelection.destroy()
+	itemSelection_close(player)
+end
+
+gui["belt-sorter"].click = function(nameArr,player)
+	itemSelection_open(player,function(itemName)
+		player.gui.left.beltSorterGui.table["hc.belt-sorter."..nameArr[1].."."..nameArr[2]].style="item-"..itemName
+	end)
 end
 
 ---------------------------------------------------

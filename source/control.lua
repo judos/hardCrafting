@@ -1,5 +1,6 @@
 
 modVersion = "0.3.11"
+modName = "hc" -- required prefix for all ui name components which can be clicked
 
 require "defines"
 require "libs.functions"
@@ -43,11 +44,6 @@ function init()
 	
 	entities_init()
 end
-
-script.on_event(defines.events.on_gui_click, function(event)
-	local element = event.element
-	warn(element.name)
-end)
 
 script.on_event(defines.events.on_tick, function(event)
 	tickGui()

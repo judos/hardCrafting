@@ -43,10 +43,14 @@ local function addStyle(name,icon,iconSize)
 	}
 end
 
-
-for name, item in pairs(data.raw.item) do
-	if item.icon then
-		addStyle("item-"..name,item.icon,32)
+for typename, sometype in pairs(data.raw) do
+	local _, object = next(sometype)
+	if object.stack_size or typename == "fluid" then
+		for name, item in pairs(sometype) do
+			if item.icon then
+				addStyle("item-"..name,item.icon,32)
+			end
+		end
 	end
 end
 addStyle("item-empty","__hardCrafting__/graphics/entity/empty.png",1)
