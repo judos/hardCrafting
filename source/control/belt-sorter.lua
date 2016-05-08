@@ -30,7 +30,8 @@ beltSorter.build = function(entity)
 	entity.connect_neighbour{wire=defines.circuitconnector.green,target_entity=lamp}
 
 	return {
-		lamp = lamp
+		lamp = lamp,
+		filter = {}
 	}
 end
 
@@ -77,6 +78,7 @@ end
 
 function beltSorterRefreshGui(player,entity)
 	local data = global.entityData[idOfEntity(entity)]
+	if data.guiFilter == nil then return end
 	for row = 1,4 do
 		for slot = 1,4 do
 			local itemName = data.guiFilter[row.."."..slot]
@@ -100,7 +102,8 @@ function beltSorterSetSlotFilter(entity,nameArr,itemName)
 		for slot = 1,4 do
 			local itemName = data.guiFilter[row.."."..slot]
 			if itemName then
-				data.filter[itemName] = rowIndexToDirection[row]
+				if data.filter[itemName] == nil then data.filter[itemName] = {} end
+				table.insert(data.filter[itemName],row)
 			end
 		end
 	end
@@ -113,8 +116,8 @@ end
 ---------------------------------------------------
 
 beltSorter.tick = function(beltSorter,data)
-	--beltSorterSearchInputOutput(beltSorter,data)
-	--beltSorterDistributeItems(beltSorter,data)
+	beltSorterSearchInputOutput(beltSorter,data)
+	beltSorterDistributeItems(beltSorter,data)
 	return 8,nil
 end
 
@@ -122,18 +125,20 @@ function beltSorterDistributeItems(beltSorter,data)
 	-- Search for input (only loop if items available), mostly only 1 input
 	for _,inputAccess in pairs(data.input) do
 		for itemName,_ in pairs(inputAccess.get_contents()) do
-			local side = data.filter[itemName]
-			if side then
-				local outputAccess = data.output[side]
-				if outputAccess then
-					
-					local itemStack = {name=itemName,count=1}
-					local result = inputAccess.remove_item(itemStack)
-					if result>0 then
-						outputAccess.insert_at_back(itemStack)
-						outputAccess.can_insert_at_back()
+			local sideList = data.filter[itemName]
+			if sideList then
+				for _,side in pairs(sideList) do
+					local outputAccess = data.output[side]
+					if outputAccess then
+						local itemStack = {name=itemName,count=1}
+						local result = inputAccess.remove_item(itemStack)
+						if result>0 then
+							outputAccess.insert_at_back(itemStack)
+							outputAccess.can_insert_at_back()
+						else
+							break -- check other items
+						end
 					end
-					
 				end
 			end
 		end
@@ -150,7 +155,7 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	data.input = {} -- BeltAccess / SplitterAccess objects
 	data.output = {} -- [side]=>$entity  BeltAccess / SplitterAccess objects
 	--info("searching for belts...")
-	for _,searchPos in pairs(searchPriority) do
+	for rowIndex,searchPos in pairs(searchPriority) do
 		local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
 		for _,searchType in pairs(BeltFactory.supportedTypes) do
 			local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
@@ -159,7 +164,7 @@ function beltSorterSearchInputOutput(beltSorter,data)
 				if access.isInput() then
 					table.insert(data.input,access)
 				else
-					data.output[access.getSide()] = access
+					data.output[rowIndex] = access
 				end
 			end
 		end

@@ -29,11 +29,11 @@ script.on_event(defines.events.on_gui_click, function(event)
 end)
 
 
-function initGui()
+function gui_init()
 	if global.gui == nil then global.gui = {playerData = {}} end
 end
 
-function tickGui()
+function gui_tick()
 	if game.tick % 10 ~= 0 then return end
 	for _,player in pairs(game.players) do
 		if player.connected then

@@ -41,13 +41,13 @@ function init()
 	if hc.playerData == nil then hc.playerData = {} end
 	info(hc.version)
 	if hc.version < "0.3.11" then migration_0_3_11() end
-	
+	gui_init()
 	entities_init()
 end
 
 script.on_event(defines.events.on_tick, function(event)
-	tickGui()
 	updateIncinerators()
+	gui_tick()
 	entities_tick()
 end)
 
