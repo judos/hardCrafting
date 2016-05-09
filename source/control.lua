@@ -1,7 +1,4 @@
-
-modVersion = "0.3.11"
-modName = "hc" -- required prefix for all ui name components which can be clicked
-
+require "constants"
 require "defines"
 require "libs.functions"
 require "libs.controlFunctions"
@@ -39,10 +36,12 @@ function init()
 	if hc.schedule == nil then hc.schedule = {} end
 	if hc.entityData == nil then hc.entityData = {} end
 	if hc.playerData == nil then hc.playerData = {} end
-	info(hc.version)
-	if hc.version < "0.3.11" then migration_0_3_11() end
+	info("Previous global data version: "..hc.version)
+	
 	gui_init()
 	entities_init()
+	
+	if hc.version < "0.3.11" then migration_0_3_11() end
 end
 
 script.on_event(defines.events.on_tick, function(event)

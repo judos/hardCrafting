@@ -87,6 +87,7 @@ itemSelection_close = function(player)
 	if player.gui.left.itemSelection ~= nil then
 		player.gui.left.itemSelection.destroy()
 	end
+	initGuiForPlayerName(player.name)
 	local playerData = global.itemSelection[player.name]
 	playerData.callback = nil
 end

@@ -1,3 +1,4 @@
+require "prototypes.belt-sorter-old"
 
 -- Item
 local beltSorter = deepcopy(data.raw["item"]["wooden-chest"])
@@ -5,7 +6,7 @@ overwriteContent(beltSorter, {
 	name = "belt-sorter",
 	order = "z[belt-sorter]",
 	subgroup = "inserter",
-	place_result = "belt-sorter",
+	place_result = "belt-sorter-v2",
 	icon = "__hardCrafting__/graphics/icons/belt-sorter.png",
 	fuel_value = "0MJ"
 })
@@ -29,7 +30,7 @@ data:extend({
 -- Entity
 local beltSorter = deepcopy(data.raw["lamp"]["small-lamp"])
 overwriteContent(beltSorter, {
-	name = "belt-sorter",
+	name = "belt-sorter-v2",
 	icon = "__hardCrafting__/graphics/icons/belt-sorter.png",
 	energy_usage_per_tick = "50KW"
 })

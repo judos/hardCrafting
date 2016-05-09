@@ -1,4 +1,4 @@
-fullModName = "hardCrafting"
+requires "constants"
 
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
@@ -27,7 +27,7 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 		end
 		table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
 	end
-	imageName = removeAfterSign(name,"|")
+	local imageName = removeAfterSign(name,"|")
 	data:extend({
 	{
 		type = "recipe",

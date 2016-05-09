@@ -1,5 +1,12 @@
-debug_master = true -- Master switch for debugging, prints debug stuff into the shell where factorio was started from
-debug_level = 1 -- 1=info 2=warning 3=error
+require "constants"
+
+if debug_master == nil then
+	debug_master = true -- Master switch for debugging, prints debug stuff into the shell where factorio was started from
+end
+if debug_level == nil then
+	debug_level = 2
+end
+
 
 function info(message)
 	if debug_level<=1 then _debug(message,"INFO") end
@@ -17,7 +24,7 @@ function _debug(message,level)
 		if type(message) ~= "string" then
 			message = serpent.block(message)
 		end
-		print("\n"..level..": "..message)
+		print("\n"..level.." "..fullModName..": "..message)
 	end
 end
 

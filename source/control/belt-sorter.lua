@@ -3,7 +3,7 @@ require "libs.itemSelection.control"
 
 -- Registering entity into system
 local beltSorter = {}
-entities["belt-sorter"] = beltSorter
+entities["belt-sorter-v2"] = beltSorter
 
 -- Constants
 local searchPriority = {{0,-1},{-1,0},{1,0},{0,1}}
@@ -13,6 +13,17 @@ local rowIndexToDirection = {
 	[3]=defines.direction.east,
 	[4]=defines.direction.south
 }
+
+---------------------------------------------------
+-- entityData
+---------------------------------------------------
+
+-- Used data:
+-- {
+--   lamp = LuaEntity(fake lamp)
+--   filter[$itemName] = { $row1, $row2, ... }
+--   guiFilter[$row.."."..$slot] = $itemName
+-- }
 
 ---------------------------------------------------
 -- build and remove
@@ -43,8 +54,8 @@ end
 -- gui actions
 ---------------------------------------------------
 
-gui["belt-sorter"]={}
-gui["belt-sorter"].open = function(player,entity)
+gui["belt-sorter-v2"]={}
+gui["belt-sorter-v2"].open = function(player,entity)
 	local frame = player.gui.left.add{type="frame",name="beltSorterGui",direction="vertical",caption={"belt-sorter-title"}}
 	frame.add{type="table",name="table",colspan=5}
 
@@ -58,12 +69,12 @@ gui["belt-sorter"].open = function(player,entity)
 	beltSorterRefreshGui(player,entity)
 end
 
-gui["belt-sorter"].close = function(player)
+gui["belt-sorter-v2"].close = function(player)
 	player.gui.left.beltSorterGui.destroy()
 	itemSelection_close(player)
 end
 
-gui["belt-sorter"].click = function(nameArr,player,entity)
+gui["belt-sorter-v2"].click = function(nameArr,player,entity)
 	local fieldName = table.remove(nameArr,1)
 	if fieldName == "slot" then
 		local box = player.gui.left.beltSorterGui.table["hc.slot."..nameArr[1].."."..nameArr[2]]
@@ -103,7 +114,10 @@ function beltSorterSetSlotFilter(entity,nameArr,itemName)
 	local data = global.entityData[idOfEntity(entity)]
 	if data.guiFilter == nil then data.guiFilter = {} end
 	data.guiFilter[nameArr[1].."."..nameArr[2]] = itemName
-	
+	beltSorterRebuildFilterFromGui(data)
+end
+
+function beltSorterRebuildFilterFromGui(data)
 	data.filter = {}
 	for row = 1,4 do
 		for slot = 1,4 do
