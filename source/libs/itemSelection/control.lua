@@ -1,4 +1,6 @@
 local maxRecentEntries = 20
+local mainMaxRows = 5
+local mainMaxEntries = 30
 -- call this to open the item selection gui
 -- player: LuaPlayer
 -- method: function(itemName) callback which is executed when an item has been selected
@@ -37,25 +39,29 @@ itemSelection_open = function(player,method)
 	end
 
 	local frame = player.gui.left.add{type="frame",name="itemSelection",direction="vertical",caption={"item-selection"}}
+	frame.add{type="table",name="main",colspan=1}
+	frame = frame.main
 
 	if #playerData.recent > 0 then
-		frame.add{type="table",name="recent",colspan=1+#playerData.recent,style="table-no-border"}
+		frame.add{type="table",name="recent",colspan=2}
 		frame.recent.add{type="label",name="title",caption={"",{"recent"},":"}}
+		frame.recent.add{type="table",name="items",colspan=#playerData.recent,style="table-no-border"}
 		for _,itemName in pairs(playerData.recent) do
-			frame.recent.add(checkBoxForItem(itemName))
+			frame.recent.items.add(checkBoxForItem(itemName))
 		end
 	end
-
+	
 	frame.add{type="table",name="search",colspan=2}
 	frame.search.add{type="label",name="title",caption={"",{"search"},":"}}
+	frame.search.add{type="textfield",name="field"}
 
-	frame.add{type="table",name="items",colspan=40,style="table-no-border"}
+	frame.add{type="table",name="items",colspan=mainMaxEntries,style="table-no-border"}
 
 	local index = 1
 	for name,prototype in pairs(game.item_prototypes) do
 		frame.items.add(checkBoxForItem(name))
 		index = index + 1
-		if index > 240 then break end
+		if index > mainMaxRows*mainMaxEntries then break end
 	end
 
 	-- Store reference for callback

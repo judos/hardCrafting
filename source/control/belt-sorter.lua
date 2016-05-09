@@ -107,8 +107,6 @@ function beltSorterSetSlotFilter(entity,nameArr,itemName)
 			end
 		end
 	end
-	info(data.guiFilter)
-	warn(data.filter)
 end
 
 ---------------------------------------------------
