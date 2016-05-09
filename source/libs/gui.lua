@@ -7,16 +7,18 @@ gui = {} -- [$entityName] = { open = $function(player,entity), close = $function
 
 
 script.on_event(defines.events.on_gui_click, function(event)
+	
 	if event.element.style and event.element.style.name then
 		if event.element.style.name:starts("item-") then
 			event.element.state = true
 		end
 	end
 	local guiEvent = split(event.element.name,".")
+	warn(guiEvent)
 	local eventIsForMod = table.remove(guiEvent,1)
 	local player = game.players[event.player_index]
 	if eventIsForMod == "itemSelection" then
-		itemSelection_gui_click(guiEvent,player)
+		itemSelection_gui_event(guiEvent,player)
 	elseif eventIsForMod == modName then
 		local entityName = global.gui.playerData[player.name].openGui
 		if entityName and gui[entityName] then

@@ -19,10 +19,50 @@ end
 local function checkBoxForItem(itemName)
 	return {
 		type = "checkbox",
-		name = "itemSelection."..itemName,
+		name = "itemSelection.item."..itemName,
 		style = "item-"..itemName,
 		state = true   -- this is important, it makes our graphic, which is the "check mark", display
 	}
+end
+
+local function selectItem(playerData,player,itemName)
+	-- add to recent items
+	table.insert(playerData.recent,1,itemName)
+	-- prevent duplicates
+	for i=#playerData.recent,2,-1 do
+		if playerData.recent[i] == itemName then playerData.recent[i] = nil end
+	end
+	-- remove oldest items from history
+	if #playerData.recent > maxRecentEntries then
+		table.remove(playerData.recent,maxRecentEntries)
+	end
+	
+	if global.itemSelection[player.name].callback then
+		global.itemSelection[player.name].callback(itemName)
+		global.itemSelection[player.name].callback = nil
+	end
+	itemSelection_close(player)
+end
+
+local function rebuildItemList(player)
+	local frame = player.gui.left.itemSelection.main
+	if frame.items then
+		frame.items.destroy()
+	end
+	
+	local filter = frame.search["itemSelection.field"].text
+	info("field is: "..serpent.block(frame.search["itemSelection.field"].text))
+	info("field is: "..serpent.block(frame.search["itemSelection.field"].name))
+	info("field is: "..serpent.block(frame.search["itemSelection.field"].caption))
+	frame.add{type="table",name="items",colspan=mainMaxEntries,style="table-no-border"}
+	local index = 1
+	for name,prototype in pairs(game.item_prototypes) do
+		if filter == "" or string.find(name,filter) then
+			frame.items.add(checkBoxForItem(name))
+			index = index + 1
+			if index > mainMaxRows*mainMaxEntries then break end
+		end
+	end
 end
 
 ------------------------------------
@@ -53,39 +93,24 @@ itemSelection_open = function(player,method)
 	
 	frame.add{type="table",name="search",colspan=2}
 	frame.search.add{type="label",name="title",caption={"",{"search"},":"}}
-	frame.search.add{type="textfield",name="field"}
+	frame.search.add{type="textfield",name="itemSelection.field"}
 
-	frame.add{type="table",name="items",colspan=mainMaxEntries,style="table-no-border"}
-
-	local index = 1
-	for name,prototype in pairs(game.item_prototypes) do
-		frame.items.add(checkBoxForItem(name))
-		index = index + 1
-		if index > mainMaxRows*mainMaxEntries then break end
-	end
-
+	rebuildItemList(player)
 	-- Store reference for callback
 
 	global.itemSelection[player.name].callback = method
 end
 
-itemSelection_gui_click = function(guiEvent,player)
-	local itemName = guiEvent[1]
-	
+itemSelection_gui_event = function(guiEvent,player)
+	local fieldName = guiEvent[1]
 	local playerData = global.itemSelection[player.name]
-	table.insert(playerData.recent,1,itemName)
-	for i=#playerData.recent,2,-1 do
-		if playerData.recent[i] == itemName then playerData.recent[i] = nil end
+	warn(guiEvent)
+	if fieldName == "field" then
+		rebuildItemList(player)
+	elseif fieldName == "item" then
+		local itemName = guiEvent[2]
+		selectItem(playerData,player,itemName)
 	end
-	if #playerData.recent > maxRecentEntries then
-		table.remove(playerData.recent,maxRecentEntries)
-	end
-	
-	if global.itemSelection[player.name].callback then
-		global.itemSelection[player.name].callback(itemName)
-		global.itemSelection[player.name].callback = nil
-	end
-	itemSelection_close(player)
 end
 
 itemSelection_close = function(player)
