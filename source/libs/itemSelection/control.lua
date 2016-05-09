@@ -1,6 +1,6 @@
-local maxRecentEntries = 20
 local mainMaxRows = 5
 local mainMaxEntries = 30
+local maxRecentEntries = 20
 
 --------------------------------------------------
 -- API
@@ -44,7 +44,7 @@ local function selectItem(playerData,player,itemName)
 	table.insert(playerData.recent,1,itemName)
 	-- prevent duplicates
 	for i=#playerData.recent,2,-1 do
-		if playerData.recent[i] == itemName then playerData.recent[i] = nil end
+		if playerData.recent[i] == itemName then table.remove(playerData.recent,i) end
 	end
 	-- remove oldest items from history
 	if #playerData.recent > maxRecentEntries then
@@ -104,6 +104,7 @@ itemSelection_open = function(player,method)
 	frame = frame.main
 
 	if #playerData.recent > 0 then
+		warn(playerData.recent)
 		frame.add{type="table",name="recent",colspan=2}
 		frame.recent.add{type="label",name="title",caption={"",{"recent"},":"}}
 		frame.recent.add{type="table",name="items",colspan=#playerData.recent,style="table-no-border"}
@@ -128,7 +129,6 @@ itemSelection_gui_event = function(guiEvent,player)
 	local fieldName = guiEvent[1]
 	local playerData = global.itemSelection[player.name]
 	if playerData.callback == nil then return end 
-	warn(guiEvent)
 	if fieldName == "field" then
 		rebuildItemList(player)
 	elseif fieldName == "updateFilter" then

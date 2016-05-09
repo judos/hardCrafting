@@ -31,7 +31,6 @@ gui = {} -- [$entityName] = { open = $function(player,entity),
 
 local function handleEvent(uiComponentIdentifier,player)
 	local guiEvent = split(uiComponentIdentifier,".")
-	warn(guiEvent)
 	local eventIsForMod = table.remove(guiEvent,1)
 	if eventIsForMod == "itemSelection" then
 		itemSelection_gui_event(guiEvent,player)

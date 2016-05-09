@@ -52,7 +52,7 @@ gui["belt-sorter"].open = function(player,entity)
 	for i,label in pairs(labels) do
 		frame.table.add{type="label",name="title"..i,caption={"",{label},":"}}
 		for j=1,4 do
-			frame.table.add{type="checkbox",name="hc."..i.."."..j,state=true,style="item-empty"}
+			frame.table.add{type="checkbox",name="hc.slot."..i.."."..j,state=true,style="item-empty"}
 		end
 	end
 	beltSorterRefreshGui(player,entity)
@@ -64,15 +64,22 @@ gui["belt-sorter"].close = function(player)
 end
 
 gui["belt-sorter"].click = function(nameArr,player,entity)
-	local box = player.gui.left.beltSorterGui.table["hc."..nameArr[1].."."..nameArr[2]]
-	if box.style.name == "item-empty" then
-		itemSelection_open(player,function(itemName)
-			box.style="item-"..itemName
-			beltSorterSetSlotFilter(entity,nameArr,itemName)
-		end)
-	else
-		box.style = "item-empty"
-		beltSorterSetSlotFilter(entity,nameArr,nil)
+	local fieldName = table.remove(nameArr,1)
+	if fieldName == "slot" then
+		local box = player.gui.left.beltSorterGui.table["hc.slot."..nameArr[1].."."..nameArr[2]]
+		if box.style.name == "item-empty" then
+			itemSelection_open(player,function(itemName)
+				box.style="item-"..itemName
+				beltSorterSetSlotFilter(entity,nameArr,itemName)
+			end)
+		else
+			box.style = "item-empty"
+			beltSorterSetSlotFilter(entity,nameArr,nil)
+		end
+	elseif fieldName == "copy" then
+		
+	elseif fieldName == "paste" then
+	
 	end
 end
 
@@ -82,7 +89,7 @@ function beltSorterRefreshGui(player,entity)
 	for row = 1,4 do
 		for slot = 1,4 do
 			local itemName = data.guiFilter[row.."."..slot]
-			local element = player.gui.left.beltSorterGui.table["hc."..row.."."..slot]
+			local element = player.gui.left.beltSorterGui.table["hc.slot."..row.."."..slot]
 			if itemName then
 				element.style = "item-"..itemName
 			else
