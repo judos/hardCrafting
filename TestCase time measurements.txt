@@ -5,11 +5,13 @@ Description
       belt-sorters are not connected
       belt-sorter have no filter
       30 UPS (old state)
+      60 UPS (new)
 
 - T2: 176 belt-sorters (all of them distributing items north 1 lane)
       belt-sorters have 3 connected belts, 1 input, 1 output, 1 idle
       belt-sorters have 1 item filter to put items north
       40 UPS (old state)
+      60 UPS (new)
 
 -------------------------------------------------------
 OLD VERSION 0.3.10
@@ -143,3 +145,14 @@ SECOND STEP: target improvements
 2. input/output search takes also 40% time (especially for belt sorters connected with several belts
    a) improve how it's done
    b*) only recalculate every 5s or when a belt is invalid (don't measure)
+
+-------------------------------------------------------
+THIRD STEP: improvements
+-------------------------------------------------------
+
+1. new custom gui developed for belt-sorter.
+   building the filter for the belt-sorter is done when gui is accessed, afterwards it's never needed
+
+2. rotate the calculation, only one side per update
+   T1: 25ms -> 9ms
+   T2: 35ms -> ~9ms (avg)

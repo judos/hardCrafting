@@ -23,6 +23,7 @@ local rowIndexToDirection = {
 --   lamp = LuaEntity(fake lamp)
 --   filter[$itemName] = { $row1, $row2, ... }
 --   guiFilter[$row.."."..$slot] = $itemName
+--   nextSearchDir = $index (which direction to search next)
 -- }
 
 ---------------------------------------------------
@@ -171,21 +172,30 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	local y = beltSorter.position.y
 	--info("updating belt: "..x..","..y)
 	-- search for input / output belts
-	data.input = {} -- BeltAccess / SplitterAccess objects
-	data.output = {} -- [side]=>$entity  BeltAccess / SplitterAccess objects
-	--info("searching for belts...")
-	for rowIndex,searchPos in pairs(searchPriority) do
-		local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
-		for _,searchType in pairs(BeltFactory.supportedTypes) do
-			local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
-			for _,entity in pairs(candidates) do
-				local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
-				if access.isInput() then
-					table.insert(data.input,access)
-				else
-					data.output[rowIndex] = access
-				end
+	local rowIndex = data.nextSearchDir or 1
+	
+	if data.input == nil then
+		data.input = {}
+		data.output = {}
+	end
+	data.input[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
+	data.output[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
+	
+	local searchPos = searchPriority[rowIndex]
+	local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
+	for _,searchType in pairs(BeltFactory.supportedTypes) do
+		local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
+		for _,entity in pairs(candidates) do
+			local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
+			if access.isInput() then
+				data.input[rowIndex] = access
+			else
+				data.output[rowIndex] = access
 			end
 		end
 	end
+	
+	rowIndex = rowIndex + 1
+	if rowIndex == 5 then rowIndex = 1 end
+	data.nextSearchDir = rowIndex
 end

@@ -103,11 +103,6 @@ function dummyUpdate()
 	log("input/output search done")
 	for entityId,entity in pairs(global.schedule[game.tick]) do
 		local data = global.entityData[entityId]
-		beltSorterBuiltFilter(entity,data)
-	end
-	log("filter build done")
-	for entityId,entity in pairs(global.schedule[game.tick]) do
-		local data = global.entityData[entityId]
 		beltSorterDistributeItems(entity,data)
 	end
 	log("item distribute done")

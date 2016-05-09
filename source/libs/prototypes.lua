@@ -1,4 +1,4 @@
-requires "constants"
+require "constants"
 
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
