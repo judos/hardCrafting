@@ -57,7 +57,8 @@ overwriteContent(beltSorterLamp, {
 	collision_box = {{0, 0}, {0, 0}},
 	selection_box = {{0, 0}, {0, 0}},
 	energy_usage_per_tick = nil,
-	energy_source = nil
+	energy_source = nil,
+	flags = {"placeable-off-grid", "not-repairable", "not-on-map"}
 })
 local picture = {
 	filename="__hardCrafting__/graphics/entity/empty.png",

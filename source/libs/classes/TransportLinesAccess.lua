@@ -1,3 +1,5 @@
+require "libs.inventory"
+
 function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 	local self = {
 		line1 = line1,

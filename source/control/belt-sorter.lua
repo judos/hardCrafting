@@ -33,7 +33,7 @@ local rowIndexToDirection = {
 beltSorter.build = function(entity)
 	scheduleAdd(entity, (game or {tick=TICK_ASAP}).tick)
 
-	local pos = {x = entity.position.x-0.25, y=entity.position.y}
+	local pos = {x = entity.position.x, y=entity.position.y}
 	local lamp = entity.surface.create_entity({name="belt-sorter-lamp",position=pos,force=entity.force})
 	lamp.operable = false
 	lamp.minable = false
@@ -163,7 +163,6 @@ function beltSorterDistributeItems(beltSorter,data)
 			end
 		end
 	end
-	
 end
 
 function beltSorterSearchInputOutput(beltSorter,data)
