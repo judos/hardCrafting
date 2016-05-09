@@ -51,8 +51,6 @@ function entities_tick()
 		return
 	end
 	
-	--dummyUpdate()
-	-- --[[
 	-- Execute all scheduled events
 	for entityId,entity in pairs(global.schedule[game.tick]) do
 		if entity and entity.valid then
@@ -90,31 +88,7 @@ function entities_tick()
 			global.entityData[entityId] = nil
 		end
 	end
-	-- ]]--
 	global.hardCrafting.schedule[game.tick] = nil
-end
-
-function dummyUpdate()
-	log("starting update")
-	for entityId,entity in pairs(global.schedule[game.tick]) do
-		local data = global.entityData[entityId]
-		beltSorterSearchInputOutput(entity,data)
-	end
-	log("input/output search done")
-	for entityId,entity in pairs(global.schedule[game.tick]) do
-		local data = global.entityData[entityId]
-		beltSorterDistributeItems(entity,data)
-	end
-	log("item distribute done")
-	for _,entity in pairs(global.schedule[game.tick]) do
-		scheduleAdd(entity, game.tick + 8)
-	end
-	log("scheduling done")
-	local count = 0
-	for _,_ in pairs(global.schedule[game.tick]) do
-		count = count +1
-	end
-	log("done with "..tostring(count).." belt-sorter")
 end
 
 ---------------------------------------------------
