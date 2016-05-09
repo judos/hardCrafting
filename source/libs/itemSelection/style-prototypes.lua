@@ -44,7 +44,7 @@ local function addStyle(name,icon,iconSize)
 			align = "center",
 			width = iconSize,
 			height = iconSize,
-			shift = { 1, 0 },
+			shift = { 2, 0 },
 		}
 	}
 end
