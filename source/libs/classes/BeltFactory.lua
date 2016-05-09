@@ -1,5 +1,5 @@
-require "control.BeltAccess"
-require "control.SplitterAccess"
+require "libs.classes.BeltAccess"
+require "libs.classes.SplitterAccess"
 
 BeltFactory={}
 BeltFactory.supportedTypes = {"transport-belt","splitter","transport-belt-to-ground"}

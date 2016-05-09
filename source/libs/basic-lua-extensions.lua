@@ -28,13 +28,17 @@ function round(num, idp)
   return math.floor(num * mult + 0.5) / mult
 end
 
-function split(s, delimiter)
-  if not s then return {} end
-  result = {}
-	for match in (s..delimiter):gmatch("(.-)"..delimiter) do
-    table.insert(result, match)
+-- See: http://lua-users.org/wiki/MakingLuaLikePhp
+function split(str,divider) -- credit: http://richard.warburton.it
+  if divider=='' then return false end
+  local pos,arr = 0,{}
+  -- for each divider found
+  for st,sp in function() return str:find(divider,pos,true) end do
+    table.insert(arr,str:sub(pos,st-1)) -- Attach chars left of current divider
+    pos = sp + 1 -- Jump past current divider
   end
-  return result
+  table.insert(arr,str:sub(pos)) -- Attach chars right of last divider
+  return arr
 end
 
 function deepcopy(orig)

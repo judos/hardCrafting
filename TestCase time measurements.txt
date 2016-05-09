@@ -138,7 +138,7 @@ T2 working taken apart:		~percentage
 SECOND STEP: target improvements
 -------------------------------------------------------
 1. building up the belt-sorter filter takes most time
-   a) improve how it's done
+   a) improve the code: T1:140ms->75ms, T2:50ms->35ms
    b*) calculate filter only every 2-5s ? (Don't measure this since it's just spreading the work)
 2. input/output search takes also 40% time (especially for belt sorters connected with several belts
    a) improve how it's done
