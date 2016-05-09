@@ -1,9 +1,23 @@
 local maxRecentEntries = 20
 local mainMaxRows = 5
 local mainMaxEntries = 30
+
+--------------------------------------------------
+-- API
+--------------------------------------------------
+
 -- call this to open the item selection gui
 -- player: LuaPlayer
 -- method: function(itemName) callback which is executed when an item has been selected
+-- itemSelection_open(player, method)
+
+--------------------------------------------------
+-- Global data
+--------------------------------------------------
+
+-- This helper file uses the following global data variables:
+-- global.itemSelection[$playerName].recent= { $itemName1, $itemName2, ... }
+
 
 ------------------------------------
 -- Helper methods
@@ -69,6 +83,11 @@ end
 -- Events
 ------------------------------------
 
+itemSelection_close = function(player)
+	if player.gui.left.itemSelection ~= nil then
+		player.gui.left.itemSelection.destroy()
+	end
+end
 
 itemSelection_open = function(player,method)
 	initGuiForPlayerName(player.name)
@@ -110,11 +129,8 @@ itemSelection_gui_event = function(guiEvent,player)
 	elseif fieldName == "item" then
 		local itemName = guiEvent[2]
 		selectItem(playerData,player,itemName)
+	else
+		warn("Unknown fieldName for itemSelection_gui_event: "..tostring(fieldName))
 	end
 end
 
-itemSelection_close = function(player)
-	if player.gui.left.itemSelection ~= nil then
-		player.gui.left.itemSelection.destroy()
-	end
-end

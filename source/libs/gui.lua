@@ -1,22 +1,38 @@
+-- Constants:
+local guiUpdateEveryTicks = 15
+
+--------------------------------------------------
 -- API
+--------------------------------------------------
+
+-- Requried:
 -- modName - prefix which your ui components have. e.g. "hc.belt-sorter.1.1" (modName = "hc")
 
+-- Usage:
 -- each known gui defines these functions:
-gui = {} -- [$entityName] = { open = $function(player,entity), close = $function(player),
--- click = $function(nameArr, player, entity) }
+gui = {} -- [$entityName] = { open = $function(player,entity),
+--                            close = $function(player),
+--                            click = $function(nameArr, player, entity) }
 
+-- gui_scheduleEvent($uiComponentIdentifier,$player)
 
-script.on_event(defines.events.on_gui_click, function(event)
-	
-	if event.element.style and event.element.style.name then
-		if event.element.style.name:starts("item-") then
-			event.element.state = true
-		end
-	end
-	local guiEvent = split(event.element.name,".")
+--------------------------------------------------
+-- Global data
+--------------------------------------------------
+
+-- This helper file uses the following global data variables:
+-- global.gui.playerData[$playerName].openGui = $(name of opened entity)
+--                                   .openEntity = $(reference of LuaEntity)
+--            events[$tick] = { {$uiComponentIdentifier, $player}, ... }
+
+--------------------------------------------------
+-- Implementation
+--------------------------------------------------
+
+local function handleEvent(uiComponentIdentifier,player)
+	local guiEvent = split(uiComponentIdentifier,".")
 	warn(guiEvent)
 	local eventIsForMod = table.remove(guiEvent,1)
-	local player = game.players[event.player_index]
 	if eventIsForMod == "itemSelection" then
 		itemSelection_gui_event(guiEvent,player)
 	elseif eventIsForMod == modName then
@@ -28,15 +44,32 @@ script.on_event(defines.events.on_gui_click, function(event)
 			end
 		end
 	end
-end)
+end
+
+function gui_scheduleEvent(uiComponentIdentifier,player)
+	table.add({uiComponentIdentifier=uiComponentIdentifier,player=player})
+end
 
 
 function gui_init()
-	if global.gui == nil then global.gui = {playerData = {}} end
+	if global.gui == nil then 
+		global.gui = {
+			playerData = {},
+			events = {}
+		}
+	end
 end
 
 function gui_tick()
-	if game.tick % 10 ~= 0 then return end
+	if game.tick % guiUpdateEveryTicks ~= 0 then return end
+	if global.gui.events ~= nil then
+		if #global.gui.events > 0 then
+			for _,event in pairs(global.gui.events) do
+				handleEvent(event.uiComponentIdentifier, event.player)
+			end
+		end
+		global.gui.event = {}
+	end
 	for _,player in pairs(game.players) do
 		if player.connected then
 			local openEntity = player.opened
@@ -63,3 +96,19 @@ function gui_tick()
 		end
 	end
 end
+
+--------------------------------------------------
+-- Event registration
+--------------------------------------------------
+
+script.on_event(defines.events.on_gui_click, function(event)
+
+		if event.element.style and event.element.style.name then
+			if event.element.style.name:starts("item-") then
+				event.element.state = true
+			end
+		end
+		local player = game.players[event.player_index]
+		local uiComponentIdentifier = event.element.name
+		handleEvent(uiComponentIdentifier,player)
+end)
