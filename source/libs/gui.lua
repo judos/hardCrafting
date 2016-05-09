@@ -47,7 +47,8 @@ local function handleEvent(uiComponentIdentifier,player)
 end
 
 function gui_scheduleEvent(uiComponentIdentifier,player)
-	table.add({uiComponentIdentifier=uiComponentIdentifier,player=player})
+	global.gui.events = {}
+	table.insert(global.gui.events,{uiComponentIdentifier=uiComponentIdentifier,player=player})
 end
 
 

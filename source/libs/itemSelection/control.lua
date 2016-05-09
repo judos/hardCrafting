@@ -17,7 +17,7 @@ local mainMaxEntries = 30
 
 -- This helper file uses the following global data variables:
 -- global.itemSelection[$playerName].recent= { $itemName1, $itemName2, ... }
-
+--        .callback = function($itemName)
 
 ------------------------------------
 -- Helper methods
@@ -87,6 +87,8 @@ itemSelection_close = function(player)
 	if player.gui.left.itemSelection ~= nil then
 		player.gui.left.itemSelection.destroy()
 	end
+	local playerData = global.itemSelection[player.name]
+	playerData.callback = nil
 end
 
 itemSelection_open = function(player,method)
@@ -118,14 +120,25 @@ itemSelection_open = function(player,method)
 	-- Store reference for callback
 
 	global.itemSelection[player.name].callback = method
+	global.itemSelection[player.name].filter = ""
+	gui_scheduleEvent("itemSelection.updateFilter",player)
 end
 
 itemSelection_gui_event = function(guiEvent,player)
 	local fieldName = guiEvent[1]
 	local playerData = global.itemSelection[player.name]
+	if playerData.callback == nil then return end 
 	warn(guiEvent)
 	if fieldName == "field" then
 		rebuildItemList(player)
+	elseif fieldName == "updateFilter" then
+		local frame = player.gui.left.itemSelection.main
+		local filter = frame.search["itemSelection.field"].text
+		if filter ~= playerData.filter then
+			playerData.filter = filter
+			rebuildItemList(player)
+		end
+		gui_scheduleEvent("itemSelection.updateFilter",player)
 	elseif fieldName == "item" then
 		local itemName = guiEvent[2]
 		selectItem(playerData,player,itemName)
