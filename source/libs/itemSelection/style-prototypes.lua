@@ -4,41 +4,47 @@ local function addStyle(name,icon,iconSize)
 	data.raw["gui-style"].default[name] = {
 		type = "checkbox_style",
 		parent = "checkbox_style",
-		width = 34,
-		height = 34,
+		width = 36,
+		height = 36,
+
 		default_background = {
 			filename = "__core__/graphics/gui.png",
 			width = 36,
 			height = 36,
-			shift = { 0, -10 },
+			scale = 2.12,
+			shift = { 10, 0 },
 			x = 111
 		},
 		hovered_background = {
 			filename = "__core__/graphics/gui.png",
 			width = 36,
 			height = 36,
-			shift = { 0, -10 },
+			scale = 2.12,
+			shift = { 10, 0 },
 			x = 148
 		},
 		clicked_background = {
 			filename = "__core__/graphics/gui.png",
 			width = 36,
 			height = 36,
-			shift = { 0, -10 },
+			scale = 2.12,
+			shift = { 10, 0 },
 			x = 184
 		},
 		disabled_background = {
 			filename = "__core__/graphics/gui.png",
 			width = 36,
 			height = 36,
-			shift = { 0, -10 },
+			scale = 2.12,
+			shift = { 10, 0 },
 			x = 111
 		},
 		checked = {
 			filename = icon,
+			align = "center",
 			width = iconSize,
 			height = iconSize,
-			shift = { 0, -10 }
+			shift = { 1, 0 },
 		}
 	}
 end
