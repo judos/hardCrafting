@@ -56,6 +56,7 @@ overwriteContent(beltSorterLamp, {
 	order = "zzz",
 	collision_box = {{0, 0}, {0, 0}},
 	selection_box = {{0, 0}, {0, 0}},
+	energy_usage_per_tick = "-1KW",
 	energy_source = {
 		type = "electric",
 		usage_priority = "secondary-output"

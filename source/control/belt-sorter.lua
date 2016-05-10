@@ -89,9 +89,9 @@ gui["belt-sorter-v2"].click = function(nameArr,player,entity)
 			beltSorterSetSlotFilter(entity,nameArr,nil)
 		end
 	elseif fieldName == "copy" then
-		
+
 	elseif fieldName == "paste" then
-	
+
 	end
 end
 
@@ -108,7 +108,7 @@ function beltSorterRefreshGui(player,entity)
 				element.style = "item-empty"
 			end
 		end
-	end 
+	end
 end
 
 function beltSorterSetSlotFilter(entity,nameArr,itemName)
@@ -136,15 +136,32 @@ end
 ---------------------------------------------------
 
 beltSorter.tick = function(beltSorter,data)
+	if data.condition == nil or data.nextConditionUpdate <= game.tick then
+		beltSorterUpdateCircuitCondition(beltSorter,data)
+		if data.condition == false then
+			return 60,nil
+		end
+	end
+	
 	local energyPercentage = math.min(beltSorter.energy,800) / 800
 	local nextUpdate = math.floor(8 / energyPercentage)
 	if energyPercentage < 0.1 then
-		nextUpdate = 80 
+		nextUpdate = 80
 	else
 		beltSorterSearchInputOutput(beltSorter,data)
 		beltSorterDistributeItems(beltSorter,data)
 	end
 	return nextUpdate,nil
+end
+
+function beltSorterUpdateCircuitCondition(beltSorter,data)
+	local circuitCondition = beltSorter.get_circuit_condition(defines.circuitconditionindex.lamp)
+	if circuitCondition.condition.first_signal.name ~= nil then
+		data.condition = circuitCondition.fulfilled
+	else
+		data.condition = true
+	end
+	data.nextConditionUpdate = game.tick + 60
 end
 
 function beltSorterDistributeItems(beltSorter,data)
@@ -155,7 +172,7 @@ function beltSorterDistributeItems(beltSorter,data)
 			data.output = {}
 		elseif not inputAccess:isValid() then
 			data.input[inputSide] = nil
-		else 
+		else
 			for itemName,_ in pairs(inputAccess:get_contents()) do
 				local sideList = data.filter[itemName]
 				if sideList then
@@ -192,7 +209,7 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	--info("updating belt: "..x..","..y)
 	-- search for input / output belts
 	local rowIndex = data.nextSearchDir or 1
-	
+
 	if data.input == nil then
 		data.input = {}
 		data.output = {}
