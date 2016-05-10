@@ -3,7 +3,9 @@ require "libs.inventory"
 function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 	local self = {
 		line1 = line1,
-		line2 = line2	
+		line2 = line2,
+		accessTarget = accessTarget,
+		accessFrom = accessFrom
 	}
 	
 	function self.get_contents()
@@ -33,8 +35,8 @@ function newTransportLinesAccess (line1,line2,accessTarget,accessFrom)
 
 	-- returns the direction on which side the belt is located relative to x,y, assuming they are neighbors
 	function self.getSide()
-		local dx = accessTarget.x - accessFrom.x
-		local dy = accessTarget.y - accessFrom.y
+		local dx = self.accessTarget.x - self.accessFrom.x
+		local dy = self.accessTarget.y - self.accessFrom.y
 		if dx==-1 then
 			return defines.direction.west
 		elseif dx==1 then

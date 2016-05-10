@@ -6,24 +6,25 @@ function newSplitterAccess (splitterEntity,accessTarget,accessFrom)
 		nil,
 		accessTarget,
 		accessFrom)
+	self.splitterEntity = splitterEntity
 
 	function self.isInput()
-		local direction = splitterEntity.direction
+		local direction = self.splitterEntity.direction
 		local side = self.getSide()
 		return side == (direction + 4)%8 -- must be 180�
 	end
 	
 	function isLeftConnected() -- access is going into left part seen from accessFrom perspective
 		local direction = self.getSide()
-		local pos = splitterEntity.position
+		local pos = self.splitterEntity.position
 		if direction == defines.direction.north then
-			return pos.x > accessTarget.x
+			return pos.x > self.accessTarget.x
 		elseif direction == defines.direction.east then
-			return pos.y > accessTarget.y
+			return pos.y > self.accessTarget.y
 		elseif direction == defines.direction.south then
-			return pos.x < accessTarget.x
+			return pos.x < self.accessTarget.x
 		elseif direction == defines.direction.west then
-			return pos.y < accessTarget.y
+			return pos.y < self.accessTarget.y
 		end
 	end
 	
@@ -45,8 +46,8 @@ function newSplitterAccess (splitterEntity,accessTarget,accessFrom)
 	
 	-- set correct transport lines
 	local lineIndexes = getTransportLineIndexes()
-	self.line1 = splitterEntity.get_transport_line(lineIndexes[1])
-	self.line2 = splitterEntity.get_transport_line(lineIndexes[2])
+	self.line1 = self.splitterEntity.get_transport_line(lineIndexes[1])
+	self.line2 = self.splitterEntity.get_transport_line(lineIndexes[2])
 	
 	return self
 end

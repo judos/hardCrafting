@@ -6,9 +6,10 @@ function newBeltAccess (beltEntity,accessFromPosition)
 		beltEntity.get_transport_line(2),
 		beltEntity.position,
 		accessFromPosition)
+	self.beltEntity = beltEntity
 
 	function self.isInput()
-		local direction = beltEntity.direction
+		local direction = self.beltEntity.direction
 		local side = self.getSide()
 		return side == (direction + 4)%8 -- must be 180°
 	end
