@@ -136,9 +136,15 @@ end
 ---------------------------------------------------
 
 beltSorter.tick = function(beltSorter,data)
-	beltSorterSearchInputOutput(beltSorter,data)
-	beltSorterDistributeItems(beltSorter,data)
-	return 8,nil
+	local energyPercentage = math.min(beltSorter.energy,800) / 800
+	local nextUpdate = math.floor(8 / energyPercentage)
+	if energyPercentage < 0.1 then
+		nextUpdate = 80 
+	else
+		beltSorterSearchInputOutput(beltSorter,data)
+		beltSorterDistributeItems(beltSorter,data)
+	end
+	return nextUpdate,nil
 end
 
 function beltSorterDistributeItems(beltSorter,data)
@@ -156,7 +162,9 @@ function beltSorterDistributeItems(beltSorter,data)
 					for _,side in pairs(sideList) do
 						local outputAccess = data.output[side]
 						if outputAccess then
-							if not outputAccess:isValid() then
+							if getmetatable(outputAccess) == nil then
+								data.output[side] = nil
+							elseif not outputAccess:isValid() then
 								data.output[side] = nil
 							else
 								if outputAccess:can_insert_at_back() then
