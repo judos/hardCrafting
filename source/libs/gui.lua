@@ -42,6 +42,9 @@ local function handleEvent(uiComponentIdentifier,player)
 				gui[entityName].click(guiEvent,player,entity)
 			end
 		end
+	else
+		-- gui event might be from other mods
+		info("unknown gui event occured: "..serpent.block(uiComponentIdentifier))
 	end
 end
 
@@ -52,11 +55,28 @@ end
 
 
 function gui_init()
-	if global.gui == nil then 
+	if global.gui == nil then
 		global.gui = {
 			playerData = {},
 			events = {}
 		}
+	end
+end
+
+local function playerCloseGui(player,playerData,openGui)
+	if gui[openGui] ~= nil and gui[openGui].close ~= nil then
+		gui[openGui].close(player)
+	end
+	playerData.openGui = nil
+	playerData.openEntity = nil
+end
+
+local function playerOpenGui(player,playerData,openEntity)
+	local openGui = openEntity.name
+	playerData.openGui = openGui
+	playerData.openEntity = openEntity
+	if gui[openGui] ~= nil and gui[openGui].open ~= nil then
+		gui[openGui].open(player,openEntity)
 	end
 end
 
@@ -77,21 +97,11 @@ function gui_tick()
 			if global.gui.playerData[playerName] == nil then global.gui.playerData[playerName] = {} end
 			local playerData = global.gui.playerData[playerName]
 			local openGui = playerData.openGui
-			if openEntity == nil then
-				if openGui ~= nil then
-					if gui[openGui] ~= nil and gui[openGui].close ~= nil then
-						gui[openGui].close(player)
-					end
-					playerData.openGui = nil
-					playerData.openEntity = nil
-				end
-			elseif openGui == nil then
-				openGui = openEntity.name
-				playerData.openGui = openGui
-				playerData.openEntity = openEntity
-				if gui[openGui] ~= nil and gui[openGui].open ~= nil then
-					gui[openGui].open(player,openEntity)
-				end
+			if openGui ~= nil and playerData.openEntity ~= openEntity then
+				playerCloseGui(player,playerData,openGui)
+			end
+			if openGui == nil and openEntity ~= nil then
+				playerOpenGui(player,playerData,openEntity)
 			end
 		end
 	end
