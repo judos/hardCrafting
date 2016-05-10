@@ -36,9 +36,9 @@ incinerator.module_specification.module_slots = 1
 data:extend({ incinerator })
 
 -- technology
-local prerequisites = {}
+local prerequisites = { "advanced-material-processing-2"}
 if data.raw["technology"]["incinerator"] ~= nil then
-	prerequisites = {"incinerator"}
+	table.insert(prerequisites, "incinerator")
 end
 
 data:extend({

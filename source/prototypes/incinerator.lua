@@ -41,7 +41,7 @@ data:extend({
     name = "incinerator",
     icon = "__hardCrafting__/graphics/technology/incinerator.png",
     icon_size = 128,
-    prerequisites = {},
+    prerequisites = { "advanced-material-processing" },
     effects = {
       {
         type = "unlock-recipe",

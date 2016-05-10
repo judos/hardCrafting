@@ -53,7 +53,7 @@ data:extend({
     type = "technology",
     name = "pulverizer",
     icon = "__hardCrafting__/graphics/icons/pulverizer.png",
-    prerequisites = {"crusher", "steel-processing", "advanced-material-processing", },
+    prerequisites = {"crusher", "advanced-material-processing" },
     effects = {
       {
         type = "unlock-recipe",
