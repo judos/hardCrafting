@@ -1,4 +1,5 @@
 require("prototypes.item-group-production")
+require "prototypes.crusher-old"
 
 data:extend({
   {
@@ -8,7 +9,7 @@ data:extend({
     flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
     order = "f",
-    place_result = "crusher",
+    place_result = "crusher-v2",
 		enabled = false,
     stack_size = 50
   },
@@ -29,13 +30,14 @@ data:extend({
 
 -- Entity
 local crusher = deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
-crusher.name = "crusher"
+crusher.name = "crusher-v2"
 crusher.crafting_categories = {"crusher"}
 crusher.energy_usage = "80kW"
 crusher.source_inventory_size = 1
 crusher.result_inventory_size = 3
 crusher.crafting_speed = 1
 crusher.minable.result = "crusher"
+crusher.energy_source.emissions = 0.005
 
 crusher.icon =  "__hardCrafting__/graphics/icons/crusher.png"
 crusher.animation = deepcopy(data.raw["furnace"]["electric-furnace"].animation)

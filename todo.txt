@@ -1,4 +1,4 @@
-TODO:
+TODO v.0.4:
 
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
