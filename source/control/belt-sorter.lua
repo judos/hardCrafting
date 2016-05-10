@@ -142,21 +142,36 @@ beltSorter.tick = function(beltSorter,data)
 end
 
 function beltSorterDistributeItems(beltSorter,data)
+	info("distribute items")
 	-- Search for input (only loop if items available), mostly only 1 input
-	for _,inputAccess in pairs(data.input) do
-		for itemName,_ in pairs(inputAccess.get_contents()) do
-			local sideList = data.filter[itemName]
-			if sideList then
-				for _,side in pairs(sideList) do
-					local outputAccess = data.output[side]
-					if outputAccess then
-						local itemStack = {name=itemName,count=1}
-						local result = inputAccess.remove_item(itemStack)
-						if result>0 then
-							outputAccess.insert_at_back(itemStack)
-							outputAccess.can_insert_at_back()
-						else
-							break -- check other items
+	for inputSide,inputAccess in pairs(data.input) do
+		info(inputAccess)
+		info(getmetatable(inputAccess))
+		if not inputAccess:isValid() then
+			data.input[inputSide] = nil
+		else 
+			for itemName,_ in pairs(inputAccess:get_contents()) do
+				info("get_content")
+				local sideList = data.filter[itemName]
+				if sideList then
+					for _,side in pairs(sideList) do
+						local outputAccess = data.output[side]
+						if outputAccess then
+							if not outputAccess:isValid() then
+								data.output[side] = nil
+							else
+								if outputAccess:can_insert_at_back() then
+									info("can insert at back")
+									local itemStack = {name=itemName,count=1}
+									local result = inputAccess:remove_item(itemStack)
+									if result>0 then
+										info("try to insert")
+										outputAccess:insert_at_back(itemStack)
+									else
+										break -- check other items
+									end
+								end
+							end
 						end
 					end
 				end
@@ -179,21 +194,23 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	end
 	data.input[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
 	data.output[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
-	
+	info("start search")
 	local searchPos = searchPriority[rowIndex]
 	local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
 	for _,searchType in pairs(BeltFactory.supportedTypes) do
 		local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
 		for _,entity in pairs(candidates) do
 			local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
-			if access.isInput() then
+			info("get access for")
+			if access:isInput() then
 				data.input[rowIndex] = access
 			else
 				data.output[rowIndex] = access
 			end
+			info("stored")
 		end
 	end
-	
+	info("success search")
 	rowIndex = rowIndex + 1
 	if rowIndex == 5 then rowIndex = 1 end
 	data.nextSearchDir = rowIndex

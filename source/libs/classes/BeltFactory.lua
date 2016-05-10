@@ -6,11 +6,13 @@ BeltFactory.supportedTypes = {"transport-belt","splitter","transport-belt-to-gro
 
 BeltFactory.accessFor = function(entity,accessTarget,accessFrom)
 	if entity.type == "transport-belt" then
-		return newBeltAccess(entity,accessFrom)
+		return BeltAccess(entity,accessFrom)
 	elseif entity.type == "splitter" then
-		return newSplitterAccess(entity,accessTarget,accessFrom)
+		info(accessTarget)
+		local access = SplitterAccess(entity,accessTarget,accessFrom)
+		return access
 	elseif entity.type == "transport-belt-to-ground" then
-		return newBeltAccess(entity,accessFrom)
+		return BeltAccess(entity,accessFrom)
 	else
 		warn("Invalid entity type: "..entity.type.." to create an access object.")
 	end
