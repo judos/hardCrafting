@@ -8,9 +8,7 @@ BeltFactory.accessFor = function(entity,accessTarget,accessFrom)
 	if entity.type == "transport-belt" then
 		return BeltAccess(entity,accessFrom)
 	elseif entity.type == "splitter" then
-		info(accessTarget)
-		local access = SplitterAccess(entity,accessTarget,accessFrom)
-		return access
+		return SplitterAccess(entity,accessTarget,accessFrom)
 	elseif entity.type == "transport-belt-to-ground" then
 		return BeltAccess(entity,accessFrom)
 	else
