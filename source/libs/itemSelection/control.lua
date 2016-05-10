@@ -65,9 +65,6 @@ local function rebuildItemList(player)
 	end
 	
 	local filter = frame.search["itemSelection.field"].text
-	info("field is: "..serpent.block(frame.search["itemSelection.field"].text))
-	info("field is: "..serpent.block(frame.search["itemSelection.field"].name))
-	info("field is: "..serpent.block(frame.search["itemSelection.field"].caption))
 	frame.add{type="table",name="items",colspan=mainMaxEntries,style="table-no-border"}
 	local index = 1
 	for name,prototype in pairs(game.item_prototypes) do
@@ -105,7 +102,6 @@ itemSelection_open = function(player,method)
 	frame = frame.main
 
 	if #playerData.recent > 0 then
-		warn(playerData.recent)
 		frame.add{type="table",name="recent",colspan=2}
 		frame.recent.add{type="label",name="title",caption={"",{"recent"},":"}}
 		frame.recent.add{type="table",name="items",colspan=#playerData.recent,style="table-no-border"}

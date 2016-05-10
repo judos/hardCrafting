@@ -26,6 +26,13 @@ local rowIndexToDirection = {
 --   nextSearchDir = $index (which direction to search next)
 -- }
 
+--------------------------------------------------
+-- Global data
+--------------------------------------------------
+
+-- This helper file uses the following global data variables:
+-- global.gui.playerData[$playerName].beltSorterGuiCopy = $guiFilter
+
 ---------------------------------------------------
 -- build and remove
 ---------------------------------------------------
@@ -67,6 +74,9 @@ gui["belt-sorter-v2"].open = function(player,entity)
 			frame.table.add{type="checkbox",name="hc.slot."..i.."."..j,state=true,style="item-empty"}
 		end
 	end
+	frame.add{type="table",name="settings",colspan=2}
+	frame.settings.add{type="button",name="hc.copy",caption={"copy"}}
+	frame.settings.add{type="button",name="hc.paste",caption={"paste"}}
 	beltSorterRefreshGui(player,entity)
 end
 
@@ -89,9 +99,17 @@ gui["belt-sorter-v2"].click = function(nameArr,player,entity)
 			beltSorterSetSlotFilter(entity,nameArr,nil)
 		end
 	elseif fieldName == "copy" then
-
+		if global.gui.playerData[player.name] == nil then global.gui.playerData[player.name] = {} end
+		local data = global.entityData[idOfEntity(entity)]
+		global.gui.playerData[player.name].beltSorterGuiCopy = deepcopy(data.guiFilter)
 	elseif fieldName == "paste" then
-
+		local playerData = global.gui.playerData[player.name]
+		if playerData ~= nil and playerData.beltSorterGuiCopy ~= nil then
+			local data = global.entityData[idOfEntity(entity)]
+			data.guiFilter = playerData.beltSorterGuiCopy
+			beltSorterRefreshGui(player,entity)
+			beltSorterRebuildFilterFromGui(data)
+		end 
 	end
 end
 
@@ -206,7 +224,6 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	local surface = beltSorter.surface
 	local x = beltSorter.position.x
 	local y = beltSorter.position.y
-	--info("updating belt: "..x..","..y)
 	-- search for input / output belts
 	local rowIndex = data.nextSearchDir or 1
 
