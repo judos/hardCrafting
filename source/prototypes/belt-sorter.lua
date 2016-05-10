@@ -56,8 +56,11 @@ overwriteContent(beltSorterLamp, {
 	order = "zzz",
 	collision_box = {{0, 0}, {0, 0}},
 	selection_box = {{0, 0}, {0, 0}},
-	energy_usage_per_tick = nil,
-	energy_source = nil,
+	energy_source = {
+		type = "electric",
+		usage_priority = "secondary-output"
+	},
+	light = nil,
 	flags = {"placeable-off-grid", "not-repairable", "not-on-map"}
 })
 local picture = {
