@@ -17,60 +17,8 @@ Description
 OLD VERSION 0.3.10
 -------------------------------------------------------
 T1: ~140ms update time -> ~0.3ms / belt-sorter
-
- 953.740 Script belt-sorter.lua:22: start updating
- 953.875 Script belt-sorter.lua:93: finished updating
- 954.034 Script belt-sorter.lua:22: start updating
- 954.179 Script belt-sorter.lua:93: finished updating
- 954.340 Script belt-sorter.lua:22: start updating
- 954.495 Script belt-sorter.lua:93: finished updating
- 954.657 Script belt-sorter.lua:22: start updating
- 954.806 Script belt-sorter.lua:93: finished updating
- 954.966 Script belt-sorter.lua:22: start updating
- 955.129 Script belt-sorter.lua:93: finished updating
- 955.291 Script belt-sorter.lua:22: start updating
- 955.434 Script belt-sorter.lua:93: finished updating
- 955.595 Script belt-sorter.lua:22: start updating
- 955.739 Script belt-sorter.lua:93: finished updating
- 957.815 Script belt-sorter.lua:22: start updating
- 957.966 Script belt-sorter.lua:93: finished updating
- 958.127 Script belt-sorter.lua:22: start updating
- 958.259 Script belt-sorter.lua:93: finished updating
- 958.419 Script belt-sorter.lua:22: start updating
- 958.554 Script belt-sorter.lua:93: finished updating
- 958.714 Script belt-sorter.lua:22: start updating
- 958.860 Script belt-sorter.lua:93: finished updating
- 959.020 Script belt-sorter.lua:22: start updating
- 959.165 Script belt-sorter.lua:93: finished updating
- 
-
 T2: ~65ms update time -> ~0.37ms / belt-sorter
 
- 23.758 Script belt-sorter.lua:22: start updating
- 23.827 Script belt-sorter.lua:93: finished updating
- 23.983 Script belt-sorter.lua:22: start updating
- 24.044 Script belt-sorter.lua:93: finished updating
- 24.200 Script belt-sorter.lua:22: start updating
- 24.261 Script belt-sorter.lua:93: finished updating
- 24.418 Script belt-sorter.lua:22: start updating
- 24.482 Script belt-sorter.lua:93: finished updating
- 24.639 Script belt-sorter.lua:22: start updating
- 24.702 Script belt-sorter.lua:93: finished updating
- 24.858 Script belt-sorter.lua:22: start updating
- 24.919 Script belt-sorter.lua:93: finished updating
- 25.075 Script belt-sorter.lua:22: start updating
- 25.137 Script belt-sorter.lua:93: finished updating
- 25.293 Script belt-sorter.lua:22: start updating
- 25.355 Script belt-sorter.lua:93: finished updating
- 25.511 Script belt-sorter.lua:22: start updating
- 25.576 Script belt-sorter.lua:93: finished updating
- 25.732 Script belt-sorter.lua:22: start updating
- 25.793 Script belt-sorter.lua:93: finished updating
- 25.949 Script belt-sorter.lua:22: start updating
- 26.008 Script belt-sorter.lua:93: finished updating
- 26.164 Script belt-sorter.lua:22: start updating
- 26.225 Script belt-sorter.lua:93: finished updating
- 
 -------------------------------------------------------
 FIRST STEP: measure different times of method:
 -------------------------------------------------------
@@ -81,27 +29,6 @@ T1 idle taking apart:		~percentage
   0ms item distribution		 0%
   5ms scheduling			 3%
 165ms total
- 
-1226.965 Script control.lua:106: starting update
-1226.990 Script control.lua:112: input/output search done
-1227.118 Script control.lua:117: filter build done
-1227.119 Script control.lua:122: item distribute done
-1227.126 Script control.lua:126: scheduling done
-1227.253 Script control.lua:106: starting update
-1227.276 Script control.lua:112: input/output search done
-1227.408 Script control.lua:117: filter build done
-1227.409 Script control.lua:122: item distribute done
-1227.419 Script control.lua:126: scheduling done
-1227.545 Script control.lua:106: starting update
-1227.570 Script control.lua:112: input/output search done
-1227.702 Script control.lua:117: filter build done
-1227.703 Script control.lua:122: item distribute done
-1227.705 Script control.lua:126: scheduling done
-1227.831 Script control.lua:106: starting update
-1227.853 Script control.lua:112: input/output search done
-1227.987 Script control.lua:117: filter build done
-1227.987 Script control.lua:122: item distribute done
-1227.990 Script control.lua:126: scheduling done
 
 T2 working taken apart:		~percentage
  35ms input/output search	39%
@@ -109,32 +36,6 @@ T2 working taken apart:		~percentage
   2ms item distribution		 2%
   2ms scheduling			 2%
  89ms total					
- 
-1305.076 Script control.lua:106: starting update
-1305.110 Script control.lua:112: input/output search done
-1305.160 Script control.lua:117: filter build done
-1305.163 Script control.lua:122: item distribute done
-1305.164 Script control.lua:126: scheduling done
-1305.288 Script control.lua:106: starting update
-1305.330 Script control.lua:112: input/output search done
-1305.379 Script control.lua:117: filter build done
-1305.381 Script control.lua:122: item distribute done
-1305.382 Script control.lua:126: scheduling done
-1305.506 Script control.lua:106: starting update
-1305.540 Script control.lua:112: input/output search done
-1305.588 Script control.lua:117: filter build done
-1305.590 Script control.lua:122: item distribute done
-1305.591 Script control.lua:126: scheduling done
-1305.715 Script control.lua:106: starting update
-1305.750 Script control.lua:112: input/output search done
-1305.805 Script control.lua:117: filter build done
-1305.807 Script control.lua:122: item distribute done
-1305.808 Script control.lua:126: scheduling done
-1305.932 Script control.lua:106: starting update
-1305.967 Script control.lua:112: input/output search done
-1306.017 Script control.lua:117: filter build done
-1306.019 Script control.lua:122: item distribute done
-1306.021 Script control.lua:126: scheduling done
 
 -------------------------------------------------------
 SECOND STEP: target improvements
@@ -153,6 +54,12 @@ THIRD STEP: improvements
 1. new custom gui developed for belt-sorter.
    building the filter for the belt-sorter is done when gui is accessed, afterwards it's never needed
 
-2. rotate the calculation, only one side per update
+2. input/output search: rotate the calculation, only one side per update
    T1: 25ms -> 9ms
    T2: 35ms -> ~9ms (avg)
+
+-------------------------------------------------------
+FINAL: results
+-------------------------------------------------------
+T1: 165ms total -> 12ms total
+T2:  89ms total -> 10ms total
