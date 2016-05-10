@@ -15,6 +15,13 @@ function table.clear(t)
 	for i=0, count do t[i]=nil end
 end
 
+function table.contains(table,value)
+	for k,v in pairs(table) do
+		if v == value then return true end	
+	end
+	return false
+end
+
 function string.starts(str,prefix)
   return string.sub(str,1,string.len(prefix))==prefix
 end

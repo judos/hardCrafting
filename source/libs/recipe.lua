@@ -30,3 +30,14 @@ function recipeResultsItemAmount(recipe,itemName)
 	end
 	return 0
 end
+
+-- ingredient must be e.g. { type="item", name="stone", amount="1" }
+function recipeAddIngredient(recipe,ingredientNew)
+	for _,ingredient in pairs(recipe.ingredients) do
+		if ingredient.type == ingredientNew.type and ingredient.name == ingredientNew.name then
+			ingredient.amount = ingredient.amount + ingredientNew.amount
+			return
+		end
+	end
+	table.insert(recipe.ingredients,ingredientNew)
+end

@@ -23,5 +23,5 @@ data.raw["item"]["coal-dust"].fuel_value = tostring(fuelValueCoalDust).."MJ"
 
 -- Recipes: --
 --       item Name     category   subgroup     time   							 ingredients     products		order
-addRecipe("coal-dust","pulverizer","raw-material",timeToPulverizeCoal,{{"coal",1}},{{"coal-dust",5}},"b[coal]2")
+addRecipe("coal-dust","hc-pulverizer","raw-material",timeToPulverizeCoal,{{"coal",1}},{{"coal-dust",5}},"b[coal]2")
 addTechnologyUnlocksRecipe("pulverizer","coal-dust")

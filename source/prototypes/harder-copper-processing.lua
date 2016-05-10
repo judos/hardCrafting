@@ -19,7 +19,7 @@ data:extend({
     type = "item-subgroup",
     name = "copper",
     group = "intermediate-products",
-    order = "b3"
+    order = "b3",
   }
 })
 
