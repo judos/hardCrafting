@@ -3,6 +3,10 @@ TODO v.0.4:
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
 
+BLOCKERS
+
+- fix crusher migration crash with construction robots / blueprint
+
 LOW PRIORITY
 
 ? big-belt-sorter 2x2 ?
@@ -11,4 +15,4 @@ LOW PRIORITY
 
 WON'T FIX
 
-+ remove stone as product from pulverizer, 
++ remove stone as product from pulverizer

@@ -81,7 +81,9 @@ gui["belt-sorter-v2"].open = function(player,entity)
 end
 
 gui["belt-sorter-v2"].close = function(player)
-	player.gui.left.beltSorterGui.destroy()
+	if player.gui.left.beltSorterGui then
+		player.gui.left.beltSorterGui.destroy()
+	end
 	itemSelection_close(player)
 end
 
