@@ -4,7 +4,7 @@ require "prototypes.crusher-old"
 data:extend({
   {
     type = "item",
-    name = "crusher",
+    name = "crusher-v2",
     icon = "__hardCrafting__/graphics/icons/crusher.png",
     flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
@@ -20,7 +20,7 @@ data:extend({
 			{"stone", 15},{"electronic-circuit",2},{"iron-gear-wheel",5}
 		},
 		enabled = false,
-    result = "crusher"
+    result = "crusher-v2"
   },
 	{
     type = "recipe-category",
@@ -36,7 +36,7 @@ crusher.energy_usage = "80kW"
 crusher.source_inventory_size = 1
 crusher.result_inventory_size = 3
 crusher.crafting_speed = 1
-crusher.minable.result = "crusher"
+crusher.minable.result = "crusher-v2"
 crusher.energy_source.emissions = 0.005
 
 crusher.icon =  "__hardCrafting__/graphics/icons/crusher.png"
