@@ -4,4 +4,7 @@ Factorio mod - Total rework of the ore processing. Forces you to build more clev
 See the factorio forum thread for more information: http://www.factorioforums.com/forum/viewtopic.php?f=91&t=18877
 
 #Download statistics:
-- http://www.somsubhra.com/github-release-stats/?username=judos&repository=hardCrafting
+
+<img src="https://img.shields.io/github/downloads/judos/hardCrafting/total.svg" />
+
+http://www.somsubhra.com/github-release-stats/?username=judos&repository=hardCrafting
