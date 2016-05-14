@@ -50,8 +50,24 @@ overwriteContent(processer, {
 		shift = {0.5, -0.06}
 	}
 })
-processer.fluid_boxes[1].pipe_connections[1].position = {0,-3}
-processer.fluid_boxes[2].pipe_connections[1].position = {0,3}
+
+processer.fluid_boxes = {}
+table.insert(processer.fluid_boxes,{
+        production_type = "input",
+        pipe_picture = assembler2pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {0, -3} }}
+      })
+table.insert(processer.fluid_boxes,{
+        production_type = "output",
+        pipe_picture = assembler2pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = 1,
+        pipe_connections = {{ type="output", position = {0, 3} }}
+      })
 processer.fluid_boxes[1].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.fluid_boxes[2].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.minable.result = "big-processing-machine"
