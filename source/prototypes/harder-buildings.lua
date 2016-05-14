@@ -15,7 +15,7 @@ local recipeWhiteList = table.set({
 addItem("scrap-metal","raw-resource","z[scrap-metal]",50)
 
 -- Recipes: --
---       item Name     category   subgroup     time    ingredients     			products		order
+--           n                ame     category   subgroup     time    ingredients     			products		order
 addRecipe("scrap-metal-processing","hc-pulverizer","raw-resource",8,{{"scrap-metal",5}},{{"pulverized-iron",3},{"copper-dust",2}},"z[scrap-metal]")
 
 for recipeName,recipe in pairs(data.raw["recipe"]) do
