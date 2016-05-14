@@ -9,6 +9,7 @@ require "libs.gui" --lets you register functions when a entity gui is opened/clo
 require "control.belt-sorter"
 require "control.incinerators"
 require "control.migration_0_3_11"
+require "control.migration_0_3_12"
 
 
 -- global data used:
@@ -27,6 +28,7 @@ script.on_load(function()
 end)
 
 function init()
+
 	if not global.hardCrafting then global.hardCrafting = {} end
 	local hc = global.hardCrafting
 	if not hc.version then hc.version = modVersion end
@@ -40,8 +42,8 @@ function init()
 	
 	gui_init()
 	entities_init()
-	
 	if hc.version < "0.3.11" then migration_0_3_11() end
+	if hc.version < "0.3.12" then migration_0_3_12() end
 end
 
 script.on_event(defines.events.on_tick, function(event)

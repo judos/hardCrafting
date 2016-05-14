@@ -9,6 +9,7 @@ require "libs.logging"
 -- Data used:
 -- global.schedule[tick][idEntity] = $entity
 -- global.entityData[idEntity] = { name=$name, ... }
+-- global.entities_cleanup_required = boolean(check and remove all old events)
 
 -- Register custom entity build, tick or remove function:
 -- [$entityName] = { build = $function(entity), tick = $function(entity,data), remove = $function(data) }
@@ -50,6 +51,10 @@ function entities_tick()
 	if global.schedule[game.tick] == nil then
 		return
 	end
+	if global.entities_cleanup_required then
+		entities_cleanup_schedule()
+		global.entities_cleanup_required = false
+	end
 	
 	-- Execute all scheduled events
 	for entityId,entity in pairs(global.schedule[game.tick]) do
@@ -88,7 +93,7 @@ function entities_tick()
 			global.entityData[entityId] = nil
 		end
 	end
-	global.hardCrafting.schedule[game.tick] = nil
+	global.schedule[game.tick] = nil
 end
 
 ---------------------------------------------------
@@ -115,4 +120,14 @@ function scheduleAdd(entity, nextTick)
 		global.schedule[nextTick] = {}
 	end
 	global.schedule[nextTick][idOfEntity(entity)]=entity
+end
+
+function entities_cleanup_schedule()
+	log("Cleanup of schedule table required...")
+	for tick,array in pairs(global.schedule) do
+		if tick < game.tick then
+			global.schedule[tick] = nil
+		end
+	end
+	log("Cleanup done.")
 end
