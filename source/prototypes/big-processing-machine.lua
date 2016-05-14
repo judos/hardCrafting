@@ -94,6 +94,9 @@ for name,mod in pairs(recipes) do
 	recipe.name = recipe.name .. "-big"
 	recipe.order = recipe.order .. "2"
 	recipe.category = "big-processing-machine"
+	if name == "crushed-iron" then
+		recipe.energy_required = 11
+	end
 	
 	for _,item in pairs(mod.ingredients) do
 		recipeAddIngredient(recipe,item)
