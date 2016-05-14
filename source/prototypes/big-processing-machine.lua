@@ -104,3 +104,6 @@ for name,mod in pairs(recipes) do
 	data:extend({recipe})
 	addTechnologyUnlocksRecipe("big-processing-machine", recipe.name)
 end
+
+addRecipe("dried-dirt|big","big-processing-machine","raw-resource",	7,{{"dirt",10}},		{{"dried-dirt",2},{"water",1}},"g3[other")
+addTechnologyUnlocksRecipe("big-processing-machine", "dried-dirt|big")

@@ -12,5 +12,3 @@ require "prototypes.technology-fixes"
 -- Recipe categories tweaks
 addCategorySupportsNew("pulverizer","hc-pulverizer")
 addCategorySupportsNew("big-processing-machine","hc-pulverizer")
-addCategorySupportsNew("advanced-crafting","hc-advanced-crafting")
-addCategorySupportsNew("big-processing-machine","hc-advanced-crafting")
