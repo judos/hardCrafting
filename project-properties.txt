@@ -1,2 +1,2 @@
-releaseFolder = release
 sourceFolder = source
+releaseFolder = release

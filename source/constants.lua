@@ -1,5 +1,5 @@
 
-modVersion = "0.3.11"
+modVersion = "0.3.12"
 modName = "hc" -- required prefix for all ui name components which can be clicked
 fullModName = "hardCrafting" -- required for logging and prototypes
 
