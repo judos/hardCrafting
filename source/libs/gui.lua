@@ -34,6 +34,7 @@ local function handleEvent(uiComponentIdentifier,player)
 	local eventIsForMod = table.remove(guiEvent,1)
 	if eventIsForMod == "itemSelection" then
 		itemSelection_gui_event(guiEvent,player)
+		return false
 	elseif eventIsForMod == modName then
 		local entityName = global.gui.playerData[player.name].openGui
 		if entityName and gui[entityName] then
@@ -42,6 +43,7 @@ local function handleEvent(uiComponentIdentifier,player)
 				gui[entityName].click(guiEvent,player,entity)
 			end
 		end
+		return true
 	else
 		-- gui event might be from other mods
 		info("unknown gui event occured: "..serpent.block(uiComponentIdentifier))

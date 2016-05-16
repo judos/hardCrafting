@@ -58,6 +58,7 @@ local function selectItem(playerData,player,itemName)
 	itemSelection_close(player)
 end
 
+
 local function rebuildItemList(player)
 	local frame = player.gui.left.itemSelection.main
 	if frame.items then
@@ -125,6 +126,7 @@ end
 itemSelection_gui_event = function(guiEvent,player)
 	local fieldName = guiEvent[1]
 	local playerData = global.itemSelection[player.name]
+	if playerData == nil then return end
 	if playerData.callback == nil then return end 
 	if fieldName == "field" then
 		rebuildItemList(player)
