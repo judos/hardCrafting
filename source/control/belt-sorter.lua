@@ -38,7 +38,7 @@ local rowIndexToDirection = {
 ---------------------------------------------------
 
 beltSorter.build = function(entity)
-	scheduleAdd(entity, (game or {tick=TICK_ASAP}).tick)
+	scheduleAdd(entity, TICK_ASAP)
 
 	local pos = {x = entity.position.x, y=entity.position.y}
 	local lamp = entity.surface.create_entity({name="belt-sorter-lamp",position=pos,force=entity.force})

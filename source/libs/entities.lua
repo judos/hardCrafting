@@ -46,20 +46,21 @@ function entities_tick()
 		end
 		global.schedule[TICK_ASAP] = nil
 	end
+	
+	if global.entities_cleanup_required then
+		entities_cleanup_schedule()
+		global.entities_cleanup_required = false
+	end
 
 	-- if no updates are scheduled return
 	if global.schedule[game.tick] == nil then
 		return
 	end
-	if global.entities_cleanup_required then
-		entities_cleanup_schedule()
-		global.entities_cleanup_required = false
-	end
 	
 	-- Execute all scheduled events
 	for entityId,entity in pairs(global.schedule[game.tick]) do
 		if entity and entity.valid then
-			local data = global.entityData[idOfEntity(entity)]
+			local data = global.entityData[entityId]
 			local name = entity.name
 			local nextUpdateInXTicks, reasonMessage
 			if entities[name] ~= nil then
@@ -81,16 +82,7 @@ function entities_tick()
 			PlayerPrint(entity)
 		else
 			-- if entity was removed, remove it from memory
-			local data = global.entityData[entityId]
-			local name = data.name
-			if entities[name] ~= nil then
-				if entities[name].remove ~= nil then
-					entities[name].remove(data)
-				end
-			else
-				info("removing "..name.." at: "..entityId)
-			end
-			global.entityData[entityId] = nil
+			entities_remove(entityId)
 		end
 	end
 	global.schedule[game.tick] = nil
@@ -107,6 +99,7 @@ function entities_build(event)
 	global.entityData[idOfEntity(entity)] = { ["name"] = name }
 	if entities[name].build then
 		local data = entities[name].build(entity)
+--		info("storing data table for entity "..entity.name.." with id "..idOfEntity(entity)..": "..serpent.block(data))
 		table.addTable(global.entityData[idOfEntity(entity)],data)
 	end
 end
@@ -119,15 +112,41 @@ function scheduleAdd(entity, nextTick)
 	if global.schedule[nextTick] == nil then
 		global.schedule[nextTick] = {}
 	end
+--	info("schedule added for entity "..entity.name.." "..idOfEntity(entity).." at tick: "..nextTick)
 	global.schedule[nextTick][idOfEntity(entity)]=entity
 end
 
+function entities_remove(entityId)
+	local data = global.entityData[entityId]
+	local name = data.name
+	if entities[name] ~= nil then
+		if entities[name].remove ~= nil then
+			entities[name].remove(data)
+		end
+	else
+		warn("removing unknown entity: "..name.." at: "..entityId.." with data: "..serpent.block(data))
+	end
+	global.entityData[entityId] = nil
+end
+
 function entities_cleanup_schedule()
-	log("Cleanup of schedule table required...")
+	local count = 0
 	for tick,array in pairs(global.schedule) do
-		if tick < game.tick then
+		if tick < game.tick and tick ~= TICK_ASAP then
+			for entityId,entity in pairs(array) do
+				if entity.valid then
+					info("found valid entity, scheduling it asap: "..entityId)
+					scheduleAdd(entity,TICK_ASAP)
+				else
+					info("found invalid entity, removing it: "..entityId)
+					entities_remove(entityId)
+				end
+			end
 			global.schedule[tick] = nil
+			count = count + 1
 		end
 	end
-	log("Cleanup done.")
+	if count> 0 then
+		info("Cleanup done for entries: "..count)
+	end
 end

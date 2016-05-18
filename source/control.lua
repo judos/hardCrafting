@@ -10,7 +10,7 @@ require "control.belt-sorter"
 require "control.incinerators"
 require "control.migration_0_3_11"
 require "control.migration_0_3_12"
-
+require "control.migration_0_3_13"
 
 -- global data used:
 -- hardCrafting.version = $version
@@ -44,6 +44,7 @@ function init()
 	entities_init()
 	if hc.version < "0.3.11" then migration_0_3_11() end
 	if hc.version < "0.3.12" then migration_0_3_12() end
+	if hc.version < "0.3.13" then migration_0_3_13() end
 end
 
 script.on_event(defines.events.on_tick, function(event)
