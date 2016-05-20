@@ -27,6 +27,14 @@ data:extend({
 	}
 })
 
+-- Helpers
+local noPicture = {
+	filename="__hardCrafting__/graphics/entity/empty.png",
+	width = 0,
+	height = 0,
+	shift = {0, 0}
+}
+
 -- Entity
 local beltSorter = deepcopy(data.raw["lamp"]["small-lamp"])
 overwriteContent(beltSorter, {
@@ -34,20 +42,20 @@ overwriteContent(beltSorter, {
 	icon = "__hardCrafting__/graphics/icons/belt-sorter.png",
 	energy_usage_per_tick = "50KW",
 	light = {intensity = 0, size = 0},
+	picture_off = {
+		filename="__hardCrafting__/graphics/entity/belt-sorter-off.png",
+		width = 46,
+		height = 33,
+		shift = {0.3, 0}
+	},
+	picture_on = {
+		filename="__hardCrafting__/graphics/entity/belt-sorter-on-patch.png",
+		width = 46,
+		height = 33,
+		shift = {0.3, 0}
+	}
 })
 beltSorter.minable.result = "belt-sorter"
-overwriteContent(beltSorter.picture_off, {
-	filename="__hardCrafting__/graphics/entity/belt-sorter.png",
-	width = 46,
-	height = 33,
-	shift = {0.3, 0}
-})
-overwriteContent(beltSorter.picture_on, {
-	filename="__hardCrafting__/graphics/entity/belt-sorter.png",
-	width = 46,
-	height = 33,
-	shift = {0.3, 0}
-})
 data:extend({	beltSorter })
 
 -- fake lamp for wire connection
@@ -63,16 +71,24 @@ overwriteContent(beltSorterLamp, {
 		usage_priority = "secondary-output"
 	},
 	light = {intensity = 0, size = 0},
-	flags = {"placeable-off-grid", "not-repairable", "not-on-map"}
+	flags = {"placeable-off-grid", "not-repairable", "not-on-map"},
+	picture_off= noPicture,
+	--[[
+	{
+		filename="__hardCrafting__/graphics/entity/belt-sorter-off.png",
+		width = 46,
+		height = 33,
+		shift = {0.3, 0}
+	},
+	]]--
+	picture_on= {
+		filename="__hardCrafting__/graphics/entity/belt-sorter-on-patch.png",
+		width = 46,
+		height = 33,
+		shift = {0.3, 0}
+	}
 })
-local picture = {
-	filename="__hardCrafting__/graphics/entity/empty.png",
-	width = 0,
-	height = 0,
-	shift = {0, 0}
-}
-overwriteContent(beltSorterLamp.picture_off, picture)
-overwriteContent(beltSorterLamp.picture_on, picture)
+
 data:extend({	beltSorterLamp })
 
 -- Technology

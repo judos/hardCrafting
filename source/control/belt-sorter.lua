@@ -45,6 +45,11 @@ beltSorter.build = function(entity)
 	lamp.operable = false
 	lamp.minable = false
 	lamp.destructible = false
+	lamp.set_circuit_condition(defines.circuitconditionindex.lamp,
+		{condition={comparator="=",
+			first_signal={type="item", name="iron-plate"},
+			second_signal={type="item", name="iron-plate"}}
+		})
 
 	entity.connect_neighbour{wire=defines.circuitconnector.green,target_entity=lamp}
 
@@ -181,6 +186,14 @@ function beltSorterUpdateCircuitCondition(beltSorter,data)
 	else
 		data.condition = true
 	end
+	local lampCondition = {
+		condition = {
+			comparator= (data.condition and "=" or ">"),
+			first_signal={type="item", name="iron-plate"},
+			second_signal={type="item", name="iron-plate"}
+		}
+	}
+	data.lamp.set_circuit_condition(defines.circuitconditionindex.lamp,lampCondition)
 	data.nextConditionUpdate = game.tick + 60
 end
 
