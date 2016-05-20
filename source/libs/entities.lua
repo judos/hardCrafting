@@ -42,7 +42,8 @@ function entities_tick()
 	-- schedule events from migration
 	if global.schedule[TICK_ASAP] ~= nil then
 		for id,entity in pairs(global.schedule[TICK_ASAP]) do
-			scheduleAdd(entity, game.tick+math.random(60))
+			local nextTick = game.tick+math.random(60)
+			scheduleAdd(entity, nextTick)
 		end
 		global.schedule[TICK_ASAP] = nil
 	end
@@ -107,6 +108,7 @@ end
 ---------------------------------------------------
 -- Utility methods
 ---------------------------------------------------
+
 -- Adds new entry to the scheduling table
 function scheduleAdd(entity, nextTick)
 	if global.schedule[nextTick] == nil then

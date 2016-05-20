@@ -111,7 +111,7 @@ gui["belt-sorter-v2"].click = function(nameArr,player,entity)
 			data.guiFilter = playerData.beltSorterGuiCopy
 			beltSorterRefreshGui(player,entity)
 			beltSorterRebuildFilterFromGui(data)
-		end 
+		end
 	end
 end
 
@@ -156,13 +156,13 @@ end
 ---------------------------------------------------
 
 beltSorter.tick = function(beltSorter,data)
-	if data.condition == nil or data.nextConditionUpdate <= game.tick then
+	if data.condition == nil or data.nextConditionUpdate == nil or data.nextConditionUpdate <= game.tick then
 		beltSorterUpdateCircuitCondition(beltSorter,data)
 		if data.condition == false then
 			return 60,nil
 		end
 	end
-	
+
 	local energyPercentage = math.min(beltSorter.energy,800) / 800
 	local nextUpdate = math.floor(8 / energyPercentage)
 	if energyPercentage < 0.1 then
@@ -187,10 +187,7 @@ end
 function beltSorterDistributeItems(beltSorter,data)
 	-- Search for input (only loop if items available), mostly only 1 input
 	for inputSide,inputAccess in pairs(data.input) do
-		if getmetatable(inputAccess) == nil then --metatable not preserved after loading game
-			data.input = {}
-			data.output = {}
-		elseif not inputAccess:isValid() then
+		if not inputAccess:isValid() then
 			data.input[inputSide] = nil
 		else
 			for itemName,_ in pairs(inputAccess:get_contents()) do
@@ -199,9 +196,7 @@ function beltSorterDistributeItems(beltSorter,data)
 					for _,side in pairs(sideList) do
 						local outputAccess = data.output[side]
 						if outputAccess then
-							if getmetatable(outputAccess) == nil then
-								data.output[side] = nil
-							elseif not outputAccess:isValid() then
+							if not outputAccess:isValid() then
 								data.output[side] = nil
 							else
 								if outputAccess:can_insert_at_back() then
@@ -227,28 +222,24 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	local x = beltSorter.position.x
 	local y = beltSorter.position.y
 	-- search for input / output belts
-	local rowIndex = data.nextSearchDir or 1
-
-	if data.input == nil then
-		data.input = {}
-		data.output = {}
-	end
-	data.input[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
-	data.output[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
-	local searchPos = searchPriority[rowIndex]
-	local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
-	for _,searchType in pairs(BeltFactory.supportedTypes) do
-		local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
-		for _,entity in pairs(candidates) do
-			local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
-			if access:isInput() then
-				data.input[rowIndex] = access
-			else
-				data.output[rowIndex] = access
+	data.input = {}
+	data.output = {}
+	for rowIndex = 1, 4 do
+		data.input[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
+		data.output[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
+		local searchPos = searchPriority[rowIndex]
+		local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
+		for _,searchType in pairs(BeltFactory.supportedTypes) do
+			local candidates = surface.find_entities_filtered{area = {searchPoint, searchPoint}, type= searchType}
+			for _,entity in pairs(candidates) do
+				local access = BeltFactory.accessFor(entity,searchPoint,beltSorter.position)
+				if access:isInput() then
+					data.input[rowIndex] = access
+				else
+					data.output[rowIndex] = access
+				end
 			end
 		end
 	end
-	rowIndex = rowIndex + 1
-	if rowIndex == 5 then rowIndex = 1 end
-	data.nextSearchDir = rowIndex
+	data.nextSearchDir = nil
 end
