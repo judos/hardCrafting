@@ -32,7 +32,8 @@ local beltSorter = deepcopy(data.raw["lamp"]["small-lamp"])
 overwriteContent(beltSorter, {
 	name = "belt-sorter-v2",
 	icon = "__hardCrafting__/graphics/icons/belt-sorter.png",
-	energy_usage_per_tick = "50KW"
+	energy_usage_per_tick = "50KW",
+	light = {intensity = 0, size = 0},
 })
 beltSorter.minable.result = "belt-sorter"
 overwriteContent(beltSorter.picture_off, {
@@ -61,7 +62,7 @@ overwriteContent(beltSorterLamp, {
 		type = "electric",
 		usage_priority = "secondary-output"
 	},
-	light = nil,
+	light = {intensity = 0, size = 0},
 	flags = {"placeable-off-grid", "not-repairable", "not-on-map"}
 })
 local picture = {
