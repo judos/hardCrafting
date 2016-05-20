@@ -133,12 +133,14 @@ end
 
 function entities_cleanup_schedule()
 	local count = 0
+	local toSchedule = {}
+	info("starting cleanup. Expect lag... ")
 	for tick,array in pairs(global.schedule) do
-		if tick < game.tick and tick ~= TICK_ASAP then
+		if tick < game.tick then
 			for entityId,entity in pairs(array) do
 				if entity.valid then
 					info("found valid entity, scheduling it asap: "..entityId)
-					scheduleAdd(entity,TICK_ASAP)
+					toSchedule[entityId] = entity
 				else
 					info("found invalid entity, removing it: "..entityId)
 					entities_remove(entityId)
@@ -148,7 +150,14 @@ function entities_cleanup_schedule()
 			count = count + 1
 		end
 	end
-	if count> 0 then
-		info("Cleanup done for entries: "..count)
+	-- remove all entities that are already scheduled
+	for tick,array in pairs(global.schedule) do
+			for entityId,entity in pairs(array) do
+				toSchedule[entityId] = nil
+			end
+		end
+	for entityId,entity in pairs(toSchedule) do
+		scheduleAdd(entity, TICK_ASAP)
 	end
+	info("Cleanup done. Fixed entities "..count)
 end
