@@ -20,7 +20,7 @@ function entityOfId(id,searchName)
 			local result
 			local found = 0
 			for k,entity in pairs(entities) do
-				if entity.name == searchName then
+				if entity.name:find(searchName) then
 					result = entity
 					found = found + 1
 				end

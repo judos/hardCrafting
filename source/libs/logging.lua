@@ -7,6 +7,7 @@ if debug_level == nil then
 	debug_level = 2
 end
 
+stack_trace = false
 
 function info(message)
 	if debug_level<=1 then _debug(message,"INFO") end
@@ -24,7 +25,11 @@ function _debug(message,level)
 		if type(message) ~= "string" then
 			message = serpent.block(message)
 		end
-		print("\n"..level.." "..fullModName..": "..message)
+		local str = level.." "..fullModName..": "..message
+		if stack_trace then
+			str = str.."\nIn:"..debug.traceback()
+		end
+		print(str)
 	end
 end
 

@@ -175,6 +175,8 @@ beltSorter.tick = function(beltSorter,data)
 	else
 		beltSorterSearchInputOutput(beltSorter,data)
 		beltSorterDistributeItems(beltSorter,data)
+		data.input = nil
+		data.output = nil
 	end
 	return nextUpdate,nil
 end

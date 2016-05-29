@@ -11,6 +11,7 @@ require "control.incinerators"
 require "control.migration_0_3_11"
 require "control.migration_0_3_12"
 require "control.migration_0_3_13"
+require "control.migration_0_3_15"
 
 -- global data used:
 -- hardCrafting.version = $version
@@ -35,16 +36,15 @@ function init()
 
 	if hc.incinerators == nil then hc.incinerators = {} end
 	if hc.eincinerators == nil then hc.eincinerators = {} end
-	if hc.schedule == nil then hc.schedule = {} end
-	if hc.entityData == nil then hc.entityData = {} end
-	if hc.playerData == nil then hc.playerData = {} end
 	info("Previous global data version: "..hc.version)
 	
 	gui_init()
 	entities_init()
+	log("global before migration: "..serpent.block(global))
 	if hc.version < "0.3.11" then migration_0_3_11() end
 	if hc.version < "0.3.12" then migration_0_3_12() end
 	if hc.version < "0.3.13" then migration_0_3_13() end
+	if hc.version < "0.3.15" then migration_0_3_15() end
 end
 
 script.on_event(defines.events.on_tick, function(event)

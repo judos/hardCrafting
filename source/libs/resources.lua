@@ -22,7 +22,7 @@ function getMiningResultItems(resource)
 				local amount = math.random(itemDescription.amount_min, itemDescription.amount_max)
 				table.insert(resultStacks,{name=itemDescription.name, count = amount})
 			elseif isInfinite then
-				table.insert(resultStacks,{name="empty-item", count = 1})
+				table.insert(resultStacks,{name="fake-generated-item", count = 1})
 			end
 		end
 	end
