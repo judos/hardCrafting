@@ -70,7 +70,13 @@ local function rebuildItemList(player)
 	local index = 1
 	for name,prototype in pairs(game.item_prototypes) do
 		if filter == "" or string.find(name,filter) then
-			frame.items.add(checkBoxForItem(name))
+			local checkbox = checkBoxForItem(name)
+			local status, err = pcall(function() frame.items.add(checkbox) end)
+			if not status then
+				warn("Error occured with item: "..name..". The style is missing probably because item was registered in data-final-fixes.lua instead of before. The item will not be displayed in the list.")
+				warn(err)
+			end
+			
 			index = index + 1
 			if index > mainMaxRows*mainMaxEntries then break end
 		end
