@@ -24,10 +24,6 @@ script.on_init(function()
 	init()
 end)
 
-script.on_load(function()
-	init()
-end)
-
 function init()
 
 	if not global.hardCrafting then global.hardCrafting = {} end

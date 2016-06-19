@@ -169,10 +169,11 @@ beltSorter.tick = function(beltSorter,data)
 	end
 
 	local energyPercentage = math.min(beltSorter.energy,800) / 800
-	local nextUpdate = math.floor(8 / energyPercentage)
+	local nextUpdate
 	if energyPercentage < 0.1 then
 		nextUpdate = 80
 	else
+		nextUpdate = math.floor(8 / energyPercentage)
 		beltSorterSearchInputOutput(beltSorter,data)
 		beltSorterDistributeItems(beltSorter,data)
 		data.input = nil
@@ -236,12 +237,12 @@ function beltSorterSearchInputOutput(beltSorter,data)
 	local surface = beltSorter.surface
 	local x = beltSorter.position.x
 	local y = beltSorter.position.y
-	-- search for input / output belts
+	-- search for input and output belts
 	data.input = {}
 	data.output = {}
 	for rowIndex = 1, 4 do
-		data.input[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
-		data.output[rowIndex] = nil -- [side] => BeltAccess / SplitterAccess objects
+		data.input[rowIndex] = nil -- [side] => BeltAccess or SplitterAccess objects
+		data.output[rowIndex] = nil -- [side] => BeltAccess or SplitterAccess objects
 		local searchPos = searchPriority[rowIndex]
 		local searchPoint = { x = x + searchPos[1], y = y + searchPos[2] }
 		for _,searchType in pairs(BeltFactory.supportedTypes) do
