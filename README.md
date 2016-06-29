@@ -5,6 +5,7 @@ See the factorio forum thread for more information: http://www.factorioforums.co
 
 #Download statistics:
 
-<img src="https://img.shields.io/github/downloads/judos/hardCrafting/total.svg" />
+For newer hardCrafting >= 0.4.0 see: <a href="https://mods.factorio.com/mods/judos/hardCrafting/downloads">Official mod portal for factorio 0.13.x</a>
 
-http://www.somsubhra.com/github-release-stats/?username=judos&repository=hardCrafting
+
+Older releases: <img src="https://img.shields.io/github/downloads/judos/hardCrafting/total.svg" />, and <a href="http://www.somsubhra.com/github-release-stats/?username=judos&repository=hardCrafting">detailled statistics per release</a>
