@@ -7,6 +7,7 @@ Check for next release
 + port mod to work with factorio 0.13.x
 - removed rail recipe changes
 - smart-long-inserter is now a long-filter-inserter
+- move belt-sorter into separate mod
 
 --------------------
 --- DONE v0.3.0 ----

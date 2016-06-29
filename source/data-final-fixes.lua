@@ -1,6 +1,5 @@
 require "libs.functions"
 
-require "libs.itemSelection.style-prototypes"
 require "libs.recipeCategories"
 
 require "prototypes.bigger-furnaces"

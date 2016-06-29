@@ -11,12 +11,7 @@ require "prototypes.harder-copper-processing"
 require "prototypes.harder-coal"
 require "prototypes.steel-dust"
 require "prototypes.harder-buildings"
-require "prototypes.belt-sorter"
 require "prototypes.big-processing-machine"
 
 require "prototypes.rich-copper-ore"
 require "prototypes.rich-copper-processing"
-
-
--- Optional features:
---require "prototypes.engines-and-robots"
