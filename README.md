@@ -1,7 +1,7 @@
 # Hard Crafting
 Factorio mod - Total rework of the ore processing. Forces you to build more clever setups
 
-See the factorio forum thread for more information: http://www.factorioforums.com/forum/viewtopic.php?f=91&t=18877
+See the <a href="http://www.factorioforums.com/forum/viewtopic.php?f=91&t=18877">factorio forum thread</a> for more information.
 
 #Download statistics:
 
