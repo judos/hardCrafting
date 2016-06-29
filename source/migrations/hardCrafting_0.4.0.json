@@ -1,0 +1,10 @@
+{
+	"item": [
+		["smart-long-inserter", "long-filter-inserter" ],
+		["crusher-v2", "crusher"]
+	],
+	"entity": [
+		["smart-long-inserter", "long-filter-inserter" ],
+		["crusher-v2", "crusher"]
+	]
+}

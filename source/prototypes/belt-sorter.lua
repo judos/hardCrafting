@@ -19,7 +19,7 @@ data:extend({
 		name = "belt-sorter",
 		enabled = false,
 		ingredients = {
-			{"smart-chest", 1},
+			{"steel-chest", 1},
 			{"steel-plate", 10},
 			{"advanced-circuit", 10}
 		},

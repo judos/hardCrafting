@@ -1,12 +1,12 @@
 Check for next release
 
-
 --------------------
---- DONE v0.3.2 ----
+--- DONE v0.4.0 ----
 --------------------
 
-+ added belt sorter
-! refine scrap-metal
++ port mod to work with factorio 0.13.x
+- removed rail recipe changes
+- smart-long-inserter is now a long-filter-inserter
 
 --------------------
 --- DONE v0.3.0 ----

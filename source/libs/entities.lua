@@ -1,4 +1,3 @@
-require "defines"
 require "libs.entityId"
 require "libs.logging"
 

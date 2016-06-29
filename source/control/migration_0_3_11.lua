@@ -1,4 +1,3 @@
-require "defines"
 require "libs.inventory"
 
 function migration_0_3_11()

@@ -2,7 +2,7 @@ require "libs.functions"
 
 -- Features:
 require "prototypes.fast-long-inserter"
-require "prototypes.smart-long-inserter"
+require "prototypes.long-filter-inserter"
 
 require "prototypes.incinerator"
 require "prototypes.electric-incinerator"
