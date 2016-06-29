@@ -43,8 +43,8 @@ overwriteContent(processer, {
 	animation = {
 		filename = "__hardCrafting__/graphics/entity/big-processing-machine/big-processing-machine.png",
 		priority = "high",
-		width = 185,
-		height = 143,
+		width = 184,
+		height = 161,
 		frame_count = 1,
 		line_length = 1,
 		shift = {0.5, -0.06}
