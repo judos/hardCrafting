@@ -52,9 +52,9 @@ function entities_tick()
 		global.schedule[TICK_ASAP] = nil
 	end
 	if global.schedule[TICK_SOON] ~= nil then
-		if global.schedule[game.tick] == nil then global.schedule[game.tick] = {} end
 		for id,arr in pairs(global.schedule[TICK_SOON]) do
 			local nextTick = game.tick + math.random(60)
+			if global.schedule[nextTick] == nil then global.schedule[nextTick] = {} end
 			global.schedule[nextTick][id] = arr
 		end
 		global.schedule[TICK_SOON] = nil
@@ -175,7 +175,7 @@ function entities_remove(entityId)
 			entities[name].remove(data)
 		end
 	else
-		warn("removing unknown entity: "..name.." at: "..entityId.." with data: "..serpent.block(data))
+		warn("removing unknown entity: "..name.." at: "..entityId) -- .." with data: "..serpent.block(data))
 	end
 	global.entityData[entityId] = nil
 end
@@ -196,9 +196,10 @@ function entities_cleanup_schedule()
 					info("found invalid entity, removing it: "..entityId)
 					entities_remove(entityId)
 				end
+				count = count + 1
 			end
 			global.schedule[tick] = nil
-			count = count + 1
+
 		end
 	end
 	-- remove all entities that are already scheduled

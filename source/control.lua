@@ -1,11 +1,10 @@
 require "constants"
 require "libs.functions"
 require "libs.controlFunctions"
-
 require "libs.entities" --lets your classes register event functions in general
-require "libs.gui" --lets you register functions when a entity gui is opened/closed
 
 require "control.incinerators"
+require "control.migration_0_4_1"
 
 -- global data used:
 -- hardCrafting.version = $version
@@ -17,24 +16,27 @@ script.on_init(function()
 	init()
 end)
 
-function init()
+script.on_configuration_changed(function()
+	local hc = global.hardCrafting
+	info("Previous global data version: "..hc.version)
+	if hc.version < "0.4.1" then migration_0_4_1() end
+	info("Migrated to version "..hc.version)
+end)
 
+function init()
 	if not global.hardCrafting then global.hardCrafting = {} end
 	local hc = global.hardCrafting
 	if not hc.version then hc.version = modVersion end
 
 	if hc.incinerators == nil then hc.incinerators = {} end
 	if hc.eincinerators == nil then hc.eincinerators = {} end
-	info("Previous global data version: "..hc.version)
 	
-	gui_init()
 	entities_init()
-	log("global before migration: "..serpent.block(global))
+	info("global after init: "..serpent.block(global))
 end
 
 script.on_event(defines.events.on_tick, function(event)
 	updateIncinerators()
-	gui_tick()
 	entities_tick()
 end)
 
