@@ -41,33 +41,50 @@ overwriteContent(processer, {
 	open_sound  = data.raw["furnace"]["electric-furnace"].open_sound,
 	close_sound  = data.raw["furnace"]["electric-furnace"].close_sound,
 	animation = {
-		filename = "__hardCrafting__/graphics/entity/big-processing-machine/big-processing-machine.png",
-		priority = "high",
-		width = 184,
-		height = 161,
-		frame_count = 1,
+		filename = "__hardCrafting__/graphics/entity/big-processing-machine/big-processing-machine-base.png",
 		line_length = 1,
-		shift = {0.5, -0.06}
+		width = 184,
+		height = 188,
+		frame_count = 1,
+		axially_symmetrical = false,
+		direction_count = 1,
+		shift = {0.515625, -0.40625},
 	}
 })
+processer.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
+table.remove(processer.working_visualisations,1)
+processer.working_visualisations[1].animation.shift = {-1.4375, 0.328125}
+processer.working_visualisations[2].animation.shift = {-0.703125, -0.890625}
+table.insert(processer.working_visualisations,deepcopy(processer.working_visualisations[2]))
+processer.working_visualisations[3].animation.shift = {1.078125, -1.234375}
+table.insert(processer.working_visualisations, {animation={
+	filename = "__hardCrafting__/graphics/entity/crush-animation.png",
+	priority = "high",
+	line_length = 11,
+	width = 23,
+	height = 14,
+	frame_count = 11,
+	animation_speed = 0.5,
+	shift = {-0.78125, 1.90625}
+}})
 
 processer.fluid_boxes = {}
 table.insert(processer.fluid_boxes,{
-        production_type = "input",
-        pipe_picture = assembler2pipepictures(),
-        pipe_covers = pipecoverspictures(),
-        base_area = 10,
-        base_level = -1,
-        pipe_connections = {{ type="input", position = {0, -3} }}
-      })
+	production_type = "input",
+	pipe_picture = assembler2pipepictures(),
+	pipe_covers = pipecoverspictures(),
+	base_area = 10,
+	base_level = -1,
+	pipe_connections = {{ type="input", position = {0, -3} }}
+})
 table.insert(processer.fluid_boxes,{
-        production_type = "output",
-        pipe_picture = assembler2pipepictures(),
-        pipe_covers = pipecoverspictures(),
-        base_area = 10,
-        base_level = 1,
-        pipe_connections = {{ type="output", position = {0, 3} }}
-      })
+	production_type = "output",
+	pipe_picture = assembler2pipepictures(),
+	pipe_covers = pipecoverspictures(),
+	base_area = 10,
+	base_level = 1,
+	pipe_connections = {{ type="output", position = {0, 3} }}
+})
 processer.fluid_boxes[1].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.fluid_boxes[2].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.minable.result = "big-processing-machine"
@@ -76,23 +93,23 @@ data:extend({ processer })
 
 -- technology
 data:extend({
-  {
-    type = "technology",
-    name = "big-processing-machine",
-    icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
-    icon_size = 32,
-    prerequisites = { "pulverizer", "advanced-electronics"},
-    unit = {
-      count = 250,
-      ingredients = {
-        {"science-pack-1", 5},
+	{
+		type = "technology",
+		name = "big-processing-machine",
+		icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
+		icon_size = 32,
+		prerequisites = { "pulverizer", "advanced-electronics"},
+		unit = {
+			count = 250,
+			ingredients = {
+				{"science-pack-1", 5},
 				{"science-pack-2", 2},
 				{"science-pack-3", 1}
-      },
-      time = 30
-    },
-    order = "_big-processing-machine"
-  }
+			},
+			time = 30
+		},
+		order = "_big-processing-machine"
+	}
 })
 addTechnologyUnlocksRecipe("big-processing-machine", "big-processing-machine")
 
@@ -113,7 +130,7 @@ for name,mod in pairs(recipes) do
 	if name == "crushed-iron" then
 		recipe.energy_required = 11
 	end
-	
+
 	for _,item in pairs(mod.ingredients) do
 		recipeAddIngredient(recipe,item)
 	end

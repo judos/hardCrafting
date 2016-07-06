@@ -38,8 +38,29 @@ pulverizer.crafting_speed = 1
 pulverizer.minable.result = "pulverizer"
 
 pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
-pulverizer.animation = deepcopy(data.raw["furnace"]["electric-furnace"].animation)
-pulverizer.animation.filename="__hardCrafting__/graphics/entity/crusher/crusher-base.png"
+
+pulverizer.animation = { 
+  filename = "__hardCrafting__/graphics/entity/pulverizer-base.png",
+  line_length = 1,
+  width = 129,
+  height = 100,
+  frame_count = 1,
+  axially_symmetrical = false,
+  direction_count = 1,
+  shift = {0.421875, 0},
+}
+pulverizer.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
+table.remove(pulverizer.working_visualisations,1)
+table.insert(pulverizer.working_visualisations, {animation={
+	filename = "__hardCrafting__/graphics/entity/crush-animation.png",
+	priority = "high",
+	line_length = 11,
+	width = 23,
+	height = 14,
+	frame_count = 11,
+	animation_speed = 0.3,
+	shift = {-0.015625, 0.9375},
+}})
 
 pulverizer.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
 pulverizer.open_sound  = data.raw["furnace"]["electric-furnace"].open_sound
