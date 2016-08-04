@@ -1,18 +1,12 @@
-TODO v.0.4:
+TODO v.0.5:
 
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
 
-BLOCKERS
-
-- fix crusher migration crash with construction robots / blueprint
 
 LOW PRIORITY
 
+? update screenshots on forum
+
 ? big-belt-sorter 2x2 ?
 ? gravel floor
-? animation for pulverizer, crusher
-
-WON'T FIX
-
-+ remove stone as product from pulverizer
