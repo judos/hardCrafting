@@ -73,7 +73,7 @@ data:extend({
 	{
 		type = "technology",
 		name = "crusher",
-		icon = "__hardCrafting__/graphics/icons/crusher.png",
+		icon = "__hardCrafting__/graphics/technology/crusher.png",
 		prerequisites = {},
 		effects = {
 			{
