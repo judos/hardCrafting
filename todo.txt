@@ -2,7 +2,7 @@ TODO v.0.5:
 
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
-
+- implement newer graphics (See graphics folder)
 
 LOW PRIORITY
 
