@@ -7,6 +7,3 @@ TODO v.0.5:
 LOW PRIORITY
 
 ? update screenshots on forum
-
-? big-belt-sorter 2x2 ?
-? gravel floor
