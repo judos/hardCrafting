@@ -1,6 +1,12 @@
 Check for next release
 
 --------------------
+--- DONE v0.5.0 ----
+--------------------
++ support factorio 0.14.x
++ updated technology icons
+
+--------------------
 --- DONE v0.4.0 ----
 --------------------
 

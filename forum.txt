@@ -1,4 +1,0 @@
-452.202 Script belt-sorter.lua:22: start updating
-452.214 Script belt-sorter.lua:95: finished updating 27 belt-sorters
-
--> 12ms update for 27 belt-sorters :/

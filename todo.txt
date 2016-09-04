@@ -1,5 +1,12 @@
 TODO v.0.5:
 
+- rework for stone/gravel:
+  stone -> crush -> gravel
+	dirt can't be crafted to gravel anymore
+	stone fields give: rocks, gravel, dirt
+	rocks can be easily crushed to bricks+gravel
+	gravel needs furnaces to craft to bricks
+
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
 - implement newer graphics (See graphics folder)
