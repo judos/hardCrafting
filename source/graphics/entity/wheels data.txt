@@ -1,0 +1,9 @@
+wheel1:
+ursprung: 56,35
+grösse 18,24
+x verschiebung pro tile 129
+
+wheel2:
+ursprung 97,94
+grösse 33,25
+x verschiebung 186

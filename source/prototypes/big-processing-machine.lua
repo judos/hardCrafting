@@ -67,6 +67,16 @@ table.insert(processer.working_visualisations, {animation={
 	animation_speed = 0.5,
 	shift = {-0.78125, 1.90625}
 }})
+table.insert(processer.working_visualisations, {animation={
+	filename = "__hardCrafting__/graphics/entity/wheel2.png",
+	priority = "high",
+	line_length = 4,
+	width = 33,
+	height = 25,
+	frame_count = 4,
+	animation_speed = 0.5,
+	shift = {1.1875, 0.859375}
+}})
 
 processer.fluid_boxes = {}
 table.insert(processer.fluid_boxes,{
