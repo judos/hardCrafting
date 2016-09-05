@@ -39,45 +39,45 @@ end
 data:extend({
 	{
 		type = "autoplace-control",
-		name = "rich-copper-ore",
+		name = "rich-iron-ore",
 		richness = true,
 		order = "b-a"
 	},
 	{
 		type = "item",
-		name = "rich-copper-ore",
-		icon = "__hardCrafting__/graphics/icons/rich-copper-ore.png",
+		name = "rich-iron-ore",
+		icon = "__hardCrafting__/graphics/icons/rich-iron-ore.png",
 		flags = {"goes-to-main-inventory"},
 		subgroup = "raw-resource",
-		order = "f[copper-ore]2",
+		order = "f[iron-ore]2",
 		stack_size = 50
 	},
 	{
 		type = "noise-layer",
-		name = "rich-copper-ore"
+		name = "rich-iron-ore"
 	},
 	{
 		type = "resource",
-		name = "rich-copper-ore",
-		icon = "__hardCrafting__/graphics/icons/rich-copper-ore.png",
+		name = "rich-iron-ore",
+		icon = "__hardCrafting__/graphics/icons/rich-iron-ore.png",
 		flags = {"placeable-neutral"},
 		order="a-b-a",
 		minable =
 		{
 			hardness = 0.7,
-			mining_particle = "copper-ore-particle",
+			mining_particle = "iron-ore-particle",
 			mining_time = 1.5,
 			results = {} -- see below
 		},
 		collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
 		selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-		autoplace = autoplace_settings("rich-copper-ore", 0.015),
+		autoplace = autoplace_settings("rich-iron-ore", 0.015),
 		stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
 		stages =
 		{
 			sheet =
 			{
-				filename = "__hardCrafting__/graphics/resources/rich-copper-ore.png",
+				filename = "__hardCrafting__/graphics/resources/rich-iron-ore.png",
 				priority = "extra-high",
 				width = 38,
 				height = 38,
@@ -90,8 +90,8 @@ data:extend({
 })
 
 
-data.raw["resource"]["rich-copper-ore"].minable.results = {
-	ressourceItemMinMaxProb("rich-copper-ore",	 1, 1, 0.8), -- 1 item at percentage 0.8 --
-	ressourceItemMinMaxProb("gravel",				1, 1, 0.1),
-	ressourceItemMinMaxProb("copper-sludge",1, 1, 0.06),
+data.raw["resource"]["rich-iron-ore"].minable.results = {
+	ressourceItemMinMaxProb("rich-iron-ore", 	1, 2, 0.6),
+	ressourceItemMinMaxProb("iron-slag",			1, 1, 0.1),
+	ressourceItemMinMaxProb("iron-nugget",			1, 1, 0.2)
 }

@@ -16,3 +16,5 @@ require "prototypes.big-processing-machine"
 
 require "prototypes.rich-copper-ore"
 require "prototypes.rich-copper-processing"
+require "prototypes.rich-iron-ore"
+require "prototypes.rich-iron-processing"
