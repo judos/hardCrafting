@@ -97,7 +97,7 @@ data:extend({
 		type = "technology",
 		name = "big-processing-machine",
 		icon = "__hardCrafting__/graphics/technology/big-processing-machine.png",
-		icon_size = 32,
+		icon_size = 128,
 		prerequisites = { "pulverizer", "advanced-electronics"},
 		unit = {
 			count = 250,

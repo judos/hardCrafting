@@ -74,6 +74,7 @@ data:extend({
     type = "technology",
     name = "pulverizer",
     icon = "__hardCrafting__/graphics/technology/pulverizer.png",
+    icon_size = 128,
     prerequisites = {"crusher", "advanced-material-processing" },
     effects = {
       {

@@ -74,6 +74,7 @@ data:extend({
 		type = "technology",
 		name = "crusher",
 		icon = "__hardCrafting__/graphics/technology/crusher.png",
+		icon_size = 128,
 		prerequisites = {},
 		effects = {
 			{
