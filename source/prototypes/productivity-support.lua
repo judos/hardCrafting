@@ -13,7 +13,7 @@ local resourceRecipes = {
 	"steel-dust|2",
 	"coal-dust",
 	"gravel-pile",
-	"gravel"
+	"stone-brick"
 }
 
 for _, module in pairs(data.raw.module) do
