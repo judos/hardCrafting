@@ -1,3 +1,45 @@
+-- Copy from prototypes.entity.demo-resources.lua
+local function autoplace_settings(name, coverage)
+  local ret = {
+    control = name,
+    sharpness = 1,
+    richness_multiplier = 1500,
+    richness_multiplier_distance_bonus = 20,
+    richness_base = 500,
+    coverage = coverage,
+    peaks = {
+      {
+        noise_layer = name,
+        noise_octaves_difference = -1.5,
+        -- somehow determines how much resource is spawned (0.3 = usual for vanilla
+        -- the higher the value, the less resource is spawned
+        noise_persistence = 0.35, 
+      }
+    }
+  }
+  for i, resource in ipairs({ "copper-ore", "iron-ore", "coal", "stone" }) do
+    if resource ~= name then
+      ret.starting_area_size = 600 * coverage
+      ret.starting_area_amount = 1500
+    end
+  end
+  return ret
+end
+
+function setNegativeInfluenceOnOtherResources(resource)
+	for i, resource in ipairs({ "copper-ore", "iron-ore", "coal", "stone" }) do
+		table.insert(resource.autoplace.peaks,{
+					influence = -0.99, -- Negative influence reduces value near other resource
+					max_influence = 0, -- Max of 0 stops resource from generating on other resource
+					noise_layer = resource, -- Noise layer determines what to avoid
+					noise_octaves_difference = -2.3, -- Increased effect further from start to match irons own increase
+					noise_persistence = 0.3,
+				})
+  end
+end
+
+
+
 data:extend({
 	{
 		type = "autoplace-control",
@@ -33,74 +75,7 @@ data:extend({
 		},
 		collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
 		selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-		autoplace =
-		{
-			control = "rich-copper-ore",
-			sharpness = 1,
-			max_probability = 1,
-			richness_multiplier = 10000,
-			richness_base = 500,
-			size_control_multiplier = 0.1,
-			peaks = {
-				{
-					influence = 0.6, -- the bigger the more likely an ore field will generate (also with higher richness)
-					noise_layer = "rich-copper-ore", -- uses a randomly generated noise layer
-					noise_octaves_difference = -2, -- smaller = fine grained ore patches
-					noise_persistence = 0.2,
-					starting_area_weight_optimal = 1,
-					starting_area_weight_range = 0,
-					starting_area_weight_max_range = 2,
-				},
-				{ -- influence near spawn
-					influence = 0.4,
-					starting_area_weight_optimal = 1,
-					starting_area_weight_range = 0,
-					starting_area_weight_max_range = 2,
-				},
-				{
-					influence = -0.99, -- Negative influence reduces value near iron
-					max_influence = 0, -- Max of 0 stops copper from generating on iron
-					noise_layer = "iron-ore", -- Noise layer determines what to avoid
-					noise_octaves_difference = -2.3, -- Increased effect further from start to match irons own increase
-					noise_persistence = 0.45,
-				},
-				{
-					influence = -0.99, -- Negative influence reduces value near iron
-					max_influence = 0, -- Max of 0 stops copper from generating on iron
-					noise_layer = "copper-ore", -- Noise layer determines what to avoid
-					noise_octaves_difference = -2.3, -- Increased effect further from start to match irons own increase
-					noise_persistence = 0.45,
-				},
-				{
-					influence = -0.99, -- Negative influence reduces value near iron
-					max_influence = 0, -- Max of 0 stops copper from generating on iron
-					noise_layer = "coal", -- Noise layer determines what to avoid
-					noise_octaves_difference = -2.3, -- Increased effect further from start to match irons own increase
-					noise_persistence = 0.45,
-				},
-				{
-					influence = -0.99, -- Negative influence reduces value near iron
-					max_influence = 0, -- Max of 0 stops copper from generating on iron
-					noise_layer = "stone", -- Noise layer determines what to avoid
-					noise_octaves_difference = -2.3, -- Increased effect further from start to match irons own increase
-					noise_persistence = 0.45,
-				}
-				--[[
-				{ -- influence near spawn
-					influence = 0.5,
-					starting_area_weight_optimal = 1,
-					starting_area_weight_range = 0,
-					starting_area_weight_max_range = 2,
-				},
-				{ -- increased influence the further away from spawn
-					influence = 0.5,
-					starting_area_weight_optimal = 0,
-					starting_area_weight_range = 0,
-					starting_area_weight_max_range = 2,
-				},
-			 ]]--
-			},
-		},
+		autoplace = autoplace_settings("rich-copper-ore", 0.015),
 		stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
 		stages =
 		{
