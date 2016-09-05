@@ -108,7 +108,7 @@ data:extend({
 			},
 			time = 30
 		},
-		order = "_big-processing-machine"
+		order = "_hc_machines_3"
 	}
 })
 addTechnologyUnlocksRecipe("big-processing-machine", "big-processing-machine")

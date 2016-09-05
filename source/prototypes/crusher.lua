@@ -89,6 +89,6 @@ data:extend({
 			},
 			time = 20
 		},
-		order = "_crusher"
+		order = "_hc_machines_1"
 	}
 })
