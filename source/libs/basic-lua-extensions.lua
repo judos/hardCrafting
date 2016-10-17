@@ -16,6 +16,7 @@ function table.clear(t)
 end
 
 function table.contains(table,value)
+	if table == nil then return false end
 	for k,v in pairs(table) do
 		if v == value then return true end	
 	end
