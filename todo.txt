@@ -1,5 +1,8 @@
 TODO v.0.5:
 
++ with libs 2.7 change calls to method "ChangeRecipe" to "recipeReplaceIngredient"
+- compatibility for martathon (make copper plates process slower in chemical plant)
+
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
 - implement newer graphics (See graphics folder)
