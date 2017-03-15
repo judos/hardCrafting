@@ -13,20 +13,33 @@ for _,typ in pairs(types) do
 		local time = 4
 		if burnTime[name] then time = burnTime[name] end
 		
-		data:extend({
-			{
-				type = "recipe",
-				name = "incinerate_"..name,
-				category = "incinerator",
-				icon = "__hardCrafting__/graphics/icons/fire.png",
-				hidden = true,
-				ingredients = {{name, 1}},
-				energy_required = time,
-				results =
+		--Get the fuel value of the item.
+		local fuelValue
+		if itemTable.fuel_value then
+			fuelValue = tonumber(itemTable.fuel_value:sub(1,itemTable.fuel_value:len()-2))
+		else
+			fuelValue = 0
+		end
+		
+		--If the item is a raw material and has a fuel value, dont create an incinerator recipe for it.
+		if itemTable.subgroup == "raw-material" and fuelValue > 0 then
+		else
+			data:extend({
 				{
-					{type="item", name="coal-dust", probability=0.1, amount_min=1, amount_max=1},
+					type = "recipe",
+					name = "incinerate_"..name,
+					category = "incinerator",
+					icon = "__hardCrafting__/graphics/icons/fire.png",
+					hidden = true,
+					ingredients = {{name, 1}},
+					energy_required = time,
+					results =
+					{
+						{type="item", name="coal-dust", probability=0.1, amount_min=1, amount_max=1},
+					}
 				}
-			}
-		})
+			})
+		end
+		
 	end
 end
