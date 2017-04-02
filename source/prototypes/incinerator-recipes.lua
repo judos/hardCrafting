@@ -22,8 +22,7 @@ for _,typ in pairs(types) do
 		end
 		
 		--If the item is a raw material and has a fuel value, dont create an incinerator recipe for it.
-		if itemTable.subgroup == "raw-material" and fuelValue > 0 then
-		else
+		if itemTable.subgroup ~= "raw-material" or fuelValue == 0 then
 			data:extend({
 				{
 					type = "recipe",
