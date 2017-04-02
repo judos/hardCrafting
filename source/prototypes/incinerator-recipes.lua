@@ -6,13 +6,21 @@ local burnTime = {
 	landfill4by4 = 250
 }
 
-local types = {"item", "gun", "armor", "ammo", "blueprint", "deconstruction-item","mining-tool"}
+local types = {
+	"item", "rail-planner", "module", 
+	"tool", -- research packs
+	"item-with-entity-data", -- cars, trains, wagon, tanks
+	"blueprint", "deconstruction-item", "blueprint-book",
+	"gun", "armor", "ammo", "mining-tool",
+	"capsule" -- capsules, grenades, discharge defence
+}
+
 for _,typ in pairs(types) do
 	for name,itemTable in pairs(data.raw[typ]) do
-		
+
 		local time = 4
 		if burnTime[name] then time = burnTime[name] end
-		
+
 		--Get the fuel value of the item.
 		local fuelValue
 		if itemTable.fuel_value then
@@ -20,7 +28,7 @@ for _,typ in pairs(types) do
 		else
 			fuelValue = 0
 		end
-		
+
 		--If the item is a raw material and has a fuel value, dont create an incinerator recipe for it.
 		if itemTable.subgroup ~= "raw-material" or fuelValue == 0 then
 			data:extend({
@@ -39,6 +47,6 @@ for _,typ in pairs(types) do
 				}
 			})
 		end
-		
+
 	end
 end
