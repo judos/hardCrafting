@@ -6,6 +6,10 @@ TODO v.0.5:
 - different resource fields with various products
 - implement process for DyTech / bobs ore?
 - implement newer graphics (See graphics folder)
+- gravel floor (20% walking modifier -> increase bricks / concrete? )
+- purified iron/copper
+- smelt copper plates?
+- big miner (different output but a lot more?)
 
 LOW PRIORITY
 
