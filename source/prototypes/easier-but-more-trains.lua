@@ -1,5 +1,5 @@
 -- Half the cost of diesel-locomotive
-for _,materialCost in pairs(data.raw["recipe"]["diesel-locomotive"].ingredients) do
+for _,materialCost in pairs(data.raw["recipe"]["locomotive"].ingredients) do
 	if materialCost["amount"] then
 		materialCost["amount"] = math.ceil(materialCost["amount"] / 2)
 	elseif materialCost[2] then

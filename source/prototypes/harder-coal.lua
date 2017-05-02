@@ -20,6 +20,7 @@ fuelValueCoal = tonumber(fuelValueCoal:sub(1,fuelValueCoal:len()-2))
 local fuelValueCoalDust = (fuelValueCoal+ timeToPulverizeCoal*powerPulverizer) / 5 * 1.2
 fuelValueCoalDust = round(fuelValueCoalDust,1)
 data.raw["item"]["coal-dust"].fuel_value = tostring(fuelValueCoalDust).."MJ"
+data.raw["item"]["coal-dust"].fuel_category = "chemical"
 
 -- Recipes: --
 --       item Name     category   subgroup     time   							 ingredients     products		order
