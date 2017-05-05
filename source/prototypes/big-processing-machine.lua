@@ -18,7 +18,7 @@ data:extend({
 		type = "recipe",
 		name = "big-processing-machine",
 		ingredients = {
-			{"stone", 80},{"steel-plate",40},{"iron-gear-wheel",30},{"advanced-circuit",25}
+			{"crusher", 2},{"pulverizer",2},{"steel-plate",20},{"advanced-circuit",20}
 		},
 		energy_required = 10,
 		result = "big-processing-machine"
@@ -31,7 +31,7 @@ overwriteContent(processer, {
 	name = "big-processing-machine",
 	max_health = 1500,
 	crafting_categories = {"big-processing-machine"},
-	energy_usage = "500kW",
+	energy_usage = "400kW",
 	source_inventory_size = 3,
 	result_inventory_size = 4,
 	crafting_speed = 4,
