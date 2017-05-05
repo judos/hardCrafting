@@ -131,7 +131,8 @@ local m1 = {
 	results={ {type="item",name="dirt",amount=1} }
 }
 local recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
-	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1}
+	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1,
+	["crushed-iron|rich"]=m1}
 
 for name,mod in pairs(recipes) do
 	local recipe = deepcopy(data.raw.recipe[name])
