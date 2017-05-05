@@ -1,7 +1,4 @@
 -- Requirement: --
-require "prototypes.pulverizer"
-require "prototypes.harder-iron-processing"
-require "prototypes.harder-copper-processing"
 
 local recipeWhiteList = table.set({
 	"gun-turret", "laser-turret", "radar", "rocket-silo", "basic-splitter", "fast-splitter", "express-splitter", "filter-inserter",  
