@@ -20,6 +20,7 @@ data:extend({
 		ingredients = {
 			{"stone", 80},{"steel-plate",40},{"iron-gear-wheel",30},{"advanced-circuit",25}
 		},
+		energy_required = 10,
 		result = "big-processing-machine"
 	},
 })

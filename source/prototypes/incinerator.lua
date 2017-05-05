@@ -20,6 +20,7 @@ data:extend({
 			{"stone", 25},{"steel-plate",15},{"iron-gear-wheel",10},{"steel-furnace",2}
 		},
 		enabled = false,
+		energy_required = 1,
     result = "incinerator"
   }
 })

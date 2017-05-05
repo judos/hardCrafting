@@ -19,6 +19,7 @@ data:extend({
 			{"stone", 20},{"steel-plate",10},{"iron-gear-wheel",15},{"electronic-circuit",5}
 		},
 		enabled = false,
+		energy_required = 3,
     result = "pulverizer"
   },
 	{
