@@ -16,4 +16,4 @@ data.raw["item"]["dried-dirt"].place_as_tile = placeAsTile
 
 -- Recipes: --
 --       item Name     category   				subgroup     		time    ingredients    products
-addRecipe("dried-dirt","advanced-crafting","raw-resource",	3.5,{{"dirt",5}},		{{"dried-dirt",2},{"water",1}},"g3[other")
+addRecipe("dried-dirt","advanced-crafting","raw-resource",	3.5,{{"dirt",5}},		{{"dried-dirt",2},{"water",10}},"g3[other")

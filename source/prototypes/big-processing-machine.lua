@@ -127,7 +127,7 @@ addTechnologyUnlocksRecipe("big-processing-machine", "big-processing-machine")
 -- Copy recipes for processing machine
 addRecipeCategory("big-processing-machine")
 local m1 = {
-	ingredients={ {type="fluid",name="water",amount=1} },
+	ingredients={ {type="fluid",name="water",amount=10} },
 	results={ {type="item",name="dirt",amount=1} }
 }
 local recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
