@@ -10,9 +10,6 @@ for i, force in pairs(game.forces) do
 	
 	-- technology unlocking migration:
 	check(force, "logistics-2", "fast-long-inserter")
-	check(force, "electric-engine", "electro-magnet")
-	check(force, "flying", "rotor")
-	check(force, "robotics", "antenna")
 	
 	check(force, "incinerator", "incinerator")
 	check(force, "electric-incinerator", "electric-incinerator")
