@@ -1,7 +1,7 @@
 
 function ChangeRecipe(Name, Ingredient1, Ingredient2, Amount)
 	for k, v in pairs(data.raw["recipe"][Name].ingredients) do
-		if v[1] == Ingredient1 then table.remove(data.raw["recipe"][Name].ingredients, k) end
+		if v[1] == Ingredient1 or v["name"] == Ingredient1 then table.remove(data.raw["recipe"][Name].ingredients, k) end
 	end
 	table.insert(data.raw["recipe"][Name].ingredients,{Ingredient2, Amount})
 end
