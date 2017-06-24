@@ -130,9 +130,15 @@ local m1 = {
 	ingredients={ {type="fluid",name="water",amount=10} },
 	results={ {type="item",name="dirt",amount=1} }
 }
-local recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
+local recipes = {}
+if settings.startup["hardcrafting-rich-ores"].value == true then
+	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
 	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1,
 	["crushed-iron|rich"]=m1}
+else
+	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
+	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1}
+end
 
 for name,mod in pairs(recipes) do
 	local recipe = deepcopy(data.raw.recipe[name])
