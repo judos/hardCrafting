@@ -159,5 +159,5 @@ for name,mod in pairs(recipes) do
 	addTechnologyUnlocksRecipe("big-processing-machine", recipe.name)
 end
 
-addRecipe("dried-dirt|big","big-processing-machine","raw-resource",	7,{{"dirt",10}},		{{"dried-dirt",2},{"water",10}},"g3[other")
-addTechnologyUnlocksRecipe("big-processing-machine", "dried-dirt|big")
+addRecipe("dirt-sifting|big","big-processing-machine","raw-resource",	7,{{"dirt",10},{type="fluid", name="water", amount=20}},		{{"gravel",4},{"sand",6}},"g3[other")
+addTechnologyUnlocksRecipe("big-processing-machine", "dirt-sifting|big")

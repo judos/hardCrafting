@@ -1,0 +1,12 @@
+{
+  "item":
+  [
+    ["dried-dirt", "sand"]
+  ],
+  "recipe":
+  [
+    ["dried-dirt", "dirt-sifting"],
+    ["dried-dirt|big", "dirt-sifting|big"]
+  ]
+}
+

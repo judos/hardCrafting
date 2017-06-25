@@ -1,4 +1,4 @@
-if data.raw["item"]["dried-dirt"] ~= nil then
+if data.raw["item"]["dirt"] ~= nil then
 	if data.raw["item"]["landfill"] ~= nil then
 		data:extend({
 			{
@@ -7,7 +7,7 @@ if data.raw["item"]["dried-dirt"] ~= nil then
 				enabled = false,
 				energy_required = 2,
 				ingredients = {
-					{"dried-dirt", 20}
+					{"dirt", 20}
 				},
 				result = "landfill"
 			}
