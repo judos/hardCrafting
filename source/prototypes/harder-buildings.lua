@@ -8,9 +8,9 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 		"big-electric-pole", "substation", "train-stop", "locomotive", "tank", 
 		"solar-panel", "accumulator", 
 		"pumpjack", "electric-furnace", "electric-incinerator", "pulverizer", "assembling-machine-2", 
-		"assembling-machine-3", "oil-refinery", "chemical-plant", "lab", "beacon", "centrifuge", 
-		"nuclear-reactor", "steam-turbine", "heat-exchanger", "heat-pipe", 
-		"gun-turret", "laser-turret", "radar", "rocket-silo"
+		"assembling-machine-3", "oil-refinery", "chemical-plant", "lab", "beacon", "centrifuge",
+		"nuclear-reactor", "heat-exchanger", "heat-pipe",
+		"gun-turret", "laser-turret", "radar", "rocket-silo"   
 	})
 
 	-- Item: --
