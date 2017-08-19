@@ -49,8 +49,8 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			name = "rich-iron-ore",
 			icon = "__hardCrafting__/graphics/icons/rich-iron-ore.png",
 			flags = {"goes-to-main-inventory"},
-			subgroup = "raw-resource",
-			order = "f[iron-ore]2",
+			subgroup = "iron",
+			order = "e[iron-ore]2",
 			stack_size = 50
 		},
 		{

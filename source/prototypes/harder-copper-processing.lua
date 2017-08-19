@@ -25,9 +25,9 @@ data:extend({
 
 -- Items: --
 data.raw.item["copper-ore"].subgroup = "copper"
-addItem("copper-sulfat","copper","f[copper-ore]4",50)
-addItem("copper-dust","copper","f[copper-ore]3",50)
-addItem("copper-sludge","copper","f[copper-ore]2",50)
+addItem("copper-sludge","copper","f[copper-ore]3",50)
+addItem("copper-dust","copper","f[copper-ore]4",50)
+addItem("copper-sulfat","copper","f[copper-ore]5",50)
 
 addItem("sulfur-dust","raw-material","f2[sulfur]",50)
 

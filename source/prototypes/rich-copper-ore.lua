@@ -49,7 +49,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			name = "rich-copper-ore",
 			icon = "__hardCrafting__/graphics/icons/rich-copper-ore.png",
 			flags = {"goes-to-main-inventory"},
-			subgroup = "raw-resource",
+			subgroup = "copper",
 			order = "f[copper-ore]2",
 			stack_size = 50
 		},
