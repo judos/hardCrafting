@@ -13,7 +13,6 @@ add "oil sands" as new ore (http://www.oilsandsmagazine.com/technical/oilsands-1
 20 silica sands + 10 electronic circuits + 2 advanced circuit + 5 sulfuric acid = 1 processing unit (6s)
 10 bitumen -> 6 heavy oil + 2 light oil (chem plant)
 gravel floor (20% walking modifier)
-vehicle acceleration for coal dust: 120% (change solid fuel to 140%)
 
 UNCERTAIN 
 - compatibility for martathon (make copper plates process slower in chemical plant)
