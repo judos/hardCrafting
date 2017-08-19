@@ -86,7 +86,7 @@ function recipeChangeCostsByFactor(recipeNameS, factor, roundValues)
 	info("These recipes will cost "..tostring(factor).."x of everything: "..serpent.block(recipeNameS))
 	for _,name in pairs(recipeNameS) do
 		local recipe = data.raw.recipe[name]
-		for _,data in pairs(recipe.ingredients) do
+		for _,data in pairs(recipe.ingredients or recipe.normal.ingredients) do
 			if data.type then
 				data.amount = (data.amount or 1) * factor
 				if roundValues then data.amount = round(data.amount) end
@@ -137,15 +137,22 @@ end
 
 
 function recipeItemAmount(recipe,itemName)
+	if recipe.ingredients == nil then err("ingredient list is nil for recipe: "..serpent.block(recipe)) end
 	for _,tuple in pairs(recipe.ingredients) do
-		if tuple[1] == itemName then 
+		if tuple["name"] == itemName then
+			return tuple["amount"]
+		elseif tuple[1] == itemName then 
 			return tuple[2]
 		end
 	end
 	return 0
 end
 
-function recipeResultsItemAmount(recipe,itemName)
+function recipeResultsItemAmount(recipe,itemName,difficulty)
+	if difficulty == nil then difficulty = "normal" end
+	if recipe.results == nil and recipe.result == nil then
+		return recipeResultsItemAmount(recipe[difficulty],itemName,difficulty)
+	end
 	if recipe.results == nil then
 		if recipe.result == itemName then
 			return recipe.result_count or 1
@@ -153,7 +160,9 @@ function recipeResultsItemAmount(recipe,itemName)
 		return 0
 	end
 	for _,tuple in pairs(recipe.results) do
-		if tuple[1] == itemName then
+		if tuple["name"] == itemName then
+			return tuple["amount"]
+		elseif tuple[1] == itemName then
 			return tuple[2]
 		end
 	end
@@ -161,17 +170,7 @@ function recipeResultsItemAmount(recipe,itemName)
 end
 
 function recipeResultsContain(recipe,itemName)
-	if recipe.results == nil then
-		return recipe.result == itemName
-	end
-	for _,tuple in pairs(recipe.results) do
-		if tuple["name"] == itemName then
-			return true
-		elseif tuple[1] == itemName then
-			return true
-		end
-	end
-	return false
+	return recipeResultsItemAmount(recipe,itemName) > 0
 end
 
 
