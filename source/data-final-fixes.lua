@@ -10,6 +10,9 @@ require "prototypes.productivity-support"
 
 require "prototypes.harder-buildings"
 
+require "prototypes.fixes-methane-processing"
+
 -- Recipe categories tweaks
 addCategorySupportsNew("pulverizer","hc-pulverizer")
 addCategorySupportsNew("big-processing-machine","hc-pulverizer")
+
