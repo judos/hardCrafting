@@ -128,11 +128,31 @@ function ChangeRecipe(Name, Ingredient1, Ingredient2, Amount)
 	error("Use recipeReplaceIngredient function instead")
 end
 
+
 function recipeReplaceIngredient(name, ingredient1, ingredient2, amount)
 	for k, v in pairs(data.raw["recipe"][name].ingredients) do
 		if v[1] == ingredient1 then table.remove(data.raw["recipe"][name].ingredients, k) end
 	end
 	table.insert(data.raw["recipe"][name].ingredients,{ingredient2, amount})
+end
+
+
+function recipeReplaceResult(recipeName, result1, result2, newAmount)
+	local recipe = data.raw.recipe[recipeName]
+	if recipe.result == result1 then
+		recipe.result = result2
+		if newAmount then recipe.result_count = newAmount end
+	elseif recipe.results then
+		for _,result in pairs(recipe.results) do
+			if result[1] == result1 then
+				result[1] = result2
+				if newAmount then result[2] = newAmount end
+			elseif result["name"] == result1 then
+				result["name"] = result2
+				if newAmount then result["amount"] = newAmount end
+			end
+		end
+	end
 end
 
 
