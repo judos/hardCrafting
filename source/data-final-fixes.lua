@@ -1,6 +1,5 @@
-require "libs.functions"
-
-require "libs.recipeCategories"
+require "libs.all"
+require "libs.prototypes.prototypes"
 
 require "prototypes.bigger-furnaces"
 require "prototypes.incinerator-recipes"

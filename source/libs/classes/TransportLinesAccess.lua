@@ -1,4 +1,4 @@
-require "libs.inventory"
+require "libs.control.inventory"
 
 
 TransportLinesAccess = {}
@@ -46,6 +46,29 @@ end
 function TransportLinesAccess:insert_at_back(itemStack)
 	if self.line1.insert_at_back(itemStack) then return true end
 	return self.line2.insert_at_back(itemStack)
+end
+
+function TransportLinesAccess:can_insert_at(position)
+	return self.line1.can_insert_at(position) or self.line2.can_insert_at(position)
+end
+
+function TransportLinesAccess:insert_at(position,itemStack)
+	if self.line1.insert_at(position, itemStack) then return true end
+	return self.line2.insert_at(position,itemStack)
+end
+
+function TransportLinesAccess:can_insert_on_at(line,position)
+	if not line then
+		return self.line1.can_insert_at(position)
+	end
+	return self.line2.can_insert_at(position)
+end
+
+function TransportLinesAccess:insert_on_at(line,position,itemStack)
+	if not line then
+		return self.line1.insert_at(position, itemStack)
+	end
+	return self.line2.insert_at(position,itemStack)
 end
 
 -- returns the direction on which side the belt is located relative to x,y, assuming they are neighbors

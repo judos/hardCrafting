@@ -1,5 +1,6 @@
+
 -- Constants:
-local guiUpdateEveryTicks = 15
+local guiUpdateEveryTicks = 5
 
 --------------------------------------------------
 -- API
@@ -14,6 +15,12 @@ gui = {} -- [$entityName] = { open = $function(player,entity),
 --                            close = $function(player),
 --                            click = $function(nameArr, player, entity) }
 
+-- Required Calls from control.lua:
+-- gui_tick()
+-- gui_init()
+
+-- Helper functions:
+-- gui_playersWithOpenGuiOf(entity) : {x:LuaPlayer, ...}
 -- gui_scheduleEvent($uiComponentIdentifier,$player)
 
 --------------------------------------------------
@@ -23,25 +30,47 @@ gui = {} -- [$entityName] = { open = $function(player,entity),
 -- This helper file uses the following global data variables:
 -- global.gui.playerData[$playerName].openGui = $(name of opened entity)
 --                                   .openEntity = $(reference of LuaEntity)
---            events[$tick] = { {$uiComponentIdentifier, $player}, ... }
+--     "      events[$tick] = { {$uiComponentIdentifier, $player}, ... }
+--     "      version = $number
 
 --------------------------------------------------
 -- Implementation
 --------------------------------------------------
 
+
+function gui_init()
+	if global.gui == nil then
+		global.gui = {
+			playerData = {},
+			events = {},
+			version = 1
+		}
+	end
+	local prevGui = global.gui.version
+	if not global.gui.version then
+		global.gui.version = 1
+		global.itemSelection = nil
+	end
+	if global.gui.version ~= prevGui then
+		info("Migrated gui version to "..tostring(global.gui.version))
+	end
+end
+
 local function handleEvent(uiComponentIdentifier,player)
 	local guiEvent = split(uiComponentIdentifier,".")
 	local eventIsForMod = table.remove(guiEvent,1)
-	if eventIsForMod == "itemSelection" then
-		itemSelection_gui_event(guiEvent,player)
-		return false
-	elseif eventIsForMod == modName then
+	if eventIsForMod == modName then
 		local entityName = global.gui.playerData[player.name].openGui
 		if entityName and gui[entityName] then
 			if gui[entityName].click ~= nil then
 				local entity = global.gui.playerData[player.name].openEntity
 				gui[entityName].click(guiEvent,player,entity)
 			end
+		elseif entityName == nil then
+			warn("No entityName found for player "..player.name)
+			warn(global.gui.playerData[player.name])
+		else
+			warn("No gui registered for "..entityName)
 		end
 		return true
 	else
@@ -51,18 +80,8 @@ local function handleEvent(uiComponentIdentifier,player)
 end
 
 function gui_scheduleEvent(uiComponentIdentifier,player)
-	global.gui.events = {}
+	global.gui.events = global.gui.events or {}
 	table.insert(global.gui.events,{uiComponentIdentifier=uiComponentIdentifier,player=player})
-end
-
-
-function gui_init()
-	if global.gui == nil then
-		global.gui = {
-			playerData = {},
-			events = {}
-		}
-	end
 end
 
 local function playerCloseGui(player,playerData,openGui)
@@ -85,12 +104,13 @@ end
 function gui_tick()
 	if game.tick % guiUpdateEveryTicks ~= 0 then return end
 	if global.gui.events ~= nil then
-		if #global.gui.events > 0 then
-			for _,event in pairs(global.gui.events) do
+		local events = global.gui.events
+		global.gui.events = nil
+		if #events > 0 then
+			for _,event in pairs(events) do
 				handleEvent(event.uiComponentIdentifier, event.player)
 			end
 		end
-		global.gui.event = {}
 	end
 	for _,player in pairs(game.players) do
 		if player.connected then
@@ -109,17 +129,34 @@ function gui_tick()
 	end
 end
 
+
 --------------------------------------------------
 -- Event registration
 --------------------------------------------------
 
-script.on_event(defines.events.on_gui_click, function(event)
-	if event.element.style and event.element.style.name then
-		if event.element.style.name:starts("item-") then
-			event.element.state = true
-		end
-	end
+local function handleGuiEvent(event)
 	local player = game.players[event.player_index]
 	local uiComponentIdentifier = event.element.name
 	return handleEvent(uiComponentIdentifier,player)
-end)
+end
+
+script.on_event(defines.events.on_gui_click,handleGuiEvent)
+script.on_event(defines.events.on_gui_text_changed,handleGuiEvent)
+script.on_event(defines.events.on_gui_elem_changed,handleGuiEvent)
+
+--------------------------------------------------
+-- Helper functions
+--------------------------------------------------
+
+function gui_playersWithOpenGuiOf(entity)
+	local result = {}
+	for _,player in pairs(game.players) do
+		if player.connected then
+			local openEntity = player.opened
+			if openEntity == entity then
+				table.insert(result,player)
+			end
+		end
+	end
+	return result
+end

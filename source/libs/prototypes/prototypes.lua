@@ -1,5 +1,15 @@
 require "constants"
 
+function emptyImage()
+	return {
+		filename = "__"..fullModName.."__/graphics/empty.png",
+		priority = "low",
+		width = 1,
+		height = 1,
+		shift = {0,0}
+  }
+end
+
 function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
 		{
@@ -21,11 +31,15 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 		print("No results found for recipe with name: "..name)
 	end
 	for _,s in pairs(results) do
-		local typ = "item"
-		if s[1] == "sulfuric-acid" or s[1] == "water" then
-			typ = "fluid"
+		if s["type"] then
+			table.insert(resultsDetailled,s)
+		else
+			local typ = "item"
+			if s[1] == "sulfuric-acid" or s[1] == "water" then
+				typ = "fluid"
+			end
+			table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
 		end
-		table.insert(resultsDetailled, {type=typ, name=s[1], amount=s[2]})
 	end
 	local imageName = removeAfterSign(name,"|")
 	data:extend({

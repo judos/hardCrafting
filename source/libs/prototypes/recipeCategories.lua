@@ -1,4 +1,4 @@
-require "libs.basic-lua-extensions"
+require "libs.lua.table"
 
 function addRecipeCategory(name)
 	if not data.raw["recipe-category"][name] then

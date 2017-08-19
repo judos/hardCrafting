@@ -1,4 +1,4 @@
-require "libs.recipeCategories"
+require "libs.prototypes.prototypes"
 require "prototypes.pulverizer"
 
 addItem("gravel","raw-resource","g1[other]",50)

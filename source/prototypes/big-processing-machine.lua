@@ -1,5 +1,5 @@
-require "libs.recipeCategories"
-require "libs.technology"
+require "libs.prototypes.prototypes"
+require "libs.prototypes.technology"
 require "prototypes.item-group-production"
 
 -- Item and recipe

@@ -1,4 +1,4 @@
-require "libs.recipeCategories"
+require "libs.prototypes.prototypes"
 require "prototypes.dirt-tile"
 
 -- Items: --
