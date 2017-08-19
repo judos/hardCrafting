@@ -160,6 +160,21 @@ function recipeResultsItemAmount(recipe,itemName)
 	return 0
 end
 
+function recipeResultsContain(recipe,itemName)
+	if recipe.results == nil then
+		return recipe.result == itemName
+	end
+	for _,tuple in pairs(recipe.results) do
+		if tuple["name"] == itemName then
+			return true
+		elseif tuple[1] == itemName then
+			return true
+		end
+	end
+	return false
+end
+
+
 -- ingredient must be e.g. { type="item", name="stone", amount="1" }
 function recipeAddIngredient(recipe,ingredientNew)
 	for _,ingredient in pairs(recipe.ingredients) do

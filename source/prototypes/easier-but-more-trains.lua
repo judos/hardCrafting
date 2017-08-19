@@ -1,15 +1,23 @@
+require "libs.prototypes.recipe"
+
 -- Half the cost of diesel-locomotive
 if settings.startup["hardcrafting-train-modifications"].value == true then
-	if data.raw["recipe"]["locomotive"] and data.raw["recipe"]["locomotive"].ingredients then
-		for _,materialCost in pairs(data.raw["recipe"]["locomotive"].ingredients) do
-			if materialCost["amount"] then
-				materialCost["amount"] = math.ceil(materialCost["amount"] / 2)
-			elseif materialCost[2] then
-				materialCost[2] = math.ceil(materialCost[2] / 2)
+
+	local locomotiveItems = {}
+	for _,data in pairs(data.raw.locomotive) do
+		table.insert(locomotiveItems, data.minable.result)
+	end
+	for _,data in pairs(data.raw.recipe) do
+		local isLocomotive = false
+		for _,name in pairs(locomotiveItems) do
+			if recipeResultsContain(data,name) then
+				isLocomotive = true
+				break
 			end
 		end
-	else
-		err("Couldn't apply train modifications because missing recipe for locomotive")
+		if isLocomotive then		
+			recipeChangeCostsByFactor(data.name,0.5,true)
+		end
 	end
 
 	-- Half the cost of cargo wagons
