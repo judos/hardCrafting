@@ -1,3 +1,5 @@
+require "libs.prototypes.technology"
+
 if settings.startup["hardcrafting-extra-inserters"].value == true then
 	data:extend(
 	{

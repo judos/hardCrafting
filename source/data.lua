@@ -1,4 +1,5 @@
 require "libs.all"
+require "libs.prototypes.all"
 
 -- Features:
 require "prototypes.fast-long-inserter"
