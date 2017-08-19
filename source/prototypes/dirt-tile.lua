@@ -1,5 +1,5 @@
-local dirt_vehicle_speed_modifier = 100
-local dirt_walking_speed_modifier = 0.9
+local dirt_vehicle_friction_modifier = 100
+local dirt_walking_speed_modifier = 0.8
 
 
 data:extend({
@@ -83,6 +83,6 @@ data:extend({
 		},
 		map_color={r=92, g=50, b=17},
 		ageing=0,
-		vehicle_friction_modifier = dirt_vehicle_speed_modifier
+		vehicle_friction_modifier = dirt_vehicle_friction_modifier
 	}
 })

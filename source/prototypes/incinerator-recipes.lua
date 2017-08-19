@@ -11,7 +11,7 @@ local types = {
 	"tool", -- research packs
 	"item-with-entity-data", -- cars, trains, wagon, tanks
 	"blueprint", "deconstruction-item", "blueprint-book",
-	"gun", "armor", "ammo", "mining-tool", "repair-tool",
+	"gun", "armor", "ammo", "mining-tool", "repair-tool", "selection-tool",
 	"capsule" -- capsules, grenades, discharge defence
 }
 
