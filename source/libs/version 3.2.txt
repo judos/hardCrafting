@@ -1,6 +1,7 @@
 3.2 hardCrafting
 	fix logging error when game is nil
 	fix prototypes class not dealing with advanced stack tables
+	fix simple logging doesn't show proper source file name
 
 3.1 robotMiningSite
 	resources: fix error with nil values for resources without probabilities

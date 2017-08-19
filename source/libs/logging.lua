@@ -65,7 +65,7 @@ function libLog.caller()
 	local file,appendix
 	repeat
 		local l = table.remove(lines,1)
-		file,appendix = l:match("([%w_]+)(.lua:%d+)")
+		file,appendix = l:match("([^/]+)(.lua:%d+)")
 	until file ~= "logging"
 	if not file then return s end
 	return tostring(file)..tostring(appendix)
