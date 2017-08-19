@@ -15,4 +15,4 @@ data.raw["item"]["dirt"].place_as_tile = placeAsTile
 
 -- Recipes: --
 --       item Name     category   				subgroup     		time    ingredients    products
-addRecipe("dirt-sifting","advanced-crafting","raw-resource",3.5,{{"dirt",5},{type="fluid", name="water", amount=10}},{{"gravel",2},{"sand",3}},"g3[other")
+addRecipe("dirt-sifting","advanced-crafting","raw-resource",2,{{"dirt",10}},{{"gravel",2},{"sand",3},{type="fluid", name="water", amount=10}},"g3[other")
