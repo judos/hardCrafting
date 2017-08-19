@@ -7,7 +7,7 @@ if data.raw["item"]["dirt"] ~= nil then
 				enabled = false,
 				energy_required = 2,
 				ingredients = {
-					{"dirt", 20}
+					{"sand", 30}
 				},
 				result = "landfill"
 			}
