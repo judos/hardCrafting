@@ -197,7 +197,7 @@ function entities_pre_mined(event)
 	local name = entity.name
 	if entities[name] == nil then return end
 	local manuallyHandle = false
-	if entities[name].premine then
+	if entities[name].premine and event.player_index ~= nil then
 		local data = global.entityData[idOfEntity(entity)]
 		manuallyHandle = entities[name].premine(entity,data,game.players[event.player_index])
 	end
