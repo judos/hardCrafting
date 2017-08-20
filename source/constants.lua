@@ -4,4 +4,4 @@ modName = "hc" -- required prefix for all ui name components which can be clicke
 fullModName = "hardCrafting" -- required for logging and prototypes
 
 
-libLog.testing = true
+libLog.testing = false
