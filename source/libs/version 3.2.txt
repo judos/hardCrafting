@@ -4,6 +4,7 @@
 	fix simple logging doesn't show proper source file name
 	added recipeResultsContain
 	fix a few recipe helper methods not working for recipes which have difficulty table for ingredients/results
+	fix entities_pre_mined error
 
 3.1 robotMiningSite
 	resources: fix error with nil values for resources without probabilities
