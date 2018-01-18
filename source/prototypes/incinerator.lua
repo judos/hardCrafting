@@ -7,6 +7,7 @@ data:extend({
     type = "item",
     name = "incinerator",
     icon = "__hardCrafting__/graphics/icons/incinerator.png",
+		icon_size = 32,
     flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
     order = "a",

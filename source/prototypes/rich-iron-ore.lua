@@ -61,6 +61,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			type = "resource",
 			name = "rich-iron-ore",
 			icon = "__hardCrafting__/graphics/icons/rich-iron-ore.png",
+			icon_size = 32,
 			flags = {"placeable-neutral"},
 			order="a-b-a",
 			minable =

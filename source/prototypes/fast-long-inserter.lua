@@ -7,6 +7,7 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 		type = "item",
 		name = "fast-long-inserter",
 		icon = "__hardCrafting__/graphics/icons/fast-long-inserter.png",
+		icon_size = 32,
 		flags = {"goes-to-quickbar"},
 		subgroup = "inserter",
 		order = "d[fast-inserter]-2",
@@ -34,6 +35,7 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 	overwriteContent(long, {
 		name = "fast-long-inserter",
 		icon = "__hardCrafting__/graphics/icons/fast-long-inserter.png",
+		icon_size = 32,
 		pickup_position = {0, -2},
 		insert_position = {0, 2.2},
 		extension_speed = 0.1
