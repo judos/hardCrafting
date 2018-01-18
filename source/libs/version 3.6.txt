@@ -1,3 +1,36 @@
+3.6 actuator
+	added:
+		entities.rotate(entity,data) method
+	MIGRATION:
+		control must now add entities_rotate(event) to script
+
+3.5 beltSorter
+	fixes:
+		entityId now stores entityName to prevent confusion when multiple entities occupy same space
+	MIGRATION:
+		idOfPosition now requires entityName as 4th parameter
+
+3.4 beltSorter
+	added:
+		entities: Add support for pickerExtended dolly to move entities
+		  by default if entity does not implement 'move' method it will do nothing
+		entityId: added idOfPosition
+	changes:
+		logging for player has improved format
+	fixes:
+		gui responds again to checkboxes in 0.16
+		safety check for crash in entities when nil entity is built but is nil
+	MIGRATION:
+		control is required to call entities_load() in on_load
+	
+
+3.3 integratedCircuitry
+	added: prototypesForGroup in control.functions
+	removed: idOfEntity_v21, entityOfId_v21
+	added: positionOfId in control.entityId
+	changes:
+		gui - better error message when events can't be routed to a button
+
 3.2 hardCrafting
 	fix logging error when game is nil
 	fix prototypes class not dealing with advanced stack tables

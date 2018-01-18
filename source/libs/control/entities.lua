@@ -14,34 +14,46 @@ require "libs.logging"
 	}
 	global.entityData[idEntity] = { name=$name, ... }
 	global.entities_cleanup_required = boolean(check and remove all old events)
-	global.entityDataVersion = 3
+	global.entityDataVersion = 4
 
 
  Register custom entity build, tick or remove function:
 	[$entityName] = { 
 		build = function(entity):dataArr,	
-				if returned arr is nil no data is registered (no remove will be called later)
-				Note: tick your entity with scheduleAdd(entity,TICK_SOON)
+			if returned arr is nil no data is registered (no remove will be called later)
+			Note: tick your entity with scheduleAdd(entity,TICK_SOON)
 																		 
 		tick = function(entity,data):(nextTick,reason),
 																			
 		premine = function(entity,data,player):manuallyHandle
-				if manuallyHandle is true entity will not be added to schedule (tick for removal)
+			if manuallyHandle is true entity will not be added to schedule (tick for removal)
 		
 		orderDeconstruct = function(entity,data,player)
 				
 		remove = function(data),
-				clean up any additional entities from your custom data
+			clean up any additional entities from your custom data
+			
+		rotate = function(entity,data),
+			called when an entity is rotated by the player
 				
 		copy = function(source,srcData,target,targetData)
-				coppy settings when shift+rightclick -> shift+leftclick
+			coppy settings when shift+rightclick -> shift+leftclick
+			
+		move = function(entity,data,player,start_pos)
+			Called when pickerDolly moves an entity. The method should do the
+			required afterwork to make sure everything works.
+			If the method is not implemented moving the entity will be prevented
+			
 	}
 
 
  Required calls in control:
+	entities_init()
+	entities_load()
 	entities_build(event)
 	entities_tick()
 	entities_pre_mined(event)
+	entities_rotate(event)
 	entities_settings_pasted(event)
 	entities_marked_for_deconstruction(event)
 ]]--
@@ -60,7 +72,7 @@ function entities_init()
 	if global.schedule == nil then 
 		global.schedule = {}
 		global.entityData = {}
-		global.entityDataVersion = 3
+		global.entityDataVersion = 4
 	end
 	entities_migration()
 end
@@ -70,6 +82,54 @@ function entities_migration()
 		entities_migration_V3()
 		global.entityDataVersion = 3
 		info("Migrated entity data to v3")
+	end
+	if global.entityDataVersion < 4 then
+		entities_migration_V4()
+		global.entityDataVersion = 4
+		info("Migrated entity data to v4")
+	end
+end
+
+function entities_load()
+	if remote.interfaces["picker"] and remote.interfaces["picker"]["dolly_moved_entity_id"] then
+    script.on_event(remote.call("picker", "dolly_moved_entity_id"), entities_move)
+	end
+end
+
+-- -------------------------------------------------
+-- Copying settings
+-- -------------------------------------------------
+
+-- Event table contains:
+--   player_index, The index of the player who moved the entity
+--   moved_entity, The entity that was moved
+--   start_pos, The position that the entity was moved from
+function entities_move(event)
+	local entity = event.moved_entity
+	local name = entity.name
+	if entities[name] ~= nil then
+		if entities[name].move ~= nil then
+			local startPos = event.start_pos
+			local oldId = idOfPosition(entity.surface.index,startPos.x,startPos.y,entity.name)
+			-- update schedule list
+			for tick,list in pairs(global.schedule) do
+				if list[oldId] ~= nil then
+					local scheduledEvent = list[oldId]
+					list[oldId] = nil
+					list[idOfEntity(entity)] = scheduledEvent
+				end
+			end
+			-- update data
+			local data = global.entityData[oldId]
+			info("data while moving: "..serpent.block(data).." for "..idOfEntity(entity))
+			global.entityData[oldId] = nil
+			global.entityData[idOfEntity(entity)] = data
+			
+			entities[name].move(entity,data,player,startPos)
+		else
+			info("Entity "..name.." does not support dolly-moving")
+			entity.teleport(event.start_pos)
+		end
 	end
 end
 
@@ -168,21 +228,43 @@ function entities_tick()
 	end
 end
 
+function entities_rotate(event)
+	local entity = event.entity
+	local name = entity.name
+	if entities[name] ~= nil then
+		if entities[name].rotate ~= nil then
+			local entityId = idOfEntity(entity)
+			local data = global.entityData[entityId]
+			entities[name].rotate(entity,data)
+		end
+	end
+end
+
 -- -------------------------------------------------
 -- Building Entities
 -- -------------------------------------------------
 
 function entities_build(event)
 	local entity = event.created_entity
+	if entity == nil then
+		warn("can't build nil entity")
+		return false
+	end
 	local name = entity.name
-	if entities[name] == nil then return false end
+	if entities[name] == nil then
+		return false
+	end
 	if entities[name].build then
 		local data = entities[name].build(entity)
-		if data then
+		if data ~= nil then
 			data.name = name
 			global.entityData[idOfEntity(entity)] = data
 			return true
+		else
+			info("built entity doesn't use data: "..name)
 		end
+	else
+		warn("no build method available for entity "..name)
 	end
 	return false
 end
@@ -223,6 +305,10 @@ end
 -- -------------------------------------------------
 
 function scheduleAdd(entity, nextTick)
+	if entity == nil then
+		err("scheduleAdd can't be called for nil entity")
+		return nil
+	end
 	if global.schedule[nextTick] == nil then
 		global.schedule[nextTick] = {}
 	end
@@ -266,7 +352,6 @@ function entities_cleanup_schedule()
 				count = count + 1
 			end
 			global.schedule[tick] = nil
-
 		end
 	end
 	-- remove all entities that are already scheduled
@@ -285,7 +370,23 @@ end
 -- Migration
 -- -------------------------------------------------
 
+function entities_migration_V4()
+	entities_rebuild_entityIds()
+end
+
 function entities_migration_V3()
+	entities_rebuild_entityIds()
+end
+
+function entities_migration_V2()
+	for tick,arr in pairs(global.schedule) do
+		for id,entity in pairs(arr) do
+			arr[id] = { entity = entity }
+		end
+	end
+end
+
+function entities_rebuild_entityIds()
 	-- rebuild entityId:
 	-- global.schedule[tick][idEntity] = { entity = $entity, [noTick = true] }
 	-- global.entityData[idEntity] = { name=$name, ... }
@@ -302,12 +403,4 @@ function entities_migration_V3()
 	end
 	global.schedule = newSchedule
 	global.entityData = newEntityData
-end
-
-function entities_migration_V2()
-	for tick,arr in pairs(global.schedule) do
-		for id,entity in pairs(arr) do
-			arr[id] = { entity = entity }
-		end
-	end
 end

@@ -35,8 +35,8 @@ function x(object)
 end
 
 function libLog.debug(message,level)
-	if not level then level="ANY" end
 	if not libLog.debug_master then return end
+	if not level then level="ERROR" end
 	if type(message) ~= "string" then
 		message = serpent.block(message)
 	end
@@ -47,11 +47,10 @@ function libLog.debug(message,level)
 		caller = libLog.caller(),
 		message = message
 	}
-	--local str = .." [ "..level.." "..fullModName.." ] "..libLog.caller()..": "..message
 	if game and (level == "ERROR" or libLog.always_player_print) then
-		game.print(formatWith("[%name - %caller]: %message",data))
+		game.print(formatWith("[%level %name]: %message (in %caller)",data))
 	end
-	local str = formatWith("%time [ %level %name - %caller]: %message",data)
+	local str = formatWith("%time [%level %name - %caller]: %message",data)
 	if libLog.stack_trace then
 		str = str.."\n"..libLog.traceback()
 	end
