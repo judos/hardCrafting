@@ -6,6 +6,7 @@ require "prototypes.item-group-production"
 data:extend({
 	{
 		type = "item",
+		icon_size = 32,
 		name = "big-processing-machine",
 		icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
 		flags = {"goes-to-quickbar"},

@@ -31,6 +31,7 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 			end
 			table.insert(results, { type="item", name="scrap-metal",amount=1})
 			recipe.results = results
+			recipe.icon_size = 32
 			recipe.result = nil
 			recipe.result_count = nil
 			if not recipe.icon then

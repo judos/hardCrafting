@@ -34,6 +34,7 @@ for _,typ in pairs(types) do
 			data:extend({
 				{
 					type = "recipe",
+					icon_size = 32,
 					name = "incinerate_"..name,
 					category = "incinerator",
 					icon = "__hardCrafting__/graphics/icons/fire.png",

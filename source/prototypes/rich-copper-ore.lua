@@ -40,12 +40,14 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 	data:extend({
 		{
 			type = "autoplace-control",
+			category = "resource",
 			name = "rich-copper-ore",
 			richness = true,
 			order = "b-a"
 		},
 		{
 			type = "item",
+			icon_size = 32,
 			name = "rich-copper-ore",
 			icon = "__hardCrafting__/graphics/icons/rich-copper-ore.png",
 			flags = {"goes-to-main-inventory"},
