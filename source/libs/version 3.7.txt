@@ -1,3 +1,7 @@
+3.7 hardCrafting
+	added
+		icon_size 32 to addItem, addRecipe, addResources
+
 3.6 actuator
 	added:
 		entities.rotate(entity,data) method
