@@ -14,6 +14,7 @@ function addItem(itemName, subgroup, order, stackSize)
 	data:extend({
 		{
 			type = "item",
+			icon_size = 32,
 			name = itemName,
 			icon = "__"..fullModName.."__/graphics/icons/"..itemName..".png",
 			flags = {"goes-to-main-inventory"},
@@ -45,6 +46,7 @@ function addRecipe(name,category,subgroup,timeRequired,ingredients,results,order
 	data:extend({
 	{
 		type = "recipe",
+	icon_size = 32,
     name = name,
     category = category,
 		subgroup = subgroup,
