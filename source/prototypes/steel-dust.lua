@@ -18,7 +18,7 @@ addRecipe("steel-plate|dust","smelting","raw-material",8,{{"steel-dust",1}},		{{
 data:extend({
 	{
 		type = "technology",
-		icon_size = 32,
+		icon_size = 128,
 		name = "steel-processing-2",
 		icon = "__base__/graphics/technology/steel-processing.png",
 		prerequisites = {"steel-processing"},
