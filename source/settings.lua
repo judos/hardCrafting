@@ -22,18 +22,32 @@ data:extend(
 		order = "c"
 	},
 	{
-		type = "bool-setting",
-		name = "hardcrafting-train-modifications",
+		type = "double-setting",
+		name = "hardcrafting-train-cost",
 		setting_type = "startup",
-		default_value = true,
-		order = "d"
+		order = "d",
+		default_value = 0.5,
+    minimum_value = 0.1,
+    maximum_value = 5,
 	},
 	{
-		type = "bool-setting",
+		type = "double-setting",
+		name = "hardcrafting-train-storage",
+		setting_type = "startup",
+		order = "d",
+		default_value = 0.5,
+    minimum_value = 0.1,
+    maximum_value = 5,
+	},
+	{
+		type = "double-setting",
 		name = "hardcrafting-smaller-ore-stacks",
 		setting_type = "startup",
 		default_value = true,
-		order = "d"
+		order = "d",
+		default_value = 0.5,
+    minimum_value = 0.1,
+    maximum_value = 5,
 	},
 	{
 		type = "bool-setting",

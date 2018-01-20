@@ -1,4 +1,4 @@
-if settings.startup["hardcrafting-smaller-ore-stacks"].value == true then
+if settings.startup["hardcrafting-smaller-ore-stacks"].value ~= 1 then
 
 	local ores = {}
 	for _,resource in pairs(data.raw["resource"]) do
@@ -17,7 +17,7 @@ if settings.startup["hardcrafting-smaller-ore-stacks"].value == true then
 	
 	for oreName,_ in pairs(ores) do
 		if data.raw.item[oreName] ~= nil then
-			data.raw.item[oreName].stack_size = data.raw.item[oreName].stack_size / 2
+			data.raw.item[oreName].stack_size = math.ceil(data.raw.item[oreName].stack_size * settings.startup["hardcrafting-smaller-ore-stacks"].value)
 		end
 	end
 end
