@@ -35,5 +35,11 @@ data:extend(
 		default_value = true,
 		order = "d"
 	},
-	
+	{
+		type = "bool-setting",
+		name = "hardcrafting-hard-oil",
+		setting_type = "startup",
+		default_value = true,
+		order = "d"
+	},
 })

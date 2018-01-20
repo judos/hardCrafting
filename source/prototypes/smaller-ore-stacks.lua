@@ -6,7 +6,11 @@ if settings.startup["hardcrafting-smaller-ore-stacks"].value == true then
 			ores[resource.minable.result] = true
 		else
 			for _,ore in pairs(resource.minable.results) do
-				ores[ore.name] = true
+				if ore ~= nil and ore.name ~= nil then
+					ores[ore.name] = true
+				else
+					err("found invalid minable.results in: "..serpent.block(resource))
+				end
 			end
 		end
 	end

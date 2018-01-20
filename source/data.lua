@@ -12,6 +12,7 @@ require "prototypes.harder-copper-processing"
 require "prototypes.harder-coal"
 require "prototypes.harder-stone"
 require "prototypes.steel-dust"
+require "prototypes.advanced-oil"
 
 require "prototypes.rich-copper-ore"
 require "prototypes.rich-copper-processing"
