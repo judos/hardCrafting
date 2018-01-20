@@ -22,7 +22,6 @@ local function autoplace_settings(name, order, coverage)
 		starting_area_size = 5500 * coverage,
 		starting_area_amount = 1600
 	}
-	
 	return ret
 end
 

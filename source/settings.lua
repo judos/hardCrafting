@@ -27,5 +27,13 @@ data:extend(
 		setting_type = "startup",
 		default_value = true,
 		order = "d"
-	}
+	},
+	{
+		type = "bool-setting",
+		name = "hardcrafting-smaller-ore-stacks",
+		setting_type = "startup",
+		default_value = true,
+		order = "d"
+	},
+	
 })
