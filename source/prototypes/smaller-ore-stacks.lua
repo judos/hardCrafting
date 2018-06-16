@@ -4,7 +4,7 @@ if settings.startup["hardcrafting-smaller-ore-stacks"].value ~= 1 then
 	for _,resource in pairs(data.raw["resource"]) do
 		if resource.minable.result ~= nil then
 			ores[resource.minable.result] = true
-		else
+		elseif resource.minable.results ~= nil then
 			for _,ore in pairs(resource.minable.results) do
 				if ore ~= nil and ore.name ~= nil then
 					ores[ore.name] = true
