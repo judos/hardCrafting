@@ -1,9 +1,22 @@
 TODO v.0.5:
 
-- different resource fields with various products
-- implement process for DyTech / bobs ore?
-- implement newer graphics (See graphics folder)
-
 LOW PRIORITY
 
-? update screenshots on forum
+? update screenshots on mod portal
+
+NEW UPDATES:
+
+5 stone bricks + 5 sand + 2 iron ore + 100 water -> 20 concrete (10s)
+add "oil sands" as new ore (http://www.oilsandsmagazine.com/technical/oilsands-101)
+10 oil sands -> 2 bitumen (fluid) + 10 water + 5 silica sands (chem plant)
+2 silica sands + 1 electronic circuit + 1 plastic = 1 advanced circuit (4s)
+20 silica sands + 10 electronic circuits + 2 advanced circuit + 5 sulfuric acid = 1 processing unit (6s)
+10 bitumen -> 6 heavy oil + 2 light oil (chem plant)
+gravel floor (20% walking modifier)
+
+UNCERTAIN 
+- compatibility for martathon (make copper plates process slower in chemical plant)
+- implement process for DyTech / bobs ore?
+- purified iron/copper
+- smelt copper plates?
+- big miner (different output but a lot more?)

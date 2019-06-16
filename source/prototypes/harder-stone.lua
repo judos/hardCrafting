@@ -11,8 +11,8 @@ data.raw["resource"]["stone"].minable.results = {
 -- Recipes: --
 --       item Name     category   subgroup     time   							 ingredients     products		order
 data.raw["recipe"]["stone-brick"] = nil
-addRecipe("stone-brick","crusher","raw-material",2,{{"stone",2}},{{"stone-brick",2},{"gravel",1}},"b[coal]2")
+addRecipe("stone-brick","crusher","terrain",2,{{"stone",2}},{{"stone-brick",2},{"gravel",1}},"b[coal]2")
 addTechnologyUnlocksRecipe("crusher","stone-brick")
 
-addRecipe("gravel|pulverizer","pulverizer","terrain",1,{{"stone",1}},{{"gravel",2}},"b[coal]2")
+addRecipe("gravel|pulverizer","pulverizer","raw-resource",1,{{"stone",1}},{{"gravel",2}},"b[coal]2")
 addTechnologyUnlocksRecipe("pulverizer","gravel|pulverizer")

@@ -3,6 +3,7 @@ require("prototypes.item-group-production")
 data:extend({
 	{
 		type = "item",
+		icon_size = 32,
 		name = "crusher",
 		icon = "__hardCrafting__/graphics/icons/crusher.png",
 		flags = {"goes-to-quickbar"},

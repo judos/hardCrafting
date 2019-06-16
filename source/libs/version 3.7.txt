@@ -1,0 +1,101 @@
+3.7 hardCrafting
+	added
+		icon_size 32 to addItem, addRecipe, addResources
+
+3.6 actuator
+	added:
+		entities.rotate(entity,data) method
+	MIGRATION:
+		control must now add entities_rotate(event) to script
+
+3.5 beltSorter
+	fixes:
+		entityId now stores entityName to prevent confusion when multiple entities occupy same space
+	MIGRATION:
+		idOfPosition now requires entityName as 4th parameter
+
+3.4 beltSorter
+	added:
+		entities: Add support for pickerExtended dolly to move entities
+		  by default if entity does not implement 'move' method it will do nothing
+		entityId: added idOfPosition
+	changes:
+		logging for player has improved format
+	fixes:
+		gui responds again to checkboxes in 0.16
+		safety check for crash in entities when nil entity is built but is nil
+	MIGRATION:
+		control is required to call entities_load() in on_load
+	
+
+3.3 integratedCircuitry
+	added: prototypesForGroup in control.functions
+	removed: idOfEntity_v21, entityOfId_v21
+	added: positionOfId in control.entityId
+	changes:
+		gui - better error message when events can't be routed to a button
+
+3.2 hardCrafting
+	fix logging error when game is nil
+	fix prototypes class not dealing with advanced stack tables
+	fix simple logging doesn't show proper source file name
+	added recipeResultsContain
+	fix a few recipe helper methods not working for recipes which have difficulty table for ingredients/results
+	fix entities_pre_mined error
+
+3.1 robotMiningSite
+	resources: fix error with nil values for resources without probabilities
+	logging: do not enforce player logging when testing flag is set
+
+3.0 beltSorter
+	remove itemSelection dialog
+	MIGRATION:
+		- call gui_init(), entities_init() in on_init/on_configuration_changed
+		- remove calls to libLog.PlayerPrint (use game.print instead)
+
+2.9 integratedCircuitry: 	
+	prototypes: add emptyImage function to 
+	itemSelection: remove unused styles for old factorio
+	itemSelection: add showGroups and support for fluids, signals
+	itemSelection: fix error with items after uninstalling a mod
+	itemSelection: fix wrong import on gui.lua when events occur that could call itemSelection
+	MIGRATION itemSelection:
+		-General: call itemSelection_migration_2_9() in control migration!
+		-calls to itemSelection_open: Parameters and callback return arguments have changed!!
+
+2.8 beltSorter: correct wrong imports in control.entity system
+	add default init for logging
+
+2.7 config: add entity methods for fetching entities from a category
+	add method to change property of entities in prototype
+	moved many classes, imports might be broken now, use the all.lua to import the files (in libs, libs/prototype)
+	removed controlFunctions
+	removed basic-lua-extensions.lua -> See libs.lua.{x}
+	technologyChangeIngredientsAmountByFactor -> automatically rounds values
+	
+2.6 beltSorter: improve logging (use configs default log level)
+	rewrite entityId function, easier to read
+	improve caller function for logging
+	fix potential error in item selection gui
+
+2.5 robotMiningSite: change name of logging object (libLog)
+	fix for table.contains when table is nil
+
+2.4 beltSorter: fix entity migration v3
+	itemSelection won't show hidden items (modded stuff)
+	itemSelection allows scrolling and shows all items
+	classes: Access objects now support can_insert_at, insert_at methods, can_insert_on_at, insert_at_on
+	logging major improvement
+	added library for bit-wise operations
+	the entities.build function is now required and should return data={} otherwise entity is not 
+		controlled by the entity system
+	on_entity_pasted_settings script listener no longer in library
+	added on_marked_for_deconstruction to entity system
+	
+2.3 miningSite: fix entityId function call to surfaces
+2.2 beltSorter: added surface index to entityId
+	fixed noTick problems in scheduling
+	logging writes errors on chat
+	itemSelection shows item description
+2.1 changed by beltSorter implementation
+2.0 as released

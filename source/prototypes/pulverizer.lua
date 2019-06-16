@@ -3,6 +3,7 @@ require("prototypes.item-group-production")
 data:extend({
   {
     type = "item",
+	icon_size = 32,
     name = "pulverizer",
     icon = "__hardCrafting__/graphics/icons/pulverizer.png",
     flags = {"goes-to-quickbar"},
@@ -19,6 +20,7 @@ data:extend({
 			{"stone", 20},{"steel-plate",10},{"iron-gear-wheel",15},{"electronic-circuit",5}
 		},
 		enabled = false,
+		energy_required = 3,
     result = "pulverizer"
   },
 	{

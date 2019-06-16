@@ -1,11 +1,12 @@
-require "libs.recipeCategories"
-require "libs.technology"
+require "libs.prototypes.prototypes"
+require "libs.prototypes.technology"
 require "prototypes.item-group-production"
 
 -- Item and recipe
 data:extend({
 	{
 		type = "item",
+		icon_size = 32,
 		name = "big-processing-machine",
 		icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
 		flags = {"goes-to-quickbar"},
@@ -18,8 +19,9 @@ data:extend({
 		type = "recipe",
 		name = "big-processing-machine",
 		ingredients = {
-			{"stone", 80},{"steel-plate",40},{"iron-gear-wheel",30},{"advanced-circuit",25}
+			{"crusher", 2},{"pulverizer",2},{"steel-plate",20},{"advanced-circuit",20}
 		},
+		energy_required = 10,
 		result = "big-processing-machine"
 	},
 })
@@ -30,7 +32,7 @@ overwriteContent(processer, {
 	name = "big-processing-machine",
 	max_health = 1500,
 	crafting_categories = {"big-processing-machine"},
-	energy_usage = "500kW",
+	energy_usage = "400kW",
 	source_inventory_size = 3,
 	result_inventory_size = 4,
 	crafting_speed = 4,
@@ -126,11 +128,18 @@ addTechnologyUnlocksRecipe("big-processing-machine", "big-processing-machine")
 -- Copy recipes for processing machine
 addRecipeCategory("big-processing-machine")
 local m1 = {
-	ingredients={ {type="fluid",name="water",amount=1} },
+	ingredients={ {type="fluid",name="water",amount=10} },
 	results={ {type="item",name="dirt",amount=1} }
 }
-local recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
+local recipes = {}
+if settings.startup["hardcrafting-rich-ores"].value == true then
+	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
+	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1,
+	["crushed-iron|rich"]=m1}
+else
+	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
 	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1}
+end
 
 for name,mod in pairs(recipes) do
 	local recipe = deepcopy(data.raw.recipe[name])
@@ -151,5 +160,3 @@ for name,mod in pairs(recipes) do
 	addTechnologyUnlocksRecipe("big-processing-machine", recipe.name)
 end
 
-addRecipe("dried-dirt|big","big-processing-machine","raw-resource",	7,{{"dirt",10}},		{{"dried-dirt",2},{"water",1}},"g3[other")
-addTechnologyUnlocksRecipe("big-processing-machine", "dried-dirt|big")

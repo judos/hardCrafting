@@ -1,7 +1,6 @@
+require "libs.all"
 require "constants"
-require "libs.functions"
-require "libs.controlFunctions"
-require "libs.entities" --lets your classes register event functions in general
+require "libs.control.entities"
 
 require "control.incinerators"
 require "control.migration_0_4_1"
@@ -18,9 +17,12 @@ end)
 
 script.on_configuration_changed(function()
 	local hc = global.hardCrafting
-	info("Previous global data version: "..hc.version)
+	local previousVersion = hc.version
 	if hc.version < "0.4.1" then migration_0_4_1() end
-	info("Migrated to version "..hc.version)
+	if hc.version ~= previousVersion then
+		info("Previous global data version: "..previousVersion)
+		info("Migrated to version "..hc.version)
+	end
 end)
 
 function init()

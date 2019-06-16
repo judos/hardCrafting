@@ -7,6 +7,7 @@ data:extend({
     type = "item",
     name = "incinerator",
     icon = "__hardCrafting__/graphics/icons/incinerator.png",
+		icon_size = 32,
     flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
     order = "a",
@@ -20,6 +21,7 @@ data:extend({
 			{"stone", 25},{"steel-plate",15},{"iron-gear-wheel",10},{"steel-furnace",2}
 		},
 		enabled = false,
+		energy_required = 1,
     result = "incinerator"
   }
 })

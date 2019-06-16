@@ -25,9 +25,9 @@ data:extend({
 
 -- Items: --
 data.raw.item["copper-ore"].subgroup = "copper"
-addItem("copper-sulfat","copper","f[copper-ore]4",50)
-addItem("copper-dust","copper","f[copper-ore]3",50)
-addItem("copper-sludge","copper","f[copper-ore]2",50)
+addItem("copper-sludge","copper","f[copper-ore]3",50)
+addItem("copper-dust","copper","f[copper-ore]4",50)
+addItem("copper-sulfat","copper","f[copper-ore]5",50)
 
 addItem("sulfur-dust","raw-material","f2[sulfur]",50)
 
@@ -76,6 +76,6 @@ addTechnologyUnlocksRecipe("pulverizer","sulfur-dust")
 addRecipe("copper-sulfat","crafting","copper",2,{{"copper-dust",9},{"sulfur-dust",5}},{{"copper-sulfat",10}},"f")
 addTechnologyUnlocksRecipe("oil-processing","copper-sulfat")
 addRecipe("copper-plate|sulfat","chemistry","copper",2,
-	{{type="item",name="copper-sulfat",amount=6},{type="fluid",name="water",amount=1}},
-	{{"copper-plate",c(7)},{"sulfuric-acid",0.5},{"gravel",1}},"g")
+	{{type="item",name="copper-sulfat",amount=6},{type="fluid",name="water",amount=10}},
+	{{"copper-plate",c(7)},{"sulfuric-acid",5},{"gravel",1}},"g")
 addTechnologyUnlocksRecipe("oil-processing","copper-plate|sulfat")
