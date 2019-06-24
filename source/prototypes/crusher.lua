@@ -6,7 +6,6 @@ data:extend({
 		icon_size = 32,
 		name = "crusher",
 		icon = "__hardCrafting__/graphics/icons/crusher.png",
-		flags = {"goes-to-quickbar"},
 		subgroup = "advanced-processing-machine",
 		order = "f",
 		place_result = "crusher",
@@ -86,7 +85,7 @@ data:extend({
 		unit = {
 			count = 42,
 			ingredients = {
-				{"science-pack-1", 1}
+				{"automation-science-pack", 1}
 			},
 			time = 20
 		},

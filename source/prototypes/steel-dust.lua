@@ -25,7 +25,7 @@ data:extend({
 		effects = {},
 		unit = {
 			count = 30,
-			ingredients = {{"science-pack-1", 2}},
+			ingredients = {{"automation-science-pack", 2}},
 			time = 30
 		},
 		order = "_steel-processing-2"

@@ -6,7 +6,6 @@ data:extend({
 	icon_size = 32,
     name = "pulverizer",
     icon = "__hardCrafting__/graphics/icons/pulverizer.png",
-    flags = {"goes-to-quickbar"},
     subgroup = "advanced-processing-machine",
     order = "g",
     place_result = "pulverizer",
@@ -41,7 +40,7 @@ pulverizer.minable.result = "pulverizer"
 
 pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
 
-pulverizer.animation = { 
+pulverizer.animation = {
   filename = "__hardCrafting__/graphics/entity/pulverizer-base.png",
   line_length = 1,
   width = 129,
@@ -66,7 +65,7 @@ table.insert(pulverizer.working_visualisations, {animation={
 
 pulverizer.working_sound = data.raw["furnace"]["electric-furnace"].working_sound
 pulverizer.open_sound  = data.raw["furnace"]["electric-furnace"].open_sound
-pulverizer.close_sound  = data.raw["furnace"]["electric-furnace"].close_sound 
+pulverizer.close_sound  = data.raw["furnace"]["electric-furnace"].close_sound
 
 data:extend({ pulverizer })
 
@@ -87,8 +86,8 @@ data:extend({
     unit = {
       count = 50,
       ingredients = {
-        {"science-pack-1", 2},
-				{"science-pack-2", 1}
+        {"automation-science-pack", 2},
+				{"logistic-science-pack", 1}
       },
       time = 30
     },

@@ -8,8 +8,7 @@ data:extend({
     name = "incinerator",
     icon = "__hardCrafting__/graphics/icons/incinerator.png",
 		icon_size = 32,
-    flags = {"goes-to-quickbar"},
-    subgroup = "advanced-processing-machine",
+     subgroup = "advanced-processing-machine",
     order = "a",
     place_result = "incinerator",
     stack_size = 50
@@ -53,7 +52,7 @@ data:extend({
     unit = {
       count = 80,
       ingredients = {
-        {"science-pack-1", 1}
+        {"automation-science-pack", 1}
       },
       time = 30
     },

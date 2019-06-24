@@ -1,3 +1,4 @@
+resource_autoplace = require("__base__.prototypes.entity.demo-resource-autoplace");
 
 if settings.startup["hardcrafting-hard-oil"].value == true then
 
@@ -5,9 +6,6 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 
 	crudeOil.minable.fluid_amount = 10
 	crudeOil.minable.required_fluid = "water"
-	
-	crudeOil.autoplace.coverage = crudeOil.autoplace.coverage / 3
-	crudeOil.autoplace.peaks[1].noise_octaves_difference = crudeOil.autoplace.peaks[1].noise_octaves_difference - 0.5
 
 	data.raw["mining-drill"].pumpjack.input_fluid_box = {
 		production_type = "input-output",
@@ -21,5 +19,5 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 			{ position = {-2, 0}, {0,2}, {2,0} },
 		}
 	}
-	
+
 end

@@ -6,7 +6,6 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 		name = "long-filter-inserter",
 		icon = "__hardCrafting__/graphics/icons/long-filter-inserter.png",
 		icon_size = 32,
-		flags = {"goes-to-quickbar"},
 		subgroup = "inserter",
 		order = "f[inserter]-e[smart-inserter]-2",
 		place_result = "long-filter-inserter",

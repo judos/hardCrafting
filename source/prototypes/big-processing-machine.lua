@@ -9,7 +9,6 @@ data:extend({
 		icon_size = 32,
 		name = "big-processing-machine",
 		icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
-		flags = {"goes-to-quickbar"},
 		subgroup = "advanced-processing-machine",
 		order = "h",
 		place_result = "big-processing-machine",
@@ -114,9 +113,9 @@ data:extend({
 		unit = {
 			count = 250,
 			ingredients = {
-				{"science-pack-1", 5},
-				{"science-pack-2", 2},
-				{"science-pack-3", 1}
+				{"automation-science-pack", 5},
+				{"logistic-science-pack", 2},
+				{"chemical-science-pack", 1}
 			},
 			time = 30
 		},

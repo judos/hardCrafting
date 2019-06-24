@@ -8,7 +8,6 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 		name = "fast-long-inserter",
 		icon = "__hardCrafting__/graphics/icons/fast-long-inserter.png",
 		icon_size = 32,
-		flags = {"goes-to-quickbar"},
 		subgroup = "inserter",
 		order = "d[fast-inserter]-2",
 		place_result = "fast-long-inserter",

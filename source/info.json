@@ -4,7 +4,7 @@
 	"title": "Hard crafting",
 	"author": "judos",
 	"description": "Modifies vanilla crafting and smelting to be much trickier, you will need better planning and more clever setup",
-	"dependencies": ["base >= 0.16.0"],
+	"dependencies": ["base >= 0.17.0", "boblibrary >= 0.17.2" ],
 	"homepage": "https://forums.factorio.com/viewtopic.php?f=91&t=30493",
-	"factorio_version": "0.16"
+	"factorio_version": "0.17"
 }
