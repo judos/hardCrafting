@@ -8,7 +8,7 @@ data:extend({
 		type = "item",
 		icon_size = 32,
 		name = "big-processing-machine",
-		icon = "__hardCrafting__/graphics/icons/big-processing-machine.png",
+		icon = "__"..fullModName.."__/graphics/icons/big-processing-machine.png",
 		subgroup = "advanced-processing-machine",
 		order = "h",
 		place_result = "big-processing-machine",
@@ -37,12 +37,12 @@ overwriteContent(processer, {
 	crafting_speed = 4,
 	collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
 	selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-	icon =  "__hardCrafting__/graphics/icons/big-processing-machine.png",
+	icon =  "__"..fullModName.."__/graphics/icons/big-processing-machine.png",
 	working_sound = data.raw["furnace"]["electric-furnace"].working_sound,
 	open_sound  = data.raw["furnace"]["electric-furnace"].open_sound,
 	close_sound  = data.raw["furnace"]["electric-furnace"].close_sound,
 	animation = {
-		filename = "__hardCrafting__/graphics/entity/big-processing-machine/big-processing-machine-base.png",
+		filename = "__"..fullModName.."__/graphics/entity/big-processing-machine/big-processing-machine-base.png",
 		line_length = 1,
 		width = 184,
 		height = 188,
@@ -59,7 +59,7 @@ processer.working_visualisations[2].animation.shift = {-0.703125, -0.890625}
 table.insert(processer.working_visualisations,deepcopy(processer.working_visualisations[2]))
 processer.working_visualisations[3].animation.shift = {1.078125, -1.234375}
 table.insert(processer.working_visualisations, {animation={
-	filename = "__hardCrafting__/graphics/entity/crush-animation.png",
+	filename = "__"..fullModName.."__/graphics/entity/crush-animation.png",
 	priority = "high",
 	line_length = 11,
 	width = 23,
@@ -69,7 +69,7 @@ table.insert(processer.working_visualisations, {animation={
 	shift = {-0.78125, 1.90625}
 }})
 table.insert(processer.working_visualisations, {animation={
-	filename = "__hardCrafting__/graphics/entity/wheel2.png",
+	filename = "__"..fullModName.."__/graphics/entity/wheel2.png",
 	priority = "high",
 	line_length = 4,
 	width = 33,
@@ -96,8 +96,8 @@ table.insert(processer.fluid_boxes,{
 	base_level = 1,
 	pipe_connections = {{ type="output", position = {0, 3} }}
 })
-processer.fluid_boxes[1].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
-processer.fluid_boxes[2].pipe_picture.north.filename = "__hardCrafting__/graphics/entity/big-processing-machine/pipe-north.png"
+processer.fluid_boxes[1].pipe_picture.north.filename = "__"..fullModName.."__/graphics/entity/big-processing-machine/pipe-north.png"
+processer.fluid_boxes[2].pipe_picture.north.filename = "__"..fullModName.."__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.minable.result = "big-processing-machine"
 
 data:extend({ processer })
@@ -107,7 +107,7 @@ data:extend({
 	{
 		type = "technology",
 		name = "big-processing-machine",
-		icon = "__hardCrafting__/graphics/technology/big-processing-machine.png",
+		icon = "__"..fullModName.."__/graphics/technology/big-processing-machine.png",
 		icon_size = 128,
 		prerequisites = { "pulverizer", "advanced-electronics"},
 		unit = {

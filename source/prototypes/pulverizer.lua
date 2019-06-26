@@ -5,7 +5,7 @@ data:extend({
     type = "item",
 	icon_size = 32,
     name = "pulverizer",
-    icon = "__hardCrafting__/graphics/icons/pulverizer.png",
+    icon = "__"..fullModName.."__/graphics/icons/pulverizer.png",
     subgroup = "advanced-processing-machine",
     order = "g",
     place_result = "pulverizer",
@@ -38,10 +38,10 @@ pulverizer.result_inventory_size = 3
 pulverizer.crafting_speed = 1
 pulverizer.minable.result = "pulverizer"
 
-pulverizer.icon =  "__hardCrafting__/graphics/icons/pulverizer.png"
+pulverizer.icon =  "__"..fullModName.."__/graphics/icons/pulverizer.png"
 
 pulverizer.animation = {
-  filename = "__hardCrafting__/graphics/entity/pulverizer-base.png",
+  filename = "__"..fullModName.."__/graphics/entity/pulverizer-base.png",
   line_length = 1,
   width = 129,
   height = 100,
@@ -53,7 +53,7 @@ pulverizer.animation = {
 pulverizer.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
 table.remove(pulverizer.working_visualisations,1)
 table.insert(pulverizer.working_visualisations, {animation={
-	filename = "__hardCrafting__/graphics/entity/crush-animation.png",
+	filename = "__"..fullModName.."__/graphics/entity/crush-animation.png",
 	priority = "high",
 	line_length = 11,
 	width = 23,
@@ -74,7 +74,7 @@ data:extend({
   {
     type = "technology",
     name = "pulverizer",
-    icon = "__hardCrafting__/graphics/technology/pulverizer.png",
+    icon = "__"..fullModName.."__/graphics/technology/pulverizer.png",
     icon_size = 128,
     prerequisites = {"crusher", "advanced-material-processing" },
     effects = {

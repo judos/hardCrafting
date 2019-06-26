@@ -7,7 +7,7 @@ local burnTime = {
 }
 
 local types = {
-	"item", "rail-planner", "module", 
+	"item", "rail-planner", "module",
 	"tool", -- research packs
 	"item-with-entity-data", -- cars, trains, wagon, tanks
 	"blueprint", "deconstruction-item", "blueprint-book",
@@ -37,7 +37,7 @@ for _,typ in pairs(types) do
 					icon_size = 32,
 					name = "incinerate_"..name,
 					category = "incinerator",
-					icon = "__hardCrafting__/graphics/icons/fire.png",
+					icon = "__"..fullModName.."__/graphics/icons/fire.png",
 					hidden = true,
 					ingredients = {{name, 1}},
 					energy_required = time,

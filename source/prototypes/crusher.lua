@@ -5,7 +5,7 @@ data:extend({
 		type = "item",
 		icon_size = 32,
 		name = "crusher",
-		icon = "__hardCrafting__/graphics/icons/crusher.png",
+		icon = "__"..fullModName.."__/graphics/icons/crusher.png",
 		subgroup = "advanced-processing-machine",
 		order = "f",
 		place_result = "crusher",
@@ -38,9 +38,9 @@ crusher.crafting_speed = 1
 crusher.minable.result = "crusher"
 crusher.energy_source.emissions = 0.005
 
-crusher.icon =  "__hardCrafting__/graphics/icons/crusher.png"
+crusher.icon =  "__"..fullModName.."__/graphics/icons/crusher.png"
 crusher.animation = {
-	filename = "__hardCrafting__/graphics/entity/crusher-base.png",
+	filename = "__"..fullModName.."__/graphics/entity/crusher-base.png",
 	line_length = 1,
 	width = 129,
 	height = 100,
@@ -52,7 +52,7 @@ crusher.animation = {
 crusher.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
 table.remove(crusher.working_visualisations,1)
 table.insert(crusher.working_visualisations, {animation={
-	filename = "__hardCrafting__/graphics/entity/crush-animation.png",
+	filename = "__"..fullModName.."__/graphics/entity/crush-animation.png",
 	priority = "high",
 	line_length = 11,
 	width = 23,
@@ -73,7 +73,7 @@ data:extend({
 	{
 		type = "technology",
 		name = "crusher",
-		icon = "__hardCrafting__/graphics/technology/crusher.png",
+		icon = "__"..fullModName.."__/graphics/technology/crusher.png",
 		icon_size = 128,
 		prerequisites = {},
 		effects = {

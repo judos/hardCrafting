@@ -4,7 +4,7 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 	  {
 		type = "item",
 		name = "long-filter-inserter",
-		icon = "__hardCrafting__/graphics/icons/long-filter-inserter.png",
+		icon = "__"..fullModName.."__/graphics/icons/long-filter-inserter.png",
 		icon_size = 32,
 		subgroup = "inserter",
 		order = "f[inserter]-e[smart-inserter]-2",
@@ -30,7 +30,7 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 	local long = deepcopy(data.raw["inserter"]["filter-inserter"])
 	overwriteContent(long, {
 		name = "long-filter-inserter",
-		icon = "__hardCrafting__/graphics/icons/long-filter-inserter.png",
+		icon = "__"..fullModName.."__/graphics/icons/long-filter-inserter.png",
 		pickup_position = {0, -2},
 		insert_position = {0, 2.2},
 		extension_speed = 0.1

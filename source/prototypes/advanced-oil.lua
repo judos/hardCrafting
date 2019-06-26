@@ -20,7 +20,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 	oilSand.minable.required_fluid = "fracking-fluid"
 	oilSand.minable.results[1].amount_min = 20
 	oilSand.minable.results[1].amount_max = 30
-	oilSand.stages.sheet.filename = "__hardCrafting__/graphics/entity/oil-sand/oil-sand.png"
+	oilSand.stages.sheet.filename = "__"..fullModName.."__/graphics/entity/oil-sand/oil-sand.png"
 
     oilSand.autoplace = resource_autoplace.resource_autoplace_settings{
 		name = "oil-sand",
@@ -45,7 +45,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 		name="fracking-fluid",
 		base_color = {r=0.5, g=0.25, b=0},
 		flow_color = {r=0.6, g=0.3, b=0.1},
-		icon = "__hardCrafting__/graphics/icons/fracking-fluid.png",
+		icon = "__"..fullModName.."__/graphics/icons/fracking-fluid.png",
 	})
 
 	data:extend({
@@ -66,7 +66,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 			{
 				{type="fluid", name="fracking-fluid", amount=100},
 			},
-			icon = "__hardCrafting__/graphics/icons/fracking-fluid.png",
+			icon = "__"..fullModName.."__/graphics/icons/fracking-fluid.png",
 			icon_size = 32,
 			subgroup = "fluid-recipes",
 			order = "a[oil-processing]-e[fracking-fluid]"

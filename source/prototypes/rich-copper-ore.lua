@@ -13,7 +13,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			type = "item",
 			icon_size = 32,
 			name = "rich-copper-ore",
-			icon = "__hardCrafting__/graphics/icons/rich-copper-ore.png",
+			icon = "__"..fullModName.."__/graphics/icons/rich-copper-ore.png",
 			subgroup = "copper",
 			order = "f[copper-ore]2",
 			stack_size = 50
