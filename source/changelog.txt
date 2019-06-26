@@ -21,15 +21,15 @@ Date: 2016-06-29
 Version: 0.3.0
 Date: 2016-03-11
   Features:
-    ! fixed minable_results not consistent by factorio (manual vs automatic mining -> storage_slots)
-    ! fixed Localization for changed recipes (metal-scrap)
-    + properly ordered recipes + items into correct subgroups
-    + landfill recipes changed -> burning landfill takes a lot more time
-    + balancing gravel/dirt output -> dirt can now be dried which creates less amount of dried dirt
-    + fixed icons for slag/sludge processing
-    + pulverizer: coal -> coal dust, sulfur -> sulfur-dust
-    + coal field -> coal dust, coal
-    + improving Incinerator
+    - fixed minable_results not consistent by factorio (manual vs automatic mining -> storage_slots)
+    - fixed Localization for changed recipes (metal-scrap)
+    - properly ordered recipes + items into correct subgroups
+    - landfill recipes changed -> burning landfill takes a lot more time
+    - balancing gravel/dirt output -> dirt can now be dried which creates less amount of dried dirt
+    - fixed icons for slag/sludge processing
+    - pulverizer: coal -> coal dust, sulfur -> sulfur-dust
+    - coal field -> coal dust, coal
+    - improving Incinerator
     - steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
     - expensive recipes produce metal-scrap as byproduct (only for placeable items)
     - dirt texture (fixed o, u transition. U is not perfect aligned yet)
