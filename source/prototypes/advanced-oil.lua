@@ -1,5 +1,3 @@
-resource_autoplace = require("__base__.prototypes.entity.demo-resource-autoplace");
-
 if settings.startup["hardcrafting-hard-oil"].value == true then
 
 	data:extend({
@@ -24,7 +22,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 	oilSand.minable.results[1].amount_max = 30
 	oilSand.stages.sheet.filename = "__hardCrafting__/graphics/entity/oil-sand/oil-sand.png"
 
-	oilSand.autoplace = resource_autoplace.resource_autoplace_settings{
+    oilSand.autoplace = resource_autoplace.resource_autoplace_settings{
 		name = "oil-sand",
 		order = "d", -- Other resources are "b"; oil won't get placed if something else is already there.
 		base_density = 8.2,

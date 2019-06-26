@@ -22,7 +22,19 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			type = "noise-layer",
 			name = "rich-iron-ore"
 		},
-		resource("rich-iron-ore",   "b", {r=0.47, g=0.52, b=0.7}, 0.5, 10  )
+        resource(
+                {
+                    name = "rich-iron-ore",
+                    order = "b",
+                    map_color = {r=0.47, g=0.52, b=0.7},
+                    mining_time = 1
+                },
+                {
+                    base_density = 10,
+                    regular_rq_factor_multiplier = 1.10,
+                    starting_rq_factor_multiplier = 1.5
+                }
+        )
 	})
 
 	data.raw.resource["rich-iron-ore"].minable.mining_particle = "iron-ore-particle"

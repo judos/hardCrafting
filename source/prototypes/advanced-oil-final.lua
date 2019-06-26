@@ -1,5 +1,3 @@
-resource_autoplace = require("__base__.prototypes.entity.demo-resource-autoplace");
-
 if settings.startup["hardcrafting-hard-oil"].value == true then
 
 	local crudeOil = data.raw.resource["crude-oil"]
