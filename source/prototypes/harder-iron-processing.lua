@@ -45,16 +45,9 @@ if not resultingCount then resultingCount=1 end
 ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iron-ore")
 info("1x Iron-ore = "..tostring(ironOreToPlateFactor).."x iron-plate")
 
-log("c: "..serpent.block(c))
-log("resultingCount : "..resultingCount )
-log("searchOreAmountironore: "..searchOreAmount(c.ingredients,"iron-ore"))
-log("ironOreToPlateFactor : "..ironOreToPlateFactor )
-
 local function c(amount)
 	return math.ceil(amount*ironOreToPlateFactor)
 end
-
-log("c(1): "..c(1))
 
 -- Recipes: --
 data.raw["recipe"]["iron-plate"] = nil
