@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.1
+Date: 2019-07-02
+  Features:
+    - Updated to 0.17.53
+  Bugfixes:
+    - fixed big-processing-machine next_upgrade bug
+    - fixed problems when patching iron and copper smelting
+    - technology dependency between electronics and logistics removed
+---------------------------------------------------------------------------------------------------
 Version: 0.17.0
 Date: 2019-06-26
   Features:
