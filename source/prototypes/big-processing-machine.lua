@@ -52,6 +52,8 @@ overwriteContent(processer, {
 		shift = {0.515625, -0.40625},
 	}
 })
+
+
 processer.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
 table.remove(processer.working_visualisations,1)
 processer.working_visualisations[1].animation.shift = {-1.4375, 0.328125}
@@ -99,6 +101,8 @@ table.insert(processer.fluid_boxes,{
 processer.fluid_boxes[1].pipe_picture.north.filename = "__"..fullModName.."__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.fluid_boxes[2].pipe_picture.north.filename = "__"..fullModName.."__/graphics/entity/big-processing-machine/pipe-north.png"
 processer.minable.result = "big-processing-machine"
+processer.fast_replaceable_group = nil
+processer.next_upgrade = nil
 
 data:extend({ processer })
 
