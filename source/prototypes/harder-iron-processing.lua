@@ -36,6 +36,7 @@ local c = data.raw["recipe"]["iron-plate"]
 local function searchOreAmount(tableOfIngredients,nameToSearch)
 	for _,t in pairs(tableOfIngredients) do
 		if t.name == nameToSearch then return t.amount end
+		if t[1] == nameToSearch then return t[2] end
 	end
 	return 0
 end
@@ -44,9 +45,16 @@ if not resultingCount then resultingCount=1 end
 ironOreToPlateFactor = resultingCount / searchOreAmount(c.ingredients,"iron-ore")
 info("1x Iron-ore = "..tostring(ironOreToPlateFactor).."x iron-plate")
 
+log("c: "..serpent.block(c))
+log("resultingCount : "..resultingCount )
+log("searchOreAmountironore: "..searchOreAmount(c.ingredients,"iron-ore"))
+log("ironOreToPlateFactor : "..ironOreToPlateFactor )
+
 local function c(amount)
 	return math.ceil(amount*ironOreToPlateFactor)
 end
+
+log("c(1): "..c(1))
 
 -- Recipes: --
 data.raw["recipe"]["iron-plate"] = nil
