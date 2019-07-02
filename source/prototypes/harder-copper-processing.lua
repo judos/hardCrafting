@@ -36,7 +36,7 @@ local c = data.raw["recipe"]["copper-plate"]
 
 local function searchOreAmount(tableOfIngredients,nameToSearch)
 	for _,t in pairs(tableOfIngredients) do
-		if t[1] == nameToSearch then return t[2] end
+		if t.name == nameToSearch then return t.amount end
 	end
 	return 0
 end
