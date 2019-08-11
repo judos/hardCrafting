@@ -3,6 +3,8 @@ Version: 0.17.2
 Date: 2019-08-11
   Features:
     - Changed research recipes of pulverizer and big processing machine to be less annoying
+    - Provide copper-dust production from rich copper ore at big processing machine too
+    - Recipes reordered for big processing machine
     - Improved some locales
   Bugfixes:
     - fixed problems with mod "cargo ships"
