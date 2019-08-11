@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.2
+Date: 2019-08-11
+  Features:
+    - Changed research recipes of pulverizer and big processing machine to be less annoying
+    - Improved some locales
+  Bugfixes:
+    - fixed problems with mod "cargo ships"
+---------------------------------------------------------------------------------------------------
 Version: 0.17.1
 Date: 2019-07-02
   Features:

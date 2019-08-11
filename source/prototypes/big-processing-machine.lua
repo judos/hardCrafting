@@ -115,10 +115,10 @@ data:extend({
 		icon_size = 128,
 		prerequisites = { "pulverizer", "advanced-electronics"},
 		unit = {
-			count = 250,
+			count = 500,
 			ingredients = {
-				{"automation-science-pack", 5},
-				{"logistic-science-pack", 2},
+				{"automation-science-pack", 1},
+				{"logistic-science-pack", 1},
 				{"chemical-science-pack", 1}
 			},
 			time = 30
@@ -136,9 +136,8 @@ local m1 = {
 }
 local recipes = {}
 if settings.startup["hardcrafting-rich-ores"].value == true then
-	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
-	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1,
-	["crushed-iron|rich"]=m1}
+	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["crushed-iron|rich"]=m1, ["pulverized-iron"]=m1,
+	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-dust|rich"]=m1, ["copper-plate|sulfat"]=m1}
 else
 	recipes = {["iron-slag"]=m1, ["crushed-iron"]=m1, ["pulverized-iron"]=m1,
 	["copper-sludge"]=m1, ["copper-dust"]=m1, ["copper-plate|sulfat"]=m1}
