@@ -22,19 +22,19 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			type = "noise-layer",
 			name = "rich-copper-ore"
 		},
-        resource(
-                {
-                    name = "rich-copper-ore",
-                    order = "b",
-                    map_color = {r=0.1, g=0.6, b=0.35},
-                    mining_time = 1
-                },
-                {
-                    base_density = 8,
-                    regular_rq_factor_multiplier = 1.10,
-                    starting_rq_factor_multiplier = 1.2
-                }
-        )
+		resource(
+			{
+				name = "rich-copper-ore",
+				order = "b",
+				map_color = {r=1, g=0.6, b=0.35},
+				mining_time = 1
+			},
+			{
+				base_density = 8,
+				regular_rq_factor_multiplier = 1.10,
+				starting_rq_factor_multiplier = 1.2
+			}
+		)
 	})
 
 	data.raw.resource["rich-copper-ore"].minable.mining_particle = "copper-ore-particle"
