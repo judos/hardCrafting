@@ -5,9 +5,13 @@ local cost = settings.startup["hardcrafting-train-cost"].value
 if cost ~= 1 then
 
 	local locomotiveItems = {}
-	for _,data in pairs(data.raw.locomotive) do
-		table.insert(locomotiveItems, data.minable.result)
-	end
+    for _,locomotive in pairs(data.raw.locomotive) do
+		local item = locomotive
+        if locomotive.minable then
+            item = locomotive.minable.recipe
+        end
+        table.insert(locomotiveItems, item)
+    end
 	for _,data in pairs(data.raw.recipe) do
 		local isLocomotive = false
 		for _,name in pairs(locomotiveItems) do
@@ -16,7 +20,7 @@ if cost ~= 1 then
 				break
 			end
 		end
-		if isLocomotive then		
+		if isLocomotive then
 			recipeChangeCostsByFactor(data.name,cost,true)
 		end
 	end

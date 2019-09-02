@@ -35,6 +35,7 @@ local c = data.raw["recipe"]["iron-plate"]
 
 local function searchOreAmount(tableOfIngredients,nameToSearch)
 	for _,t in pairs(tableOfIngredients) do
+		if t.name == nameToSearch then return t.amount end
 		if t[1] == nameToSearch then return t[2] end
 	end
 	return 0
@@ -57,7 +58,7 @@ addRecipe("iron-plate","smelting","iron",3.5,{{"iron-ore",2}},						{{"iron-plat
 
 -- Tier2
 addRecipe("iron-slag","crusher","iron",8,{{"iron-slag",5}},								{{"crushed-iron",2},{"gravel",3}},"c")
-data.raw["recipe"]["iron-slag"].icon = "__hardCrafting__/graphics/icons/slag-processing.png"
+data.raw["recipe"]["iron-slag"].icon = "__"..fullModName.."__/graphics/icons/slag-processing.png"
 
 addTechnologyUnlocksRecipe("crusher","iron-slag")
 addRecipe("crushed-iron","crusher","iron",16.5,{{"iron-ore",10}},					{{"crushed-iron",6},{"iron-nugget",3},{"stone",1}},"d")

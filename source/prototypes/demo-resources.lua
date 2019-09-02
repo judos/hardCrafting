@@ -1,10 +1,8 @@
--- actual richness of iron / copper from factorio 0.16.16
-richness_iron_ore = (0.006 / 3) / 1.1 * 1.49
-richness_copper_ore = 0.006 / 3
+resource_autoplace.initialize_patch_set("oil-sand", false)
 
--- copy of factorio 0.16.16 data\base\prototype\entity\demo-resources.lua
 local function autoplace_settings(name, order, coverage)
-	local ret = {
+	return
+	{
 		order = order,
 		control = name,
 		sharpness = 15/16,
@@ -12,64 +10,72 @@ local function autoplace_settings(name, order, coverage)
 		richness_multiplier_distance_bonus = 20,
 		richness_base = 10,
 		coverage = coverage,
-		peaks = {
+		peaks =
+		{
 			{
 				noise_layer = name,
 				noise_octaves_difference = -0.85,
-				noise_persistence = 0.4,
-			},
+				noise_persistence = 0.4
+			}
 		},
 		starting_area_size = 5500 * coverage,
 		starting_area_amount = 1600
 	}
-	return ret
 end
 
-function resource(name, order, map_color, hardness, coverage)
-	if hardness == nil then hardness = 0.9 end
+
+function resource(resource_parameters, autoplace_parameters)
 	if coverage == nil then coverage = 0.02 end
-	return {
+
+	return
+	{
 		type = "resource",
-		name = name,
-		icon = "__"..fullModName.."__/graphics/icons/" .. name .. ".png",
+		name = resource_parameters.name,
+		icon = "__" ..fullModName.. "__/graphics/icons/" .. resource_parameters.name .. ".png",
 		icon_size = 32,
 		flags = {"placeable-neutral"},
-		order="a-b-"..order,
+		order="a-b-"..resource_parameters.order,
 		tree_removal_probability = 0.8,
 		tree_removal_max_distance = 32 * 32,
 		minable =
 		{
-			hardness = hardness,
-			mining_particle = name .. "-particle",
-			mining_time = 2,
-			result = name
+			mining_particle = resource_parameters.name .. "-particle",
+			mining_time = resource_parameters.mining_time,
+			result = resource_parameters.name
 		},
 		collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
 		selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-		autoplace = autoplace_settings(name, order, coverage),
-		stage_counts = {15000, 8000, 4000, 2000, 1000, 500, 200, 80},
+		-- autoplace = autoplace_settings(name, order, coverage),
+		autoplace = resource_autoplace.resource_autoplace_settings{
+			name = resource_parameters.name,
+			order = resource_parameters.order,
+			base_density = autoplace_parameters.base_density,
+			has_starting_area_placement = true,
+			regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier;
+			starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier;
+		},
+		stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
 		stages =
 		{
 			sheet =
 			{
-				filename = "__"..fullModName.."__/graphics/entity/" .. name .. "/" .. name .. ".png",
+				filename = "__"..fullModName.."__/graphics/entity/" .. resource_parameters.name .. "/" .. resource_parameters.name .. ".png",
 				priority = "extra-high",
-				width = 64,
-				height = 64,
+				size = 64,
 				frame_count = 8,
 				variation_count = 8,
 				hr_version =
-					{
-					filename = "__"..fullModName.."__/graphics/entity/" .. name .. "/hr-" .. name .. ".png",
+				{
+					filename = "__"..fullModName.."__/graphics/entity/" .. resource_parameters.name .. "/hr-" .. resource_parameters.name .. ".png",
 					priority = "extra-high",
-					width = 128,
-					height = 128,
+					size = 128,
 					frame_count = 8,
 					variation_count = 8,
 					scale = 0.5
-					}
+				}
 			}
 		},
-		map_color = map_color
+		map_color = resource_parameters.map_color
 	}
 end
+

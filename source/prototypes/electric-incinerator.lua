@@ -3,27 +3,26 @@ require("prototypes.incinerator-recipe-category")
 
 -- Item and recipe
 data:extend({
-  {
-    type = "item",
-    name = "electric-incinerator",
-    icon = "__hardCrafting__/graphics/icons/electric-incinerator.png",
-		icon_size = 32,
-    flags = {"goes-to-quickbar"},
-    subgroup = "advanced-processing-machine",
-    order = "b",
-    place_result = "electric-incinerator",
-    stack_size = 50
-  },
 	{
-    type = "recipe",
-    name = "electric-incinerator",
-    ingredients = {
+		type = "item",
+		name = "electric-incinerator",
+		icon = "__"..fullModName.."__/graphics/icons/electric-incinerator.png",
+		icon_size = 32,
+		subgroup = "advanced-processing-machine",
+		order = "b",
+		place_result = "electric-incinerator",
+		stack_size = 50
+	},
+	{
+		type = "recipe",
+		name = "electric-incinerator",
+		ingredients = {
 			{"stone", 25},{"steel-plate",15},{"iron-gear-wheel",10},{"electric-furnace",2}
 		},
 		enabled = false,
 		energy_required = 5,
-    result = "electric-incinerator"
-  }
+		result = "electric-incinerator"
+	}
 })
 
 -- incinerator Entity
@@ -44,26 +43,26 @@ if data.raw["technology"]["incinerator"] ~= nil then
 end
 
 data:extend({
-  {
-    type = "technology",
-    name = "electric-incinerator",
-    icon = "__hardCrafting__/graphics/technology/electric-incinerator.png",
-    icon_size = 128,
-    prerequisites = prerequisites,
-    effects = {
-      {
-        type = "unlock-recipe",
-        recipe = "electric-incinerator"
-      }
-    },
-    unit = {
-      count = 60,
-      ingredients = {
-        {"science-pack-1", 3},
-				{"science-pack-2", 1}
-      },
-      time = 30
-    },
-    order = "_incinerator-2"
-  }
+	{
+		type = "technology",
+		name = "electric-incinerator",
+		icon = "__"..fullModName.."__/graphics/technology/electric-incinerator.png",
+		icon_size = 128,
+		prerequisites = prerequisites,
+		effects = {
+			{
+				type = "unlock-recipe",
+				recipe = "electric-incinerator"
+			}
+		},
+		unit = {
+			count = 60,
+			ingredients = {
+				{"automation-science-pack", 3},
+				{"logistic-science-pack", 1}
+			},
+			time = 30
+		},
+		order = "_incinerator-2"
+	}
 })

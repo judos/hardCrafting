@@ -17,7 +17,6 @@ function addItem(itemName, subgroup, order, stackSize)
 			icon_size = 32,
 			name = itemName,
 			icon = "__"..fullModName.."__/graphics/icons/"..itemName..".png",
-			flags = {"goes-to-main-inventory"},
 			subgroup = subgroup,
 			order = order,
 			stack_size = stackSize

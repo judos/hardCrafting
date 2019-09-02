@@ -36,6 +36,7 @@ local c = data.raw["recipe"]["copper-plate"]
 
 local function searchOreAmount(tableOfIngredients,nameToSearch)
 	for _,t in pairs(tableOfIngredients) do
+		if t.name == nameToSearch then return t.amount end
 		if t[1] == nameToSearch then return t[2] end
 	end
 	return 0
@@ -58,7 +59,7 @@ addRecipe("copper-plate","smelting","copper",6,{{"copper-ore",3}},					{{"copper
 
 -- Tier2
 addRecipe("copper-sludge","crusher","copper",4,{{"copper-sludge",2}},			{{"copper-dust",1},{"gravel",1}},"b")
-data.raw["recipe"]["copper-sludge"].icon = "__hardCrafting__/graphics/icons/sludge-processing.png"
+data.raw["recipe"]["copper-sludge"].icon = "__"..fullModName.."__/graphics/icons/sludge-processing.png"
 addTechnologyUnlocksRecipe("crusher","copper-sludge")
 addRecipe("copper-plate|dust","smelting","copper",2,{{"copper-dust",1}},	{{"copper-plate",c(1)}},"c")
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
