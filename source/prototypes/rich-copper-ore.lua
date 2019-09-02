@@ -30,9 +30,9 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 				mining_time = 1
 			},
 			{
-				base_density = 8,
-				regular_rq_factor_multiplier = 1.10,
-				starting_rq_factor_multiplier = 1.2
+				base_density = 4.5,
+				regular_rq_factor_multiplier = 0.90,
+				starting_rq_factor_multiplier = 1.05
 			}
 		)
 	})
