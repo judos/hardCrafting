@@ -30,7 +30,12 @@ for _,typ in pairs(types) do
 		end
 
 		--If the item is a raw material and has a fuel value, dont create an incinerator recipe for it.
-		if itemTable.subgroup ~= "raw-material" or fuelValue == 0 then
+		if name == "scrap-metal" then
+			print(serpent.block(itemTable))
+		end
+		
+		local subgroup = itemTable.subgroup
+		if (subgroup ~= "raw-material" and subgroup~="raw-resource") or fuelValue == 0 then
 			data:extend({
 				{
 					type = "recipe",

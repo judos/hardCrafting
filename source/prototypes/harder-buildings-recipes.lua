@@ -13,9 +13,6 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 		"gun-turret", "laser-turret", "radar", "rocket-silo"   
 	})
 
-	-- Item: --
-	addItem("scrap-metal","raw-resource","z[scrap-metal]",50)
-
 	-- Recipes: --
 	--           n                ame     category   subgroup     time    ingredients     			products		order
 	addRecipe("scrap-metal-processing","hc-pulverizer","raw-resource",8,{{"scrap-metal",5}},{{"pulverized-iron",3},{"copper-dust",2}},"z[scrap-metal]")
