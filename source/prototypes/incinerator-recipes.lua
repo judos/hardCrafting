@@ -30,9 +30,9 @@ for _,typ in pairs(types) do
 		end
 
 		--If the item is a raw material and has a fuel value, dont create an incinerator recipe for it.
-		if name == "scrap-metal" then
-			print(serpent.block(itemTable))
-		end
+		--if name == "scrap-metal" then
+		--	print(serpent.block(itemTable))
+		--end
 		
 		local subgroup = itemTable.subgroup
 		if (subgroup ~= "raw-material" and subgroup~="raw-resource") or fuelValue == 0 then
