@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.3
+Date: 2019-09-01
+  Bugfixes:
+    - Fix rich-copper-ore map color (should be similar to vanilla)
+		- reduce rich-ore density and spawn frequency (they should be rare)
+		- disable logging (sometimes ingame chat messages appeared)
+		- fix scrap-metal can't be incinerated, prevent coal from getting incinerated
+---------------------------------------------------------------------------------------------------
 Version: 0.17.2
 Date: 2019-08-11
   Features:
