@@ -9,7 +9,7 @@ require "prototypes.advanced-oil-final"
 require "prototypes.smaller-ore-stacks"
 require "prototypes.productivity-support"
 
-require "prototypes.harder-buildings"
+require "prototypes.harder-buildings-recipes"
 
 require "prototypes.fixes-methane-processing"
 

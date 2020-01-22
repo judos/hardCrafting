@@ -1,5 +1,6 @@
 resource_autoplace.initialize_patch_set("oil-sand", false)
 
+-- copy of factorio 0.17.66 data\base\prototype\entity\demo-resources.lua
 local function autoplace_settings(name, order, coverage)
 	return
 	{

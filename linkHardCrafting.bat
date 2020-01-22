@@ -1,1 +1,1 @@
-mklink /j "mods/hardCrafting_0.5.7" "D:\modding\factorio\hardCrafting\source"
+mklink /j "mods/hardCrafting_0.17.3" "D:\projects\factorio\hardCrafting\source"

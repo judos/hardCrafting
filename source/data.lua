@@ -20,3 +20,5 @@ require "prototypes.rich-iron-ore"
 require "prototypes.rich-iron-processing"
 
 require "prototypes.big-processing-machine"
+
+require "prototypes.harder-buildings-item"
