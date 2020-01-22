@@ -82,7 +82,7 @@ data:extend({
 			}
 		},
 		map_color={r=92, g=50, b=17},
-		ageing=0,
+		pollution_absorption_per_second=0,
 		vehicle_friction_modifier = dirt_vehicle_friction_modifier
 	}
 })
