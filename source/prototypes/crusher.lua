@@ -37,6 +37,7 @@ crusher.result_inventory_size = 3
 crusher.crafting_speed = 1
 crusher.minable.result = "crusher"
 crusher.energy_source.emissions = 0.005
+crusher.icon_size = 32
 
 crusher.icon =  "__"..fullModName.."__/graphics/icons/crusher.png"
 crusher.animation = {

@@ -45,6 +45,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 		name="fracking-fluid",
 		base_color = {r=0.5, g=0.25, b=0},
 		flow_color = {r=0.6, g=0.3, b=0.1},
+		icon_size = 32,
 		icon = "__"..fullModName.."__/graphics/icons/fracking-fluid.png",
 	})
 

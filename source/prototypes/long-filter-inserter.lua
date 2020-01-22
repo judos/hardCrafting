@@ -31,6 +31,7 @@ if settings.startup["hardcrafting-extra-inserters"].value == true then
 	overwriteContent(long, {
 		name = "long-filter-inserter",
 		icon = "__"..fullModName.."__/graphics/icons/long-filter-inserter.png",
+		icon_size = 32,
 		pickup_position = {0, -2},
 		insert_position = {0, 2.2},
 		extension_speed = 0.1

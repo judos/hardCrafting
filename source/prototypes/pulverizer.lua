@@ -1,31 +1,31 @@
 require("prototypes.item-group-production")
 
 data:extend({
-  {
-    type = "item",
-	icon_size = 32,
-    name = "pulverizer",
-    icon = "__"..fullModName.."__/graphics/icons/pulverizer.png",
-    subgroup = "advanced-processing-machine",
-    order = "g",
-    place_result = "pulverizer",
-		enabled = false,
-    stack_size = 50
-  },
 	{
-    type = "recipe",
-    name = "pulverizer",
-    ingredients = {
+		type = "item",
+		icon_size = 32,
+		name = "pulverizer",
+		icon = "__"..fullModName.."__/graphics/icons/pulverizer.png",
+		subgroup = "advanced-processing-machine",
+		order = "g",
+		place_result = "pulverizer",
+		enabled = false,
+		stack_size = 50
+	},
+	{
+		type = "recipe",
+		name = "pulverizer",
+		ingredients = {
 			{"stone", 20},{"steel-plate",10},{"iron-gear-wheel",15},{"electronic-circuit",5}
 		},
 		enabled = false,
 		energy_required = 3,
-    result = "pulverizer"
-  },
+		result = "pulverizer"
+	},
 	{
-    type = "recipe-category",
-    name = "pulverizer"
-  },
+		type = "recipe-category",
+		name = "pulverizer"
+	},
 })
 
 -- Entity
@@ -39,16 +39,17 @@ pulverizer.crafting_speed = 1
 pulverizer.minable.result = "pulverizer"
 
 pulverizer.icon =  "__"..fullModName.."__/graphics/icons/pulverizer.png"
+pulverizer.icon_size = 32
 
 pulverizer.animation = {
-  filename = "__"..fullModName.."__/graphics/entity/pulverizer-base.png",
-  line_length = 1,
-  width = 129,
-  height = 100,
-  frame_count = 1,
-  axially_symmetrical = false,
-  direction_count = 1,
-  shift = {0.421875, 0},
+	filename = "__"..fullModName.."__/graphics/entity/pulverizer-base.png",
+	line_length = 1,
+	width = 129,
+	height = 100,
+	frame_count = 1,
+	axially_symmetrical = false,
+	direction_count = 1,
+	shift = {0.421875, 0},
 }
 pulverizer.working_visualisations = deepcopy(data.raw["furnace"]["electric-furnace"].working_visualisations)
 table.remove(pulverizer.working_visualisations,1)
@@ -71,26 +72,26 @@ data:extend({ pulverizer })
 
 -- technology
 data:extend({
-  {
-    type = "technology",
-    name = "pulverizer",
-    icon = "__"..fullModName.."__/graphics/technology/pulverizer.png",
-    icon_size = 128,
-    prerequisites = {"crusher", "advanced-material-processing" },
-    effects = {
-      {
-        type = "unlock-recipe",
-        recipe = "pulverizer"
-      }
-    },
-    unit = {
-      count = 75,
-      ingredients = {
-        {"automation-science-pack", 1},
+	{
+		type = "technology",
+		name = "pulverizer",
+		icon = "__"..fullModName.."__/graphics/technology/pulverizer.png",
+		icon_size = 128,
+		prerequisites = {"crusher", "advanced-material-processing" },
+		effects = {
+			{
+				type = "unlock-recipe",
+				recipe = "pulverizer"
+			}
+		},
+		unit = {
+			count = 75,
+			ingredients = {
+				{"automation-science-pack", 1},
 				{"logistic-science-pack", 1}
-      },
-      time = 30
-    },
-    order = "_hc_machines_2"
-  }
+			},
+			time = 30
+		},
+		order = "_hc_machines_2"
+	}
 })

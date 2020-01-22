@@ -38,6 +38,7 @@ overwriteContent(processer, {
 	collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
 	selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
 	icon =  "__"..fullModName.."__/graphics/icons/big-processing-machine.png",
+	icon_size = 32,
 	working_sound = data.raw["furnace"]["electric-furnace"].working_sound,
 	open_sound  = data.raw["furnace"]["electric-furnace"].open_sound,
 	close_sound  = data.raw["furnace"]["electric-furnace"].close_sound,
