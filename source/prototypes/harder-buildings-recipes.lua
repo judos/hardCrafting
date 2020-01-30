@@ -2,15 +2,15 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 	-- Requirement: --
 
 	local recipeWhiteList = table.set({
-		"splitter", "fast-splitter", "express-splitter", "filter-inserter","stack-inserter","stack-filter-inserter", 
-		"logistic-robot", "construction-robot", "roboport", 
-		"logistic-chest-active-provider", "logistic-chest-passive-provider", "logistic-chest-requester", "logistic-chest-storage", 
-		"big-electric-pole", "substation", "train-stop", "locomotive", "tank", 
-		"solar-panel", "accumulator", 
-		"pumpjack", "electric-furnace", "electric-incinerator", "pulverizer", "assembling-machine-2", 
+		"splitter", "fast-splitter", "express-splitter", "filter-inserter","stack-inserter","stack-filter-inserter",
+		"logistic-robot", "construction-robot", "roboport",
+		"logistic-chest-active-provider", "logistic-chest-passive-provider", "logistic-chest-requester", "logistic-chest-storage",
+		"big-electric-pole", "substation", "train-stop", "locomotive", "tank",
+		"solar-panel", "accumulator",
+		"pumpjack", "electric-furnace", "electric-incinerator", "pulverizer", "assembling-machine-2",
 		"assembling-machine-3", "oil-refinery", "chemical-plant", "lab", "beacon", "centrifuge",
 		"nuclear-reactor", "heat-exchanger", "heat-pipe",
-		"gun-turret", "laser-turret", "radar", "rocket-silo"   
+		"gun-turret", "laser-turret", "radar", "rocket-silo"
 	})
 
 	-- Recipes: --
@@ -28,11 +28,12 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 			end
 			table.insert(results, { type="item", name="scrap-metal",amount=1})
 			recipe.results = results
-			recipe.icon_size = 32
 			recipe.result = nil
 			recipe.result_count = nil
 			if not recipe.icon then
 				recipe.icon = data.raw["item"][resultItem].icon
+    			recipe.icon_size = data.raw["item"][resultItem].icon_size
+    			recipe.icon_mipmaps = data.raw["item"][resultItem].icon_mipmaps
 			end
 			if not recipe.subgroup then
 				recipe.subgroup = data.raw["item"][resultItem].subgroup
