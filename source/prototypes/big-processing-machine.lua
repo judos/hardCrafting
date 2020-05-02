@@ -149,6 +149,7 @@ for name,mod in pairs(recipes) do
 	recipe.name = recipe.name .. "-big"
 	recipe.order = recipe.order .. "2"
 	recipe.category = "big-processing-machine"
+	recipe.icon = recipe.icon:gsub(".png$", "-big.png")
 	if name == "crushed-iron" then
 		recipe.energy_required = 11
 	end

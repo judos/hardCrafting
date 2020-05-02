@@ -6,7 +6,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			type = "autoplace-control",
 			name = "rich-iron-ore",
 			richness = true,
-			order = "b",
+			order = "b-a1",
 			category = "resource",
 		},
 		{
@@ -25,7 +25,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 		resource(
 			{
 				name = "rich-iron-ore",
-				order = "b",
+				order = "b-a1",
 				map_color = {r=0.47, g=0.52, b=0.7},
 				mining_time = 1
 			},

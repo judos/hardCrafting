@@ -43,11 +43,18 @@ data:extend(
 		type = "double-setting",
 		name = "hardcrafting-smaller-ore-stacks",
 		setting_type = "startup",
-		default_value = true,
 		order = "d",
 		default_value = 0.5,
     minimum_value = 0.1,
     maximum_value = 5,
+	},
+	{
+		type = "string-setting",
+		name = "burner-miner-fuel-slots",
+		setting_type = "startup",
+		order = "e",
+		default_value = "2",
+        allowed_values = {"1","2"}
 	},
 	{
 		type = "bool-setting",

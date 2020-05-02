@@ -11,8 +11,13 @@ if cost<1 then cost = 1 end -- Beware of rounding down to zero
 -- Recipes: --
 --       item Name     category   subgroup     time    ingredients     		products
 addRecipe("steel-dust","crafting","raw-material",3,{{"crushed-iron",cost},{"coal-dust",2}},		{{"steel-dust",1}},"d2[steel-plate]")
+data.raw["recipe"]["steel-dust"].icon = "__"..fullModName.."__/graphics/icons/steel-dust-crushed.png"
+
 addRecipe("steel-dust|2","crafting","raw-material",2,{{"pulverized-iron",cost},{"coal-dust",1}},		{{"steel-dust",1}},"d2[steel-plate]")
+data.raw["recipe"]["steel-dust|2"].icon = "__"..fullModName.."__/graphics/icons/steel-dust-pulverized.png"
+
 addRecipe("steel-plate|dust","smelting","raw-material",8,{{"steel-dust",1}},		{{"steel-plate",1}},"d3[steel-plate]")
+data.raw["recipe"]["steel-plate|dust"].icon = "__"..fullModName.."__/graphics/icons/steel-plate-dust.png"
 
 -- technology
 data:extend({

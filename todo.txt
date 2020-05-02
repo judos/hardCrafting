@@ -14,9 +14,33 @@ add "oil sands" as new ore (http://www.oilsandsmagazine.com/technical/oilsands-1
 10 bitumen -> 6 heavy oil + 2 light oil (chem plant)
 gravel floor (20% walking modifier)
 
-UNCERTAIN 
+UNCERTAIN
 - compatibility for martathon (make copper plates process slower in chemical plant)
 - implement process for DyTech / bobs ore?
 - purified iron/copper
 - smelt copper plates?
 - big miner (different output but a lot more?)
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2015-12-30
+  Features:
+    - Integration with fluid-barrel
+    - Technology to enable Pulverizer, Crusher
+    - clean up recipes position
+    - Easier, cheaper train setup, but wagons carry only half the items (more trains yeah!)
+    - Different symbol&image for incinerator
+    - Technology for incinerator
+    - Renamed recycler to incinerator
+    - different robot/ engine recipes
+    - landfill integration
+    - copper production Tier3
+    - copper production Tier1&2
+    - recycle ammo, armors
+    - gravel -> stone-bricks
+    - Recycler works for all items (data-final-fixes), guns, templates
+    - custom recipes for intermediates processing (iron)
+    - icons for intermediates (iron)
+    - Ore patch recipes iron
+    - Recycler

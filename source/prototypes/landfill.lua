@@ -9,6 +9,8 @@ if data.raw["item"]["dirt"] ~= nil then
 				ingredients = {
 					{"sand", 30}
 				},
+				icon = "__"..fullModName.."__/graphics/icons/landfill-from-sand.png",
+				icon_size=32,
 				result = "landfill"
 			}
 		})

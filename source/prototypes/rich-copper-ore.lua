@@ -7,7 +7,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 			category = "resource",
 			name = "rich-copper-ore",
 			richness = true,
-			order = "b"
+			order = "b-b2"
 		},
 		{
 			type = "item",
@@ -25,7 +25,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 		resource(
 			{
 				name = "rich-copper-ore",
-				order = "b",
+				order = "b-b1",
 				map_color = {r=1, g=0.6, b=0.35},
 				mining_time = 1
 			},

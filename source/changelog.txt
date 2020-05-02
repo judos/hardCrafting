@@ -1,8 +1,21 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 2020-05-02
+  Features:
+    - icons for recipes improved. Mainly to distinguish alternative ways to produce things
+    - locales (en, de) improved
+---------------------------------------------------------------------------------------------------
+Version: 0.18.2
+Date: 2020-03-21
+  Features:
+    - I like complexity. But according to KonMari method one should ask: "Does this complexity create joy to me?"
+      In case of self-feeding coal mining setup with burner miners this is actually not the case.
+      That's why I set the number of fuel slots to 2 (Can be configured for people who answer the KonMari question differently).
+---------------------------------------------------------------------------------------------------
 Version: 0.18.1
 Date: 2020-01-30
   Bugfixes:
-    - icon size issues for receipes
+    - icon size issue for receipes
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.0
 Date: 2020-01-22
@@ -16,9 +29,9 @@ Version: 0.17.3
 Date: 2019-09-01
   Bugfixes:
     - Fix rich-copper-ore map color (should be similar to vanilla)
-		- reduce rich-ore density and spawn frequency (they should be rare)
-		- disable logging (sometimes ingame chat messages appeared)
-		- fix scrap-metal can't be incinerated, prevent coal from getting incinerated
+    - reduce rich-ore density and spawn frequency (they should be rare)
+    - disable logging (sometimes ingame chat messages appeared)
+    - fix scrap-metal can't be incinerated, prevent coal from getting incinerated
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.2
 Date: 2019-08-11
