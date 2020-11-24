@@ -1,4 +1,5 @@
 
+require "libs.prototypes.grouping"
 require "libs.prototypes.recipe"
 require "libs.prototypes.technology"
 require "libs.prototypes.prototypes"

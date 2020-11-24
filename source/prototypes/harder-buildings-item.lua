@@ -2,6 +2,6 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 
 
 	-- Item: --
-	addItem("scrap-metal","raw-resource","z[scrap-metal]",50)
+	addItem("scrap-metal","by-products","z[scrap-metal]",50)
 	
 end

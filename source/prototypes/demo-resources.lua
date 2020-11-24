@@ -1,3 +1,5 @@
+local resource_autoplace = require('resource-autoplace')
+
 resource_autoplace.initialize_patch_set("oil-sand", false)
 
 -- copy of factorio 0.17.66 data\base\prototype\entity\demo-resources.lua

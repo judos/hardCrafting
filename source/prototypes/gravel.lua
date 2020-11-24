@@ -1,12 +1,12 @@
 require "libs.prototypes.prototypes"
 require "prototypes.pulverizer"
 
-addItem("gravel","raw-resource","g1[other]",50)
-addItem("gravel-pile","raw-resource","g2[other]",50)
+addItem("gravel","by-products","b[gravel]",50)
+addItem("gravel-pile","by-products","c[gravel-pile]",50)
 
-addRecipe("stone-brick|gravel",	"smelting","",	1.5,{{"gravel-pile",1}},		{{"stone-brick",1}},"")
+addRecipe("stone-brick|gravel",	"smelting","",	1.5,{{"gravel-pile",1}},		{{"stone-brick",1}},"a[stone-brick]b")
 data.raw["recipe"]["stone-brick|gravel"].icon = "__"..fullModName.."__/graphics/icons/stone-brick-gravel.png"
 
-addRecipe("gravel-pile",				"crafting",nil,	1.5,{{"gravel",5}},					{{"gravel-pile",1}},"b")
+addRecipe("gravel-pile", "crafting","by-products",	1.5,{{"gravel",5}},					{{"gravel-pile",1}},"c[gravel-pile]")
 
 addRecipeCategory("hc-pulverizer")

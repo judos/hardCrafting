@@ -12,7 +12,7 @@ data.raw["resource"]["coal"].minable.results = {
 local timeToPulverizeCoal = 2
 local powerPulverizer = 0.140 --MW
 
-addItem("coal-dust","raw-material","b2[coal]",100)
+addItem("coal-dust","by-products","a[coal]",100)
 local fuelValueCoal = data.raw.item.coal.fuel_value or "8MJ"
 -- get fuelValue in MJ as number:
 fuelValueCoal = tonumber(fuelValueCoal:sub(1,fuelValueCoal:len()-2))
@@ -41,5 +41,5 @@ overwriteContent(data.raw.item["raw-wood"],{
 
 -- Recipes: --
 --       item Name     category   subgroup     time   							 ingredients     products		order
-addRecipe("coal-dust","hc-pulverizer","raw-material",timeToPulverizeCoal,{{"coal",1}},{{"coal-dust",5}},"b[coal]2")
+addRecipe("coal-dust","hc-pulverizer","by-products",timeToPulverizeCoal,{{"coal",1}},{{"coal-dust",5}},"a[coal]")
 addTechnologyUnlocksRecipe("pulverizer","coal-dust")

@@ -1,3 +1,5 @@
+local resource_autoplace = require('resource-autoplace')
+
 if settings.startup["hardcrafting-hard-oil"].value == true then
 
 	data:extend({

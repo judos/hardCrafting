@@ -5,6 +5,7 @@ if data.raw["item"]["dirt"] ~= nil then
 				type = "recipe",
 				name = "landfill2by2_withDirt",
 				enabled = false,
+				order= "c[landfill]-b[sand]",
 				energy_required = 2,
 				ingredients = {
 					{"sand", 30}
