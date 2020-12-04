@@ -23,7 +23,7 @@ data.raw["recipe"]["steel-plate|dust"].icon = "__"..fullModName.."__/graphics/ic
 data:extend({
 	{
 		type = "technology",
-		icon_size = 128,
+		icon_size = 256, icon_mipmaps = 4,
 		name = "steel-processing-2",
 		icon = "__base__/graphics/technology/steel-processing.png",
 		prerequisites = {"steel-processing"},

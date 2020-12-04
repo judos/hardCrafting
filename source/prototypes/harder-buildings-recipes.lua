@@ -4,7 +4,7 @@ if settings.startup["hardcrafting-complex-crafting-byproduct"].value == true the
 	local recipeWhiteList = table.set({
 		"splitter", "fast-splitter", "express-splitter", "filter-inserter","stack-inserter","stack-filter-inserter",
 		"logistic-robot", "construction-robot", "roboport",
-		"logistic-chest-active-provider", "logistic-chest-passive-provider", "logistic-chest-requester", "logistic-chest-storage",
+		"logistic-chest-active-provider", "logistic-chest-passive-provider", "logistic-chest-requester", "logistic-chest-storage", "logistic-chest-buffer",
 		"big-electric-pole", "substation", "train-stop", "locomotive", "tank",
 		"solar-panel", "accumulator",
 		"pumpjack", "electric-furnace", "electric-incinerator", "pulverizer", "assembling-machine-2",

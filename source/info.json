@@ -1,10 +1,12 @@
 {
 	"name": "hardCrafting",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"title": "Hard crafting",
 	"author": "judos, 0.17 port by ixu",
 	"description": "Modifies vanilla crafting and smelting to be much trickier, you will need better planning and more clever setup",
-	"dependencies": ["base >= 0.18.0"],
+	"dependencies": [
+		"base >= 0.18.0"
+	],
 	"homepage": "https://forums.factorio.com/viewtopic.php?f=91&t=30493",
 	"factorio_version": "1.1"
 }
