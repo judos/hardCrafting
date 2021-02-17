@@ -10,6 +10,7 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 		{
 			type = "autoplace-control",
 			name = "oil-sand",
+			localised_name = {"", "[entity=oil-sand] ", {"entity-name.oil-sand"}},
 			richness = true,
 			order = "b-f",
 			category = "resource",

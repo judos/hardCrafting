@@ -5,6 +5,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 		{
 			type = "autoplace-control",
 			category = "resource",
+			localised_name = {"", "[entity=rich-copper-ore] ", {"entity-name.rich-copper-ore"}},
 			name = "rich-copper-ore",
 			richness = true,
 			order = "b-b2"
