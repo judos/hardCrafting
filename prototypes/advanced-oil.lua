@@ -107,3 +107,13 @@ if settings.startup["hardcrafting-hard-oil"].value == true then
 	})
 
 end
+
+data:extend{
+    {
+        type = "sprite",
+        name = fullModName .. "_hard-oil",
+        filename = "__" .. fullModName .. "__/graphics/icons/fracking-fluid.png",
+        size = 32,
+    },
+
+}

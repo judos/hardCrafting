@@ -45,3 +45,13 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 		ressourceItemMinMaxProb("iron-nugget",			1, 1, 0.2)
 	}
 end
+
+data:extend{
+    {
+        type = "sprite",
+        name = fullModName .. "_rich-iron-ore",
+        filename = "__" .. fullModName .. "__/graphics/icons/rich-iron-ore.png",
+        size = 32,
+    },
+
+}

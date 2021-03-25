@@ -45,3 +45,13 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 		ressourceItemMinMaxProb("copper-sludge",1, 1, 0.06),
 	}
 end
+
+data:extend{
+    {
+        type = "sprite",
+        name = fullModName .. "_rich-copper-ore",
+        filename = "__" .. fullModName .. "__/graphics/icons/rich-copper-ore.png",
+        size = 32,
+    },
+
+}
