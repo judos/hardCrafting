@@ -1,0 +1,28 @@
+{
+    "Lua.diagnostics.globals": [
+        "defines",
+        "game",
+        "serpent",
+        "log",
+        "script",
+        "settings",
+        "global",
+        "currentLinks",
+        "data",
+        "remote"
+    ],
+    "Lua.diagnostics.disable": [
+        "redefined-local"
+    ],
+    "Lua.completion.autoRequire": false,
+    "factorio.versions": [
+        {
+            "name": "factorio",
+            "factorioPath": "d:\\data\\Program Files\\Steam\\steamapps\\common\\Factorio\\bin\\x64\\factorio.exe",
+            "active": true
+        }
+    ],
+    "Lua.workspace.library": [
+        "d:\\data\\Program Files\\Steam\\steamapps\\common\\Factorio\\data"
+    ]
+}
