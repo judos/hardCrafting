@@ -9,7 +9,8 @@
         "global",
         "currentLinks",
         "data",
-        "remote"
+        "remote",
+        "__Profiler"
     ],
     "Lua.diagnostics.disable": [
         "redefined-local"
@@ -23,6 +24,23 @@
         }
     ],
     "Lua.workspace.library": [
-        "d:\\data\\Program Files\\Steam\\steamapps\\common\\Factorio\\data"
-    ]
+        "d:\\data\\Program Files\\Steam\\steamapps\\common\\Factorio\\data",
+        "c:/Users/hh/AppData/Roaming/Code/User/workspaceStorage/2a8bb07afba8a847a765b5dfc9451750/justarandomgeek.factoriomod-debug/sumneko-3rd/factorio/library"
+    ],
+    "Lua.workspace.userThirdParty": [
+        "c:\\Users\\hh\\AppData\\Roaming\\Code\\User\\workspaceStorage\\2a8bb07afba8a847a765b5dfc9451750\\justarandomgeek.factoriomod-debug\\sumneko-3rd"
+    ],
+    "Lua.runtime.builtin": {
+        "io": "disable",
+        "os": "disable",
+        "math": "disable",
+        "debug": "disable",
+        "coroutine": "disable",
+        "package": "disable"
+    },
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.runtime.special": {
+        "__object_name": "type"
+    },
+    "Lua.runtime.plugin": "c:/Users/hh/AppData/Roaming/Code/User/workspaceStorage/2a8bb07afba8a847a765b5dfc9451750/justarandomgeek.factoriomod-debug/sumneko-3rd/factorio/plugin.lua"
 }
