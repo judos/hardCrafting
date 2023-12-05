@@ -42,5 +42,6 @@
     "Lua.runtime.special": {
         "__object_name": "type"
     },
+    "factorio.package.defaultPublishBranch": "master",
     "Lua.runtime.plugin": "c:/Users/hh/AppData/Roaming/Code/User/workspaceStorage/2a8bb07afba8a847a765b5dfc9451750/justarandomgeek.factoriomod-debug/sumneko-3rd/factorio/plugin.lua"
 }
