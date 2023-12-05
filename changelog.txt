@@ -3,6 +3,12 @@ Version: 1.0.8
 Date: ????
   Changes:
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.7
+Date: 2023-12-05
+  Changes:
+    - Some finetuning to curb the gravel glut in the late game
+    - Why shouldn't the big-processing-machine have 4 module slots? It's big, isn't it?
+---------------------------------------------------------------------------------------------------
 Version: 1.0.6
 Date: 2023-05-29
   Changes:
