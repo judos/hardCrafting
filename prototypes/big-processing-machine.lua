@@ -104,6 +104,7 @@ processer.fluid_boxes[2].pipe_picture.north.filename = "__"..fullModName.."__/gr
 processer.minable.result = "big-processing-machine"
 processer.fast_replaceable_group = nil
 processer.next_upgrade = nil
+processer.module_specification.module_slots = 4
 
 data:extend({ processer })
 

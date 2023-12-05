@@ -41,7 +41,7 @@ if settings.startup["hardcrafting-rich-ores"].value == true then
 	data.raw.resource["rich-copper-ore"].minable.mining_particle = "copper-ore-particle"
 	data.raw["resource"]["rich-copper-ore"].minable.results = {
 		ressourceItemMinMaxProb("rich-copper-ore",	 1, 1, 0.8), -- 1 item at percentage 0.8 --
-		ressourceItemMinMaxProb("gravel",				1, 1, 0.1),
+		ressourceItemMinMaxProb("gravel",				1, 1, 0.09),
 		ressourceItemMinMaxProb("copper-sludge",1, 1, 0.06),
 	}
 end

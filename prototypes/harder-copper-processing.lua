@@ -8,7 +8,7 @@ require "prototypes.pulverizer"
 data.raw["resource"]["copper-ore"].minable.result = nil
 data.raw["resource"]["copper-ore"].minable.results = {
 	ressourceItemMinMaxProb("copper-ore",   1, 1, 0.75), -- 1 item at percentage 0.75 --
-	ressourceItemMinMaxProb("gravel",       1, 1, 0.5),
+	ressourceItemMinMaxProb("gravel",       1, 1, 0.4),
 	ressourceItemMinMaxProb("copper-sludge",1, 1, 0.4),
 	ressourceItemMinMaxProb("dirt",         1, 1, 0.2)
 }
@@ -67,7 +67,7 @@ data.raw["recipe"]["copper-plate|dust"].icon = "__"..fullModName.."__/graphics/i
 addTechnologyUnlocksRecipe("crusher","copper-plate|dust")
 
 -- Tier3
-addRecipe("copper-dust","pulverizer","copper",6,{{"copper-ore",4},{"gravel",3}},{{"copper-dust",4},{"sulfur-dust",2}},"b[copper-dust]1")
+addRecipe("copper-dust","pulverizer","copper",6,{{"copper-ore",4},{"gravel",4}},{{"copper-dust",5},{"sulfur-dust",3}},"b[copper-dust]1")
 data.raw["recipe"]["copper-dust"].icon = "__"..fullModName.."__/graphics/icons/copper-dust-impure.png"
 addTechnologyUnlocksRecipe("pulverizer","copper-dust")
 

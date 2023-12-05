@@ -5,7 +5,7 @@ require "prototypes.crusher"
 data.raw["resource"]["stone"].minable.result = nil
 data.raw["resource"]["stone"].minable.results = {
 	ressourceItemMinMaxProb("stone", 1, 1, 0.9),
-	ressourceItemMinMaxProb("gravel", 1, 2, 0.2)
+	ressourceItemMinMaxProb("gravel", 1, 2, 0.18)
 }
 
 -- Recipes: --
