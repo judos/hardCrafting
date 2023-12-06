@@ -1,0 +1,163 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.9
+Date: ????
+  Changes:
+---------------------------------------------------------------------------------------------------
+Version: 1.0.8
+Date: 2023-12-05
+  Changes:
+---------------------------------------------------------------------------------------------------
+Version: 1.0.7
+Date: 2023-12-05
+  Changes:
+    - Some finetuning to curb the gravel glut in the late game
+    - Why shouldn't the big-processing-machine have 4 module slots? It's big, isn't it?
+---------------------------------------------------------------------------------------------------
+Version: 1.0.6
+Date: 2023-05-29
+  Changes:
+    - Support for railloader added: What are ores?
+---------------------------------------------------------------------------------------------------
+Version: 1.0.5
+Date: 2023-03-18
+  Bugfixes:
+    - icon setup for advanced-oil-technology corrected
+---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 2021-03-25
+  Bugfixes:
+    - fixing when setting is off the corresponding icons are undefined
+---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 2021-03-25
+  Changes:
+    - icons in settings
+---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2021-02-17
+  Changes:
+    - icons in autoplace controls
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2020-12-04
+  Bugfixes:
+    - icon setup for steel-2-technology corrected
+    - crafting of logistic-buffer-chest now creates crap metall like all other logisitic chests
+---------------------------------------------------------------------------------------------------
+Version: 1.0
+Date: 2020-11-21
+  Features:
+    - Upgrade to 1.1
+  Changes:
+    - Reordering icons in crafting and item views
+---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 2020-05-02
+  Features:
+    - icons for recipes improved. Mainly to distinguish alternative ways to produce things
+    - locales (en, de) improved
+---------------------------------------------------------------------------------------------------
+Version: 0.18.2
+Date: 2020-03-21
+  Features:
+    - I like complexity. But according to KonMari method one should ask: "Does this complexity create joy to me?"
+      In case of self-feeding coal mining setup with burner miners this is actually not the case.
+      That's why I set the number of fuel slots to 2 (Can be configured for people who answer the KonMari question differently).
+---------------------------------------------------------------------------------------------------
+Version: 0.18.1
+Date: 2020-01-30
+  Bugfixes:
+    - icon size issue for receipes
+---------------------------------------------------------------------------------------------------
+Version: 0.18.0
+Date: 2020-01-22
+  Features:
+    - Upgrade to 0.18
+  Bugfixes:
+    - renamed property pollution_absorption_per_second
+    - icon size issue
+---------------------------------------------------------------------------------------------------
+Version: 0.17.3
+Date: 2019-09-01
+  Bugfixes:
+    - Fix rich-copper-ore map color (should be similar to vanilla)
+    - reduce rich-ore density and spawn frequency (they should be rare)
+    - disable logging (sometimes ingame chat messages appeared)
+    - fix scrap-metal can't be incinerated, prevent coal from getting incinerated
+---------------------------------------------------------------------------------------------------
+Version: 0.17.2
+Date: 2019-08-11
+  Features:
+    - Changed research recipes of pulverizer and big processing machine to be less annoying
+    - Provide copper-dust production from rich copper ore at big processing machine too
+    - Recipes reordered for big processing machine
+    - Improved some locales
+  Bugfixes:
+    - fixed problems with mod "cargo ships"
+---------------------------------------------------------------------------------------------------
+Version: 0.17.1
+Date: 2019-07-02
+  Features:
+    - Updated to 0.17.53
+  Bugfixes:
+    - fixed big-processing-machine next_upgrade bug
+    - fixed problems when patching iron and copper smelting
+    - technology dependency between electronics and logistics removed
+---------------------------------------------------------------------------------------------------
+Version: 0.17.0
+Date: 2019-06-26
+  Features:
+    - Updated to 0.17
+---------------------------------------------------------------------------------------------------
+Version: 0.5.0
+Date: 2016-09-05
+  Features:
+    - factorio 0.14.x
+    - updated technology icons
+---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+Date: 2016-06-29
+  Features:
+    - port mod to work with factorio 0.13.x
+    - removed rail recipe changes
+    - smart-long-inserter is now a long-filter-inserter
+    - move belt-sorter into separate mod
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2016-03-11
+  Features:
+    - fixed minable_results not consistent by factorio (manual vs automatic mining -> storage_slots)
+    - fixed Localization for changed recipes (metal-scrap)
+    - properly ordered recipes + items into correct subgroups
+    - landfill recipes changed -> burning landfill takes a lot more time
+    - balancing gravel/dirt output -> dirt can now be dried which creates less amount of dried dirt
+    - fixed icons for slag/sludge processing
+    - pulverizer: coal -> coal dust, sulfur -> sulfur-dust
+    - coal field -> coal dust, coal
+    - improving Incinerator
+    - steel-dust (from coal-dust + pulverized-iron) gives cheaper steel
+    - expensive recipes produce metal-scrap as byproduct (only for placeable items)
+    - dirt texture (fixed o, u transition. U is not perfect aligned yet)
+    - all furnaces support hardCrafting smelting recipes (2 output slots)
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2015-12-30
+  Features:
+    - Integration with fluid-barrel
+    - Technology to enable Pulverizer, Crusher
+    - clean up recipes position
+    - Easier, cheaper train setup, but wagons carry only half the items (more trains yeah!)
+    - Different symbol&image for incinerator
+    - Technology for incinerator
+    - Renamed recycler to incinerator
+    - different robot/ engine recipes
+    - landfill integration
+    - copper production Tier3
+    - copper production Tier1&2
+    - recycle ammo, armors
+    - gravel -> stone-bricks
+    - Recycler works for all items (data-final-fixes), guns, templates
+    - custom recipes for intermediates processing (iron)
+    - icons for intermediates (iron)
+    - Ore patch recipes iron
+    - Recycler
