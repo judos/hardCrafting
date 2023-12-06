@@ -12,37 +12,9 @@ local railloader = require "interfaces.railloader"
 -- hardCrafting.incinerators = { $incinerator:LuaEntity, ... }
 -- hardCrafting.eincinerators = { $incinerator:LuaEntity, ... }
 
-if railloader.IsValid() then
-	railloader.AddBulkItem("gravel")
-end
-
 -- Init --
 script.on_init(function()
 	init()
-end)
-
-script.on_load(function()
-	if railloader.IsValid() then
-		railloader.AddBulkItem("dirt")
-
-		railloader.AddBulkItem("gravel")
-		railloader.AddBulkItem("gravel-pile")
-
-		railloader.AddBulkItem("coal-dust")
-
-		railloader.AddBulkItem("iron-slag")
-		railloader.AddBulkItem("iron-nugget")
-		railloader.AddBulkItem("iron-nugget")
-		railloader.AddBulkItem("crushed-iron")
-		railloader.AddBulkItem("pulverized-iron")
-
-		railloader.AddBulkItem("steel-dust")
-
-		railloader.AddBulkItem("copper-sludge")
-		railloader.AddBulkItem("copper-dust")
-		railloader.AddBulkItem("sufur-dust")
-		railloader.AddBulkItem("copper-sulfat")
-	end
 end)
 
 script.on_configuration_changed(function()
@@ -65,6 +37,7 @@ function init()
 
 	entities_init()
 	info("global after init: "..serpent.block(global))
+	railloader.AddBulkItems()
 end
 
 script.on_event(defines.events.on_tick, function(event)
