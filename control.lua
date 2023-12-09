@@ -17,6 +17,10 @@ script.on_init(function()
 	init()
 end)
 
+script.on_load(function()
+	railloader.AddBulkItems()
+end)
+
 script.on_configuration_changed(function()
 	local hc = global.hardCrafting
 	local previousVersion = hc.version
@@ -25,6 +29,7 @@ script.on_configuration_changed(function()
 		info("Previous global data version: "..previousVersion)
 		info("Migrated to version "..hc.version)
 	end
+	railloader.AddBulkItems()
 end)
 
 function init()
