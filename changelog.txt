@@ -1,7 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.9
+Version: 1.0.11
 Date: ????
   Changes:
+---------------------------------------------------------------------------------------------------
+Version: 1.0.10
+Date: 2023-12-09
+  Changes:
+    - Interface handling for railloader and railloader-MXO improved (refresh ore-list also when loading a savegame)
+---------------------------------------------------------------------------------------------------
+Version: 1.0.9
+Date: 2023-12-06
+  Changes:
+    - Interface handling for railloader and railloader-MXO improved
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.8
 Date: 2023-12-05
